@@ -19,6 +19,8 @@
     </head>
     <body>
         <div id="map"></div>
+        <div id="layersControl"></div>
+        <div id="styleChooser"></div>
         <script type="text/javascript">
            
         var north_east = L.latLng(26.328231, 80.029907);
@@ -13714,7 +13716,17 @@
             
            
         </script>
+        <script type="text/javascript">
+        var baseLayers = {
+            "OpenStreetMap": osm
+        };
+
+        var overlays = {
+        };
+        // L.control.layers(baseLayers,overlays).addTo(map);
+        $('#layersControl').appendChild(new L.control.layers(baseLayers, overlays,{collapsed:false}).onAdd(map));
+        </script>
        
     </body>
-</html>
+    </html>
 
