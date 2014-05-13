@@ -7,6 +7,7 @@
         <script src = "js/Leaflet.debug-0.0.1.js"></script>
         <script src = "data/testgeom.js"></script>
         <style>
+
         #map{
         height:80%;
         width:80%;
@@ -22,42 +23,8 @@
         <div id="map"></div>
         <div id="layersControl"></div>
         <div id="styleChooser"></div>
-        <script type="text/javascript">
-        
-        var north_east = L.latLng(26.328231, 80.029907);
-        var south_west = L.latLng(30.605155, 88.225708);
-        var bounds = L.latLngBounds(north_east,south_west);
-        var nep_latlng_array = [];
-        
-        //get coordinates from geojson
-        var testGeom = testGeom || [];
-        
-        for (any in testGeom){
-            a = testGeom[any];
-            for (bny in a){
-                b = L.latLng(a[bny])
-                nep_latlng_array.push(b);
-                }
-        }
-        var map = L.map('map').setView([28.425, 84.435],7),
-                    osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
-                    osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors';
-        var osm = L.TileLayer.boundaryCanvas(osmUrl, {
-                    boundary: nep_latlng_array
-                    }).addTo(map);
-        
-        
-        
-        </script>
-        <script type="text/javascript">
-        var baseLayers = {
-        "OpenStreetMap": osm
-        };
-        var overlays = {
-        };
-        L.control.layers(baseLayers,overlays,{collapsed:false}).addTo(map);
-        // $('#layersControl').appendChild(new L.control.layers(baseLayers, overlays,{collapsed:false}).onAdd(map));
-        </script>
-        
+        <script src = "js/main.js"></script>
     </body>
-</html>
+
+    </html>
+
