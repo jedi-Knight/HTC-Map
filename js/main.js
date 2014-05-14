@@ -23,15 +23,21 @@
         var district_boundary = new L.geoJson();
         district_boundary.addTo(map);
 
+        var zone_boundary = new L.geoJson();
+        zone_boundary.addTo(map);
+
         var HTC_sites = new L.geoJson();
         HTC_sites.addTo(map);
 
-
+        var vdc_boundary = new L.geoJson();
+        vdc_boundary.addTo(map);
 
 
         var baseLayers = {
             "OpenStreetMap": osm,
-            "District": district_boundary
+            "District": district_boundary,
+            "VDC": vdc_boundary,
+            "Zone": zone_boundary
         };
         var overlays = {
             "HTC Sites": HTC_sites
@@ -69,6 +75,30 @@
             success: function(data) {
                 $(data.features).each(function(key, data) {
                     district_boundary.addData(data);
+
+                });
+
+            }
+        });
+
+        $.ajax({
+            dataType: "json",
+            url: "data/zone.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    zone_boundary.addData(data);
+
+                });
+
+            }
+        });
+
+        $.ajax({
+            dataType: "json",
+            url: "data/vdc.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    vdc_boundary.addData(data);
 
                 });
 
