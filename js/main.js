@@ -20,10 +20,12 @@
             boundary: nep_latlng_array
         }).addTo(map);
 
-
+        var district_boundary = new L.geoJson();
+        district_boundary.addTo(map);
 
         var baseLayers = {
-            "OpenStreetMap": osm
+            "OpenStreetMap": osm,
+            "District": district_boundary
         };
         var overlays = {};
         L.control.layers(baseLayers, overlays, {
@@ -31,6 +33,9 @@
         }).addTo(map);
          // $('#layersControl').appendChild(new L.control.layers(baseLayers, overlays,{collapsed:false}).onAdd(map));
 
+
+
+         //htc_dummy data
         $.ajax({
             dataType: "json",
             url: "data/htc_dummy.geojson",
@@ -44,7 +49,20 @@
                     //data.properties.no_of_case is no of cases
                     //data.properties.ia  is implementing agency
 
-                })
+                });
+
+            }
+        });
+
+         //district data
+        $.ajax({
+            dataType: "json",
+            url: "data/district.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    district_boundary.addData(data);
+
+                });
 
             }
         });
