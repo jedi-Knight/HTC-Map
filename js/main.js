@@ -20,24 +20,76 @@
             boundary: nep_latlng_array
         }).addTo(map);
 
-        var district_boundary = new L.geoJson();
-        district_boundary.addTo(map);
+        function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                click: highlightFeature
+            });
+        }
+
+        function style_htc() {
+            return {
+                fillColor: 'green',
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+
+        var country_boundary = new L.geoJson();
+        country_boundary.addTo(map);
 
         var zone_boundary = new L.geoJson();
         zone_boundary.addTo(map);
 
-        var HTC_sites = new L.geoJson();
-        HTC_sites.addTo(map);
+        var district_boundary = new L.geoJson(
+            null, {
+                style: style_htc
+            }
+        );
+        district_boundary.addTo(map);
 
         var vdc_boundary = new L.geoJson();
         vdc_boundary.addTo(map);
 
+        var HTC_sites = new L.geoJson(
+            null, {
+
+                style: style_htc,
+                onEachFeature: onEachFeature
+            }
+        );
+        HTC_sites.addTo(map);
+
+
 
         var baseLayers = {
             "OpenStreetMap": osm,
+            "Country": country_boundary,
+            "Zone": zone_boundary,
             "District": district_boundary,
             "VDC": vdc_boundary,
-            "Zone": zone_boundary
         };
         var overlays = {
             "HTC Sites": HTC_sites
@@ -57,7 +109,7 @@
                 $(data.features).each(function(key, data) {
                     // L.geoJson(data).addTo(map);
                     HTC_sites.addData(data);
-
+                    HTC_sites.bindPopup(data.properties['Name of Se']);
                     //data.geometry.coordinates
                     //data.properties['Name of Se'] is name of htc site
                     //data.properties.no_of_case is no of cases
@@ -99,6 +151,18 @@
             success: function(data) {
                 $(data.features).each(function(key, data) {
                     vdc_boundary.addData(data);
+
+                });
+
+            }
+        });
+
+        $.ajax({
+            dataType: "json",
+            url: "data/country.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    country_boundary.addData(data);
 
                 });
 
