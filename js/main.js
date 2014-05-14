@@ -23,11 +23,19 @@
         var district_boundary = new L.geoJson();
         district_boundary.addTo(map);
 
+        var HTC_sites = new L.geoJson();
+        HTC_sites.addTo(map);
+
+
+
+
         var baseLayers = {
             "OpenStreetMap": osm,
             "District": district_boundary
         };
-        var overlays = {};
+        var overlays = {
+            "HTC Sites": HTC_sites
+        };
         L.control.layers(baseLayers, overlays, {
             collapsed: false
         }).addTo(map);
@@ -41,8 +49,8 @@
             url: "data/htc_dummy.geojson",
             success: function(data) {
                 $(data.features).each(function(key, data) {
-                    L.geoJson(data).addTo(map);
-
+                    // L.geoJson(data).addTo(map);
+                    HTC_sites.addData(data);
 
                     //data.geometry.coordinates
                     //data.properties['Name of Se'] is name of htc site
