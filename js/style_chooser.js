@@ -7,8 +7,15 @@ rdiv.setAttribute("data-toggle", "modal");
 styleChooserDiv.appendChild(rdiv);
 
 function clickfunction(id) {
-    alert(id);
-    HTC_sites.redraw();
+    if (id == 'supported') {
+        $(HTC_sites._layers).each(function(a) {
+            //check the data if it has supported by fhi or other
+            console.log(a._img);
+        });
+
+    } else if (id == 'district') {
+
+    }
 }
 
 $.each(htcStyles, function(index, val) {
@@ -16,7 +23,7 @@ $.each(htcStyles, function(index, val) {
     button.setAttribute("class", "btn btn-primary");
     button.value = val;
     button.innerHtml = val;
-    button.id = index;
+    button.id = val;
     button.type = 'button';
     button.name = "htcStyles";
     button.setAttribute("onclick", "clickfunction(this.id)");

@@ -122,11 +122,12 @@
 
 
         var baseLayers = {
-            "OpenStreetMap": osm,
+
             "Country": country_boundary,
             "Zone": zone_boundary,
             "District": district_boundary,
             "VDC": vdc_boundary,
+            "OpenStreetMap": osm
         };
         var overlays = {
             "HTC Sites": HTC_sites
