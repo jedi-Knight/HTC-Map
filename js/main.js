@@ -73,9 +73,13 @@
         }
 
         function onEachFeature(feature, layer) {
-            layer.on({
-                click: highlightFeature
-            });
+            // debugger;
+            // console.log(layer);
+            layer.bindPopup(feature.properties.Name);
+            if (feature.properties.ia == 'FHI') {
+                //HTC_sites.setStyle()
+                console.log('FHI ia');
+            }
         }
 
         function style_htc() {
@@ -142,7 +146,7 @@
                 $(data.features).each(function(key, data) {
                     // L.geoJson(data).addTo(map);
                     HTC_sites.addData(data);
-                    HTC_sites.bindPopup(data.properties['Name of Se']);
+                    //HTC_sites.bindPopup(data.properties['Name of Se']);
                     //data.geometry.coordinates
                     //data.properties['Name of Se'] is name of htc site
                     //data.properties.no_of_case is no of cases
