@@ -104,7 +104,7 @@
         district_boundary.addTo(map);
 
         var vdc_boundary = new L.geoJson();
-        vdc_boundary.addTo(map);
+         // vdc_boundary.addTo(map);
 
         var HTC_sites = new L.geoJson(
             null, {
@@ -127,10 +127,12 @@
         var overlays = {
             "HTC Sites": HTC_sites
         };
-        L.control.layers(baseLayers, overlays, {
+        layersControlSettings = L.control.layers(baseLayers, overlays, {
             collapsed: false
-        }).addTo(map);
-         // $('#layersControl').appendChild(new L.control.layers(baseLayers, overlays,{collapsed:false}).onAdd(map));
+        });
+        layersControlSettings.addTo(map);
+        $('#layersControl').append(layersControlSettings.onAdd(map));
+        $('.leaflet-top.leaflet-right').hide(); // temporary solution for hiding layers control
 
 
 
