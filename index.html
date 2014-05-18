@@ -1,22 +1,49 @@
 <html>
     <head>
         <link rel="stylesheet" href="js/leaflet-0.7/leaflet.css" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <script src = "js/jquery-1.7.2.min.js"></script>
         <script src = "js/leaflet-0.7/leaflet.js"></script>
         <script src = "js/BoundaryCanvas.js"></script>
         <script src = "js/Leaflet.debug-0.0.1.js"></script>
         <script src = "data/testgeom.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <style>
 
-        #map{
-        height:80%;
-        width:80%;
-        }
-        #click{
-        top:250px;
-        left:50px;
-        z-index:1001;
-        }
+            #map{
+                height:80%;
+                width:80%;
+            }
+            #click{
+                top:250px;
+                left:50px;
+                z-index:1001;
+            }
+            .info {
+                padding: 6px 8px;
+                font: 14px/16px Arial, Helvetica, sans-serif;
+                background: white;
+                background: rgba(255,255,255,0.8);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                border-radius: 5px;
+            }
+
+            .info h4 {
+                margin: 0 0 5px;
+                color: #777;
+            }
+
+            .legend {
+                line-height: 18px;
+                color: #555;
+            }
+            .legend i {
+                width: 18px;
+                height: 18px;
+                float: left;
+                margin-right: 8px;
+                opacity: 0.7;
+            }
         </style>
     </head>
     <body>
