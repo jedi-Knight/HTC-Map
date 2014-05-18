@@ -1,6 +1,6 @@
 //styleChooserDiv = $('#styleChooser');
 var styleChooserDiv = document.getElementById("styleChooser");
-htcStyles = ["supported", "district"];
+htcStyles = ["supported", "cases"];
 var rdiv = document.createElement('div');
 rdiv.setAttribute("class", "btn-group-vertical");
 rdiv.setAttribute("data-toggle", "modal");
@@ -19,6 +19,6 @@ $.each(htcStyles, function(index, val) {
     button.id = index;
     button.type = 'button';
     button.name = "htcStyles";
-    button.setAttribute("onclick", "clickfunction(this.id)");
+    button.setAttribute("onclick", "clickfunction(this.value)");
     rdiv.appendChild(button);
 });

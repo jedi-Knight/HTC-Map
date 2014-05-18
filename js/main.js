@@ -141,6 +141,7 @@
 
 
          //htc_dummy data
+        map.spin(true);
         $.ajax({
             dataType: "json",
             url: "data/htc_dummy.geojson",
@@ -153,10 +154,12 @@
                     //data.properties['Name of Se'] is name of htc site
                     //data.properties.no_of_case is no of cases
                     //data.properties.ia  is implementing agency
-
+                    map.spin(false);
                 });
 
             }
+        }).error(function() {
+            map.spin(false);
         });
 
          //district data
@@ -185,17 +188,20 @@
             }
         });
 
+        map.spin(true);
         $.ajax({
             dataType: "json",
             url: "data/vdc.geojson",
             success: function(data) {
                 $(data.features).each(function(key, data) {
                     vdc_boundary.addData(data);
-
+                    map.spin(false);
                 });
 
             }
-        });
+        }).error(function() {
+            map.spin(false);
+        });;
 
         $.ajax({
             dataType: "json",
