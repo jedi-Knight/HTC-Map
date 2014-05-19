@@ -84,10 +84,10 @@
 
         function style_htc() {
             return {
-                fillColor: 'green',
-                weight: 2,
+                fillColor: '#C8C582',
+                weight: 1,
                 opacity: 1,
-                color: 'white',
+                color: 'black',
                 dashArray: '3',
                 fillOpacity: 0.7
             };
@@ -119,8 +119,6 @@
         );
         HTC_sites.addTo(map);
 
-
-
         var baseLayers = {
             "OpenStreetMap": osm,
             "Country": country_boundary,
@@ -138,8 +136,6 @@
         $('#layersControl').append(layersControlSettings.onAdd(map));
         $('.leaflet-top.leaflet-right').hide(); // temporary solution for hiding layers control
 
-
-
          //htc_dummy data
         map.spin(true);
         $.ajax({
@@ -149,6 +145,7 @@
                 $(data.features).each(function(key, data) {
                     // L.geoJson(data).addTo(map);
                     HTC_sites.addData(data);
+                    HTC_sites.setStyle(style['supported']);
                     //HTC_sites.bindPopup(data.properties['Name of Se']);
                     //data.geometry.coordinates
                     //data.properties['Name of Se'] is name of htc site

@@ -8,7 +8,8 @@ styleChooserDiv.appendChild(rdiv);
 
 function clickfunction(id) {
     alert(id);
-    HTC_sites.redraw();
+    // HTC_sites.redraw();
+    HTC_sites.setStyle();
 }
 
 $.each(htcStyles, function(index, val) {
@@ -22,3 +23,17 @@ $.each(htcStyles, function(index, val) {
     button.setAttribute("onclick", "clickfunction(this.value)");
     rdiv.appendChild(button);
 });
+
+style = {
+    "supported": function(feature) {
+        if (feature.properties.Supported == "FHI 360") {
+            return {
+                color: 'red',
+            };
+        } else {
+            return {
+                color: 'white',
+            };
+        }
+    }
+}
