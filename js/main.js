@@ -26,6 +26,7 @@
         }
 
         var map = L.map('map').setView([28.425, 84.435], 7),
+
             osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
             osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors';
         var osm = L.TileLayer.boundaryCanvas(osmUrl, {
@@ -82,33 +83,25 @@
             }
         }
 
-        function style_htc() {
-            return {
-                fillColor: '#C8C582',
-                weight: 1,
-                opacity: 1,
-                color: 'black',
-                dashArray: '3',
-                fillOpacity: 0.7
-            };
-        }
-
-
         var country_boundary = new L.geoJson();
-        country_boundary.addTo(map);
+         // country_boundary.addTo(map);
 
         var zone_boundary = new L.geoJson();
-        zone_boundary.addTo(map);
+         // zone_boundary.addTo(map);
 
         var district_boundary = new L.geoJson(
             null, {
-                style: style_htc
+                style: style_polygon
             }
         );
         district_boundary.addTo(map);
 
-        var vdc_boundary = new L.geoJson();
-         // vdc_boundary.addTo(map);
+        var vdc_boundary = new L.geoJson(
+            null, {
+                style: style_polygon
+            }
+        );
+        vdc_boundary.addTo(map);
 
         var HTC_sites = new L.geoJson(
             null, {
@@ -121,12 +114,10 @@
 
         var baseLayers = {
             "OpenStreetMap": osm,
-            "Country": country_boundary,
-            "Zone": zone_boundary,
-            "District": district_boundary,
-            "VDC": vdc_boundary,
         };
         var overlays = {
+            "District": district_boundary,
+            "VDC": vdc_boundary,
             "HTC Sites": HTC_sites
         };
         layersControlSettings = L.control.layers(baseLayers, overlays, {
