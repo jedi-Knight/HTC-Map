@@ -101,16 +101,16 @@
                 style: style_polygon
             }
         );
-        vdc_boundary.addTo(map);
+         // vdc_boundary.addTo(map);
 
         var HTC_sites = new L.geoJson(
             null, {
 
-                style: style_htc,
+                // style: style_htc,
                 onEachFeature: onEachFeature
             }
         );
-        HTC_sites.addTo(map);
+         // HTC_sites.addTo(map);
 
         var baseLayers = {
             "OpenStreetMap": osm,
@@ -136,7 +136,7 @@
                 $(data.features).each(function(key, data) {
                     // L.geoJson(data).addTo(map);
                     HTC_sites.addData(data);
-                    HTC_sites.setStyle(style['supported']);
+                    // HTC_sites.setStyle(style['supported']);
                     //HTC_sites.bindPopup(data.properties['Name of Se']);
                     //data.geometry.coordinates
                     //data.properties['Name of Se'] is name of htc site
