@@ -10,12 +10,13 @@ function style_polygon() {
     };
 }
 
-function style_htc() {
+function style_htc(marker) {
     // Creates a red marker with the coffee icon
     var redMarker = L.AwesomeMarkers.icon({
         icon: 'coffee',
         markerColor: 'red'
     });
+    return marker.setIcon(redMarker)
     // body...
 }
 
@@ -37,14 +38,20 @@ Styles will be used to generate the UI, define styles separately
 styles = {
     "district_boundary_styles": {
         "geometry": "polygon",
-        "styles": district_boundary_styles
+        "styles": district_boundary_styles,
+        "layer": district_boundary,
+        "display": "District"
     },
     "vdc_boundary_styles": {
         "geometry": "polygon",
-        "styles": vdc_boundary_styles
+        "styles": vdc_boundary_styles,
+        "layer": vdc_boundary,
+        "display": "VDC"
     },
     "HTC_sites_styles": {
         "geometry": "point",
-        "styles": HTC_sites_styles
+        "styles": HTC_sites_styles,
+        "layer": HTC_sites,
+        "display": "HTC Sites"
     }
 }
