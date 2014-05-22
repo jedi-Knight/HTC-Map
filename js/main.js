@@ -73,7 +73,6 @@
         }
 
         function onEachFeature(feature, layer) {
-            // debugger;
             // console.log(layer);
             layer.bindPopup(feature.properties.Name);
             if (feature.properties.ia == 'FHI') {
