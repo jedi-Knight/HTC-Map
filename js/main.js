@@ -9,8 +9,6 @@ function getColor(d) {
         '#FFEDA0';
 }
 
-
-
 var legend = L.control({
     position: 'bottomleft'
 });
@@ -52,11 +50,10 @@ function zoomToFeature(e) {
 }
 
 function onEachFeature(feature, layer) {
-    // debugger;
     // console.log(layer);
     layer.bindPopup(feature.properties.Name);
     if (feature.properties.ia == 'FHI') {
         //HTC_sites.setStyle()
-        // console.log('FHI ia');
+        console.log('FHI ia');
     }
 }
