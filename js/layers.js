@@ -113,7 +113,7 @@ $.ajax({
     }
 }).error(function() {
     map.spin(false);
-});;
+});
 
 $.ajax({
     dataType: "json",
