@@ -74,26 +74,10 @@ $.ajax({
     success: function(data) {
         $(data.features).each(function(key, data) {
             district_boundary.addData(data);
-            district_boundary.setStyle(district_boundary_styles["default"]);
 
+            district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
         });
 
 
     }
 });
-
-map.spin(true);
-$.ajax({
-    dataType: "json",
-    url: "data/vdc.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            vdc_boundary.addData(data);
-            vdc_boundary.setStyle(vdc_boundary_styles["default"]);
-            map.spin(false);
-        });
-
-    }
-}).error(function() {
-    map.spin(false);
-});;
