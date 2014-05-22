@@ -58,14 +58,7 @@ $.ajax({
     url: "data/htc_dummy.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) {
-            // L.geoJson(data).addTo(map);
             HTC_sites.addData(data);
-            // HTC_sites.setStyle(style['supported']);
-            //HTC_sites.bindPopup(data.properties['Name of Se']);
-            //data.geometry.coordinates
-            //data.properties['Name of Se'] is name of htc site
-            //data.properties.no_of_case is no of cases
-            //data.properties.ia  is implementing agency
             map.spin(false);
         });
 
@@ -81,21 +74,10 @@ $.ajax({
     success: function(data) {
         $(data.features).each(function(key, data) {
             district_boundary.addData(data);
+            district_boundary.setStyle(district_boundary_styles["default"]);
 
         });
 
-
-    }
-});
-
-$.ajax({
-    dataType: "json",
-    url: "data/zone.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            zone_boundary.addData(data);
-
-        });
 
     }
 });
@@ -107,6 +89,7 @@ $.ajax({
     success: function(data) {
         $(data.features).each(function(key, data) {
             vdc_boundary.addData(data);
+            vdc_boundary.setStyle(vdc_boundary_styles["default"]);
             map.spin(false);
         });
 
@@ -114,15 +97,3 @@ $.ajax({
 }).error(function() {
     map.spin(false);
 });;
-
-$.ajax({
-    dataType: "json",
-    url: "data/country.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            country_boundary.addData(data);
-
-        });
-
-    }
-});

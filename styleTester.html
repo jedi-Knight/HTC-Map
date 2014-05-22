@@ -72,7 +72,7 @@
           </div>
         </div>
       </div>
-      <script src = "js/style_chooser.js"></script>
+      <script src = "js/styles.js"></script>
       <script type="text/javascript">
         var map = L.map('map').setView([28.425, 84.435], 7);
         var HTC_sites = new L.geoJson(
@@ -103,6 +103,24 @@
             markerColor: 'red'
           });
         mark = L.marker([27.6,84.6]).addTo(map);
+
+        var district_boundary = new L.geoJson();
+        district_boundary.addTo(map);
+
+        //district data
+        $.ajax({
+            dataType: "json",
+            url: "data/district.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    district_boundary.addData(data);
+
+                });
+
+
+            }
+        });
+
       </script>
     </body>
     </html>
