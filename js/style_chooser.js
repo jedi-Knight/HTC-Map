@@ -1,31 +1,36 @@
 //styleChooserDiv = $('#styleChooser');
 var styleChooserDiv = document.getElementById("styleChooser");
-htcStyles = ["supported", "district"];
-var rdiv = document.createElement('div');
-rdiv.setAttribute("class", "btn-group-vertical");
-rdiv.setAttribute("data-toggle", "modal");
-styleChooserDiv.appendChild(rdiv);
 
-function clickfunction(id) {
-    if (id == 'supported') {
-        $(HTC_sites._layers).each(function(a) {
-            //check the data if it has supported by fhi or other
-            console.log(a._img);
-        });
-
-    } else if (id == 'district') {
-
+$.each(styles, function(index, val1) {
+    switch (val1['geometry']) {
+        case "point":
+            // console.log(val['geometry']);
+            nameDiv = $('<div>', {
+                text: val1['display']
+            }).appendTo(styleChooserDiv);
+            $.each(val1['styles'], function(index, val2) {
+                styleDiv = $('<button>', {
+                    text: index,
+                    click: function() {
+                        val1['layer'].eachLayer(val1['styles'][index]);
+                    }
+                }).appendTo(nameDiv);
+            });
+            break;
+        default:
+            // console.log(val['geometry']);
+            nameDiv = $('<div>', {
+                text: val1['display']
+            }).appendTo(styleChooserDiv);
+            $.each(val1['styles'], function(index, val2) {
+                styleDiv = $('<button>', {
+                    text: index,
+                    click: function() {
+                        console.log("val1=", val1);
+                        val1['layer'].setStyle(val1['styles'][index]);
+                    }
+                }).appendTo(nameDiv);
+            });
+            break;
     }
-}
-
-$.each(htcStyles, function(index, val) {
-    button = document.createElement('input');
-    button.setAttribute("class", "btn btn-primary");
-    button.value = val;
-    button.innerHtml = val;
-    button.id = val;
-    button.type = 'button';
-    button.name = "htcStyles";
-    button.setAttribute("onclick", "clickfunction(this.id)");
-    rdiv.appendChild(button);
 });
