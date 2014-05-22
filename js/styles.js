@@ -13,24 +13,43 @@ function style_polygon() {
 function style_htc(marker) {
     // Creates a red marker with the coffee icon
     var redMarker = L.AwesomeMarkers.icon({
-        icon: 'coffee',
+        icon: 'header',
         markerColor: 'red'
     });
-    return marker.setIcon(redMarker)
-    // body...
+    if (marker.feature.properties["Supported"] == "FHI 360") {
+        return marker.setIcon(redMarker)
+    } else {
+        return marker.setIcon(new L.Icon.Default())
+    }
+}
+
+function style_htc_default(marker) {
+    return marker.setIcon(new L.Icon.Default())
 }
 
 // arrange styles to groups
 district_boundary_styles = {
-    "default": style_polygon
+    "Default": {
+        "style": style_polygon,
+        "legend": "This is District Boundry Default Legend"
+    }
 }
-
 vdc_boundary_styles = {
-    "default": style_polygon
+    "Default": {
+        "style": style_polygon,
+        "legend": "This is VDC Boundry Default Legend"
+    }
 }
 
 HTC_sites_styles = {
-    "default": style_htc
+    "Default": {
+        "style": style_htc_default,
+        "legend": "This is HTC Sites Default Legend"
+    },
+    "Marker": {
+        "style": style_htc,
+        "legend": "This is HTC Sites Marker Legend"
+    }
 }
 /*
 Styles will be used to generate the UI, define styles separately

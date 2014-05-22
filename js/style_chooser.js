@@ -35,7 +35,7 @@ $.each(styles, function(index, val1) {
                 styleDiv = $('<button>', {
                     text: index,
                     click: function() {
-                        val1['layer'].eachLayer(val1['styles'][index]);
+                        val1['layer'].eachLayer(val1['styles'][index]['style']);
                     }
                 }).appendTo(nameDiv);
             });
@@ -49,8 +49,8 @@ $.each(styles, function(index, val1) {
                 styleDiv = $('<button>', {
                     text: index,
                     click: function() {
-                        console.log("val1=", val1);
-                        val1['layer'].setStyle(val1['styles'][index])
+                        console.log("val1=", val1, "index=", index);
+                        val1['layer'].setStyle(val1['styles'][index]['style'])
                     }
                 }).appendTo(nameDiv);
             });
