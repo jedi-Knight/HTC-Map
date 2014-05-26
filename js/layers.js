@@ -23,6 +23,9 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
     boundary: nep_latlng_array
 }).addTo(map);
 
+//for the labels
+var labels_layer = new L.layerGroup();
+
 var country_boundary = new L.geoJson();
 // country_boundary.addTo(map);
 
@@ -39,7 +42,7 @@ var vdc_boundary = new L.geoJson();
 var HTC_sites = new L.geoJson();
 HTC_sites.addTo(map);
 
-var baseLayers = {};
+var baseLayers = L.layerGroup();
 var overlays = {
     "OpenStreetMap": osm,
     "District": district_boundary,

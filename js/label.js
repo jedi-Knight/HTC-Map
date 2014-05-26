@@ -19,22 +19,33 @@ function labels() {
     for (var aht in _test) {
         var b = _test[aht];
         //first find the coordinates that form the polygon
-        console.log(b._latlngs);
+        //console.log(b._latlngs);
+
+
         var district = L.polygon(b._latlngs);
         center = findCenter(b._latlngs);
         //debugger;
         coords = L.latLng(center[0], center[1]);
         district_name = b.feature.properties.NAME_3;
+
+
+
         label = new L.Label();
         label.setContent(district_name);
-        label.setLatLng(coords);
+        //label.setLatLng(coords);
         label.setLatLng(district.getBounds().getCenter());
+        labels_layer.addLayer(label);
+        //map.showLabel(label);
 
-        map.showLabel(label);
 
 
 
-        //L.marker(center[0], center[1]).bindPopup(b.feature.properties.NAME_3).addTo(map);
+        /*
+        L.marker(coords).bindPopup(district_name, {
+            opacity: 0
+        }).addTo(map);
+        */
+
         //center.bindPopup(b.feature.properties.NAME_3);
 
         //then find the center of the polygon 
@@ -42,8 +53,20 @@ function labels() {
         //style the points with transparent 
         //bindlabel the name_3
 
-        console.log(b.feature.properties.NAME_3);
+        //console.log(b.feature.properties.NAME_3);
 
 
     }
 }
+
+//!@#$%^&*()(*&^%$#@!#$%^&*()(*&^%$#@!))
+//event on mapzoom
+map.on('zoomend', function(e) {
+    if (map._zoom > 8) {
+        map.addLayer(labels_layer);
+        console.log('greater than 8');
+    } else {
+        map.removeLayer(labels_layer);
+    }
+    //console.log('the zoom level is ', map._zoom);
+});
