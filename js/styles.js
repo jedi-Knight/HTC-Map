@@ -13,24 +13,31 @@ function style_polygon() {
 function style_htc(marker) {
     // Creates a red marker with the coffee icon
     var redMarker = L.AwesomeMarkers.icon({
-        icon: 'coffee',
+        icon: 'header',
         markerColor: 'red'
     });
-    return marker.setIcon(redMarker)
-    // body...
+    if (marker.feature.properties["Supported"] == "FHI 360") {
+        return marker.setIcon(redMarker)
+    } else {
+        return marker.setIcon(new L.Icon.Default())
+    }
+}
+
+function style_htc_default(marker) {
+    return marker.setIcon(new L.Icon.Default())
 }
 
 // arrange styles to groups
 district_boundary_styles = {
-    "default": style_polygon
+    "Default": style_polygon
 }
-
 vdc_boundary_styles = {
-    "default": style_polygon
+    "Default": style_polygon
 }
 
 HTC_sites_styles = {
-    "default": style_htc
+    "Default": style_htc_default,
+    "Marker": style_htc
 }
 /*
 Styles will be used to generate the UI, define styles separately

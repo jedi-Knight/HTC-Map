@@ -1,3 +1,4 @@
+console.log('layers.js');
 var map = L.map('map').setView([28.425, 84.435], 7);
 
 var north_east = new L.latLng(26.328231, 80.029907);
@@ -30,6 +31,7 @@ var zone_boundary = new L.geoJson();
 
 var district_boundary = new L.geoJson();
 district_boundary.addTo(map);
+//district_boundary.onEachFeature = labels;
 
 var vdc_boundary = new L.geoJson();
 // vdc_boundary.addTo(map);
@@ -58,14 +60,7 @@ $.ajax({
     url: "data/htc_dummy.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) {
-            // L.geoJson(data).addTo(map);
             HTC_sites.addData(data);
-            // HTC_sites.setStyle(style['supported']);
-            //HTC_sites.bindPopup(data.properties['Name of Se']);
-            //data.geometry.coordinates
-            //data.properties['Name of Se'] is name of htc site
-            //data.properties.no_of_case is no of cases
-            //data.properties.ia  is implementing agency
             map.spin(false);
         });
 
@@ -74,47 +69,41 @@ $.ajax({
     map.spin(false);
 });
 
-//district data
+
 $.ajax({
     dataType: "json",
     url: "data/district.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) {
             district_boundary.addData(data);
-
+            district_boundary.setStyle(district_boundary_styles["default"]);
         });
-
+        //createlabels();
+        onEachFeature: labels();
 
     }
+
+
 });
-
-$.ajax({
-    dataType: "json",
-    url: "data/zone.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            zone_boundary.addData(data);
-
-        });
-
-    }
-});
-
+console.log('district data added');
 map.spin(true);
-$.ajax({
+/*$.ajax({
     dataType: "json",
     url: "data/vdc.geojson",
     success: function(data) {
         $(data.features).each(function(key, data) {
             vdc_boundary.addData(data);
-            map.spin(false);
+            vdc_boundary.setStyle(vdc_boundary_styles["Default"]);
+
         });
+
 
     }
 }).error(function() {
     map.spin(false);
-});
 
+});
+*/
 $.ajax({
     dataType: "json",
     url: "data/country.geojson",
