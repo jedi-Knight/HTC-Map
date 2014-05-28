@@ -77,7 +77,17 @@ $.ajax({
 
             district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
         });
+    }
+});
 
+$.ajax({
+    dataType: "json",
+    url: "data/vdc.geojson",
+    success: function(data) {
+        $(data.features).each(function(key, data) {
+            vdc_boundary.addData(data);
 
+            vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
+        });
     }
 });
