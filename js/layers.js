@@ -22,19 +22,16 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
     boundary: nep_latlng_array
 }).addTo(map);
 
-var country_boundary = new L.geoJson();
-// country_boundary.addTo(map);
-
-var zone_boundary = new L.geoJson();
-// zone_boundary.addTo(map);
-
-var district_boundary = new L.geoJson();
+var district_boundary = new L.geoJson.ajax("data/district.geojson");
+district_boundary.on('data:loaded', function(data) {
+    console.log(data);
+});
 district_boundary.addTo(map);
 
-var vdc_boundary = new L.geoJson();
+var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
 // vdc_boundary.addTo(map);
 
-var HTC_sites = new L.geoJson();
+var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
 HTC_sites.addTo(map);
 
 var baseLayers = {};
@@ -51,33 +48,7 @@ layersControlSettings.addTo(map);
 $('#layersControl').append(layersControlSettings.onAdd(map));
 $('.leaflet-top.leaflet-right').hide(); // temporary solution for hiding layers control
 
-//htc_dummy data
-map.spin(true);
-$.ajax({
-    dataType: "json",
-    url: "data/htc_dummy.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            HTC_sites.addData(data);
-            map.spin(false);
-        });
 
-    }
-}).error(function() {
-    map.spin(false);
-});
-
-//district data
-$.ajax({
-    dataType: "json",
-    url: "data/district.geojson",
-    success: function(data) {
-        $(data.features).each(function(key, data) {
-            district_boundary.addData(data);
-            district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
-        });
-    }
-});
 // $.ajax({
 //     dataType: "json",
 //     url: "data/vdc.geojson",
