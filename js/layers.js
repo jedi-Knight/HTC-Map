@@ -24,14 +24,23 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
 
 var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
-    console.log(data);
+    district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
+    map.spin(false);
 });
 district_boundary.addTo(map);
 
 var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
+vdc_boundary.on('data:loaded', function(data) {
+    vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
+    map.spin(false);
+});
 // vdc_boundary.addTo(map);
 
 var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
+HTC_sites.on('data:loaded', function(data) {
+    HTC_sites.setStyle(HTC_sites_styles["Default"]["style"]);
+    map.spin(false);
+});
 HTC_sites.addTo(map);
 
 var baseLayers = {};

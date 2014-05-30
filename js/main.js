@@ -1,5 +1,3 @@
-district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
-
 function getColor(d) {
     return d > 1000 ? '#800026' :
         d > 500 ? '#BD0026' :
