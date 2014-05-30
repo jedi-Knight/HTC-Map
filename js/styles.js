@@ -29,15 +29,27 @@ function style_htc_default(marker) {
 
 // arrange styles to groups
 district_boundary_styles = {
-    "Default": style_polygon
+    "Default": {
+        "style": style_polygon,
+        "legend": "This is District Boundry Default Legend"
+    }
 }
 vdc_boundary_styles = {
-    "Default": style_polygon
+    "Default": {
+        "style": style_polygon,
+        "legend": "This is VDC Boundry Default Legend"
+    }
 }
 
 HTC_sites_styles = {
-    "Default": style_htc_default,
-    "Marker": style_htc
+    "Default": {
+        "style": style_htc_default,
+        "legend": "This is HTC Sites Default Legend"
+    },
+    "Marker": {
+        "style": style_htc,
+        "legend": "This is HTC Sites Marker Legend"
+    }
 }
 /*
 Styles will be used to generate the UI, define styles separately
