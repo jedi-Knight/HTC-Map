@@ -1,7 +1,7 @@
 styleChooserDiv = $('#styleChooser');
 // var styleChooserDiv = document.getElementById("styleChooser");
 
-$.each(styles, function(index1, val1) {
+$.each(STYLES, function(index1, val1) {
     switch (val1['geometry']) {
         case "point":
             // console.log(val['geometry']);

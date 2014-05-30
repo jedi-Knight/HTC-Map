@@ -54,7 +54,7 @@ HTC_sites_styles = {
 /*
 Styles will be used to generate the UI, define styles separately
  */
-styles = {
+var STYLES = {
     "district_boundary_styles": {
         "geometry": "polygon",
         "styles": district_boundary_styles,

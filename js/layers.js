@@ -20,11 +20,9 @@ for (any in testGeom) {
 osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
 osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors';
 var osm = L.TileLayer.boundaryCanvas(osmUrl, {
-    boundary: nep_latlng_array
+    boundary: nep_latlng_array,
+    attribution: osmAttribution
 }).addTo(map);
-
-//for the labels
-var labels_layer = new L.layerGroup();
 
 var country_boundary = new L.geoJson();
 // country_boundary.addTo(map);
@@ -34,6 +32,7 @@ var zone_boundary = new L.geoJson();
 
 var district_boundary = new L.geoJson();
 district_boundary.addTo(map);
+
 //district_boundary.onEachFeature = labels;
 
 var vdc_boundary = new L.geoJson();
@@ -42,14 +41,39 @@ var vdc_boundary = new L.geoJson();
 var HTC_sites = new L.geoJson();
 HTC_sites.addTo(map);
 
-var baseLayers = L.layerGroup();
+var baseLayers = {};
 var overlays = {
     "OpenStreetMap": osm,
     "District": district_boundary,
     "VDC": vdc_boundary,
-    "HTC Sites": HTC_sites,
-    "District Name": labels_layer
+    "HTC Sites": HTC_sites
+    // "District Name": District_labels
 };
+
+//for the labels
+
+var District_labels = new L.layerGroup();
+var VDC_labels = new L.layerGroup();
+//label variable key must [key]_labels where key is the key defined in overlays. this is used to accesss value using string notation
+var LABELS = {
+    "VDC_labels": VDC_labels,
+    "District_labels": District_labels
+}
+// synchronize layer and label
+map.on("overlayadd", function(layer) {
+    console.log('layer add', layer);
+    if (LABELS[layer.name + "_labels"]) {
+        map.addLayer(LABELS[layer.name + "_labels"]);
+    }
+})
+map.on("overlayremove", function(layer) {
+    console.log('layer remove', layer);
+    if (map.hasLayer(LABELS[layer.name + "_labels"])) {
+        map.removeLayer(LABELS[layer.name + "_labels"]);
+    }
+})
+
+
 layersControlSettings = L.control.layers(baseLayers, overlays, {
     collapsed: false
 });
