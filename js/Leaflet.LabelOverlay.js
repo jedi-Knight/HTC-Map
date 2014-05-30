@@ -1,4 +1,4 @@
-L.LabelOverlay = L.Class.extend({
+L.LabelOverlays = L.Class.extend({
     initialize: function( /*LatLng*/ latLng, /*String*/ label, options) {
         this._latlng = latLng;
         this._label = label;

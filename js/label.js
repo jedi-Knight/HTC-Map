@@ -1,16 +1,14 @@
-function labels() {
-    //function createlabels(feature, layre) {
-    _test = district_boundary._layers;
-    for (var aht in _test) {
-        var b = _test[aht];
+function labels(data) {
+    _test = data.target._layers;
+    for (aht in _test) {
+        var b = _test[aht]
         var district = L.polygon(b._latlngs);
         district_name = b.feature.properties.NAME_3; //label content
         var labelLocation = new L.LatLng(district.getBounds().getCenter().lat, district.getBounds().getCenter().lng);
-        var labelTitle = new L.LabelOverlay(labelLocation, district_name);
+        var labelTitle = new L.LabelOverlays(labelLocation, district_name);
         District_labels.addLayer(labelTitle);
     }
 }
-
 //event on mapzoom
 map.on('zoomend', function(e) {
     if (map._zoom > 8) {

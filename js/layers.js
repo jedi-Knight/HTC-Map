@@ -28,6 +28,7 @@ var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
     map.spin(false);
+    labels(data);
 });
 district_boundary.addTo(map);
 
@@ -45,17 +46,16 @@ HTC_sites.on('data:loaded', function(data) {
 });
 HTC_sites.addTo(map);
 
-var baseLayers = {};
+baseLayers = {};
+
 var overlays = {
     "OpenStreetMap": osm,
     "District": district_boundary,
     "VDC": vdc_boundary,
     "HTC Sites": HTC_sites
-    // "District Name": District_labels
 };
 
 //for the labels
-
 var District_labels = new L.layerGroup();
 var VDC_labels = new L.layerGroup();
 //label variable key must [key]_labels where key is the key defined in overlays. this is used to accesss value using string notation
@@ -77,7 +77,7 @@ map.on("overlayremove", function(layer) {
     }
 })
 
-
+// layers control
 layersControlSettings = L.control.layers(baseLayers, overlays, {
     collapsed: false
 });
