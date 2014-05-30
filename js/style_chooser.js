@@ -12,7 +12,7 @@ $.each(styles, function(index, val1) {
                 styleDiv = $('<button>', {
                     text: index,
                     click: function() {
-                        val1['layer'].eachLayer(val1['styles'][index]);
+                        val1['layer'].eachLayer(val1['styles'][index])
                     }
                 }).appendTo(nameDiv);
             });

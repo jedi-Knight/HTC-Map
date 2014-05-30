@@ -47,7 +47,8 @@ var overlays = {
     "OpenStreetMap": osm,
     "District": district_boundary,
     "VDC": vdc_boundary,
-    "HTC Sites": HTC_sites
+    "HTC Sites": HTC_sites,
+    "District Name": labels_layer
 };
 layersControlSettings = L.control.layers(baseLayers, overlays, {
     collapsed: false

@@ -1,4 +1,4 @@
-function findCenter(latlngs_sent) {
+/*function findCenter(latlngs_sent) {
     x_s = 0;
     y_s = 0;
     for (var i = latlngs_sent.length - 1; i >= 0; i--) {
@@ -10,7 +10,7 @@ function findCenter(latlngs_sent) {
     //point = L.point()
     return ([x, y]);
 
-}
+}*/
 
 
 function labels() {
@@ -20,23 +20,24 @@ function labels() {
         var b = _test[aht];
         //first find the coordinates that form the polygon
         //console.log(b._latlngs);
-
-
         var district = L.polygon(b._latlngs);
-        center = findCenter(b._latlngs);
+        //center = findCenter(b._latlngs);
         //debugger;
-        coords = L.latLng(center[0], center[1]);
-        district_name = b.feature.properties.NAME_3;
+        //coords = L.latLng(center[0], center[1]);
+        district_name = b.feature.properties.NAME_3; //label content
+        var labelLocation = new L.LatLng(district.getBounds().getCenter().lat, district.getBounds().getCenter().lng);
+        var labelTitle = new L.LabelOverlay(labelLocation, district_name);
+        labels_layer.addLayer(labelTitle);
 
 
-
+        /*
         label = new L.Label();
         label.setContent(district_name);
         //label.setLatLng(coords);
         label.setLatLng(district.getBounds().getCenter());
         labels_layer.addLayer(label);
         //map.showLabel(label);
-
+        */
 
 
 
