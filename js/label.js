@@ -15,6 +15,7 @@
 
 function labels() {
     //function createlabels(feature, layre) {
+    console.log('labels');
     _test = district_boundary._layers;
     for (var aht in _test) {
         var b = _test[aht];
@@ -26,7 +27,7 @@ function labels() {
         //coords = L.latLng(center[0], center[1]);
         district_name = b.feature.properties.NAME_3; //label content
         var labelLocation = new L.LatLng(district.getBounds().getCenter().lat, district.getBounds().getCenter().lng);
-        var labelTitle = new L.LabelOverlay(labelLocation, district_name);
+        var labelTitle = new L.LabelOverlays(labelLocation, district_name);
         labels_layer.addLayer(labelTitle);
 
 
@@ -63,7 +64,7 @@ function labels() {
 //!@#$%^&*()(*&^%$#@!#$%^&*()(*&^%$#@!))
 //event on mapzoom
 map.on('zoomend', function(e) {
-    if (map._zoom > 8) {
+    if (map._zoom > 7) {
         map.addLayer(labels_layer);
         console.log('greater than 8');
     } else {

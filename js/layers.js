@@ -42,13 +42,14 @@ var vdc_boundary = new L.geoJson();
 var HTC_sites = new L.geoJson();
 HTC_sites.addTo(map);
 
-var baseLayers = L.layerGroup();
+baseLayers = {};
+
 var overlays = {
     "OpenStreetMap": osm,
     "District": district_boundary,
     "VDC": vdc_boundary,
     "HTC Sites": HTC_sites,
-    "District Name": labels_layer
+    "District name ": labels_layer
 };
 layersControlSettings = L.control.layers(baseLayers, overlays, {
     collapsed: false

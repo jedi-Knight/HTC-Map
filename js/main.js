@@ -64,3 +64,17 @@ function onEachFeature(feature, layer) {
         console.log('FHI ia');
     }
 }
+
+function fullextent() {
+    var nep_center = L.latLng(28.425, 84.435);
+    var zoom_level = 7;
+    map.setView(nep_center, zoom_level);
+
+    /*
+    //use the district or country layer instead of map
+    var bounds = new L.LatLngBounds();
+    bounds.extend(map.getBounds()._northEast);
+    bounds.extend(map.getBounds()._southWest);
+    map.fitBounds(bounds);
+    */
+}
