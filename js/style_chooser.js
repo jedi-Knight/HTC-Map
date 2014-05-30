@@ -1,60 +1,57 @@
-/////////////////////styleChooserDiv = $('#styleChooser');
-var styleChooserDiv = document.getElementById("styleChooser");
-htcStyles = ["supported", "cases"];
-var rdiv = document.createElement('div');
-/***********/
-//rdiv.setAttribute("class", "btn-group-vertical");
-//rdiv.setAttribute("data-toggle", "modal");
-//styleChooserDiv.appendChild(rdiv);
-/**********/
+styleChooserDiv = $('#styleChooser');
+// var styleChooserDiv = document.getElementById("styleChooser");
 
-function clickfunction(id) {
-    alert(id);
-    // HTC_sites.redraw();
-    HTC_sites.setStyle();
-}
-
-$.each(htcStyles, function(index, val) {
-    button = document.createElement('input');
-    button.setAttribute("class", "btn btn-primary");
-    button.value = val;
-    button.innerHtml = val;
-    button.id = index;
-    button.type = 'button';
-    button.name = "htcStyles";
-    button.setAttribute("onclick", "clickfunction(this.value)");
-    rdiv.appendChild(button);
-});
-
-$.each(styles, function(index, val1) {
+$.each(styles, function(index1, val1) {
     switch (val1['geometry']) {
         case "point":
             // console.log(val['geometry']);
             nameDiv = $('<div>', {
                 text: val1['display']
             }).appendTo(styleChooserDiv);
-            $.each(val1['styles'], function(index, val2) {
-                styleDiv = $("<button>", {
+            buttonsDiv = $('<div>', {
+                class: 'btn-group'
+            }).appendTo(nameDiv)
+            buttonsDiv.attr(
+                'data-toggle', 'buttons'
+            );
+            labelDiv = $.each(val1['styles'], function(index, val2) {
+                styleDiv = $('<label>', {
                     text: index,
+                    class: 'btn btn-default style-radio',
                     click: function() {
-                        val1['layer'].eachLayer(val1['styles'][index]);
+                        val1['layer'].eachLayer(val1['styles'][index]['style']);
+                        legendObj = {};
+                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
+                styleDiv.prepend('<input type="radio" name="options" id="options_' + index + '"></input>');
             });
+
             break;
         default:
             // console.log(val['geometry']);
             nameDiv = $('<div>', {
                 text: val1['display']
             }).appendTo(styleChooserDiv);
-            $.each(val1['styles'], function(index, val2) {
-                styleDiv = $('<button>', {
+            buttonsDiv = $('<div>', {
+                class: 'btn-group'
+            }).appendTo(nameDiv)
+            buttonsDiv.attr(
+                'data-toggle', 'buttons'
+            );
+            labelDiv = $.each(val1['styles'], function(index, val2) {
+                styleDiv = $('<label>', {
                     text: index,
+                    class: 'btn btn-default style-radio',
                     click: function() {
-                        console.log("val1=", val1);
-                        val1['layer'].setStyle(val1['styles'][index])
+                        val1['layer'].setStyle(val1['styles'][index]['style']);
+                        legendObj = {};
+                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
+                styleDiv.prepend('<input type="radio" name="options" id="options_' + index + '"></input>');
             });
             break;
     }

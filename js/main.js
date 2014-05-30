@@ -13,20 +13,27 @@ var legend = L.control({
     position: 'bottomleft'
 });
 legend.onAdd = function(map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    this._div = L.DomUtil.create('div', 'info1'); // create a div with a class "info1"
+    this._legends = {};
+    for (layer in styles) {
+        this._legends[layer] = styles[layer]['styles']['Default']['legend'];
     }
-
-    return div;
+    this.update(this._legends);
+    return this._div;
 };
+
+legend.update = function(legends) {
+    todisplay = '';
+    for (le in legends) {
+        this._legends[le] = legends[le];
+        // console.log('this._legends ', this._legends);
+    }
+    for (le in this._legends) {
+        todisplay += this._legends[le];
+        todisplay += "<br>";
+    }
+    this._div.innerHTML = todisplay
+}
 
 legend.addTo(map);
 
