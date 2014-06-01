@@ -41,7 +41,7 @@ vdc_boundary.on('data:loaded', function(data) {
 
 var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
 HTC_sites.on('data:loaded', function(data) {
-    HTC_sites.setStyle(HTC_sites_styles["Default"]["style"]);
+    HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     map.spin(false);
 });
 HTC_sites.addTo(map);
