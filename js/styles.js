@@ -24,41 +24,36 @@ function style_htc(marker) {
 }
 
 function style_htc_default(marker) {
-    return marker.setIcon(new L.Icon.Default())
+    var HTC_icon = L.icon({
+        iconUrl: 'img/htc.png',
+        iconSize: [28, 25], // size of the icon
+        // iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    return marker.setIcon(HTC_icon)
 }
 
 // arrange styles to groups
 district_boundary_styles = {
-    "Default": style_polygon
+    "Default": {
+        "style": style_polygon,
+        "legend": "This is District Boundry Default Legend"
+    }
 }
 vdc_boundary_styles = {
-    "Default": style_polygon
+    "Default": {
+        "style": style_polygon,
+        "legend": "This is VDC Boundry Default Legend"
+    }
 }
 
 HTC_sites_styles = {
-    "Default": style_htc_default,
-    "Marker": style_htc
-}
-/*
-Styles will be used to generate the UI, define styles separately
- */
-styles = {
-    "district_boundary_styles": {
-        "geometry": "polygon",
-        "styles": district_boundary_styles,
-        "layer": district_boundary,
-        "display": "District"
+    "Default": {
+        "style": style_htc_default,
+        "legend": "This is HTC Sites Default Legend"
     },
-    "vdc_boundary_styles": {
-        "geometry": "polygon",
-        "styles": vdc_boundary_styles,
-        "layer": vdc_boundary,
-        "display": "VDC"
-    },
-    "HTC_sites_styles": {
-        "geometry": "point",
-        "styles": HTC_sites_styles,
-        "layer": HTC_sites,
-        "display": "HTC Sites"
+    "Marker": {
+        "style": style_htc,
+        "legend": "This is HTC Sites Marker Legend"
     }
 }
