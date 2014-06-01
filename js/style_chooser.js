@@ -25,7 +25,7 @@ $.each(STYLES, function(index1, val1) {
                         legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
-                styleDiv.prepend('<input type="radio" name="options" id="options_' + index + '"></input>');
+                styleDiv.prepend('<input type="radio" name="options' + index1 + '" id="options_' + index + '"></input>');
             });
 
             break;
@@ -51,7 +51,7 @@ $.each(STYLES, function(index1, val1) {
                         legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
-                styleDiv.prepend('<input type="radio" name="options" id="options_' + index + '"></input>');
+                styleDiv.prepend('<input type="radio" name="options' + index1 + '" id="options_' + index + '"></input>');
             });
             break;
     }
