@@ -55,11 +55,15 @@ var VDC_labels = new L.layerGroup();
 VDC_labels.addTo(map);
 
 var overlays = {
-    "OpenStreetMap": osm,
-    "District": district_boundary,
-    "VDC": vdc_boundary,
-    "HTC Sites": HTC_sites,
-    "District_labels": District_labels
+    "layers": {
+        "OpenStreetMap": osm,
+        "District": district_boundary,
+        "VDC": vdc_boundary,
+        "HTC Sites": HTC_sites
+    },
+    "Labels": {
+        "District_labels": District_labels
+    }
 };
 
 
@@ -89,7 +93,7 @@ map.on("overlayremove", function(layer) {
 })
 
 // layers control
-layersControlSettings = L.control.layers(baseLayers, overlays, {
+layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
     collapsed: false
 });
 layersControlSettings.addTo(map);
