@@ -24,6 +24,12 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
     attribution: osmAttribution
 }).addTo(map);
 
+//for the labels
+var District_labels = new L.layerGroup();
+District_labels.addTo(map);
+var VDC_labels = new L.layerGroup();
+//VDC_labels.addTo(map);
+
 var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
@@ -49,11 +55,7 @@ HTC_sites.addTo(map);
 
 baseLayers = {};
 
-//for the labels
-var District_labels = new L.layerGroup();
-District_labels.addTo(map);
-var VDC_labels = new L.layerGroup();
-//VDC_labels.addTo(map);
+
 
 var overlays = {
     "layers": {
@@ -76,9 +78,11 @@ var LABELS = {
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
     // console.log('layer add', layer);
+    //console.log('onoverlayadd');
     if (LABELS[layer.name + "_labels"]) {
         map.addLayer(LABELS[layer.name + "_labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
+
         layersControlSettings.addOverlay(LABELS[layer.name + "_labels"], layer.name + "_labels", "Labels");
     }
 })
