@@ -48,16 +48,21 @@ HTC_sites.addTo(map);
 
 baseLayers = {};
 
+//for the labels
+var District_labels = new L.layerGroup();
+District_labels.addTo(map);
+var VDC_labels = new L.layerGroup();
+VDC_labels.addTo(map);
+
 var overlays = {
     "OpenStreetMap": osm,
     "District": district_boundary,
     "VDC": vdc_boundary,
-    "HTC Sites": HTC_sites
+    "HTC Sites": HTC_sites,
+    "District_labels": District_labels
 };
 
-//for the labels
-var District_labels = new L.layerGroup();
-var VDC_labels = new L.layerGroup();
+
 //label variable key must [key]_labels where key is the key defined in overlays. this is used to accesss value using string notation
 var LABELS = {
     "VDC_labels": VDC_labels,
@@ -65,15 +70,21 @@ var LABELS = {
 }
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
-    console.log('layer add', layer);
+    // console.log('layer add', layer);
     if (LABELS[layer.name + "_labels"]) {
         map.addLayer(LABELS[layer.name + "_labels"]);
+        // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
+        layersControlSettings.addOverlay(LABELS[layer.name + "_labels"], layer.name + "_labels");
     }
 })
 map.on("overlayremove", function(layer) {
-    console.log('layer remove', layer);
+    // console.log('layer remove', layer);
+    // console.log('layer.name + "_labels" ', layer.name + "_labels");
+    // debugger;
     if (map.hasLayer(LABELS[layer.name + "_labels"])) {
         map.removeLayer(LABELS[layer.name + "_labels"]);
+        layersControlSettings.removeLayer(LABELS[layer.name + "_labels"], layer.name + "_labels");
+        // console.log(LABELS[layer.name + "_labels removed"]);
     }
 })
 
