@@ -53,7 +53,7 @@ baseLayers = {};
 var District_labels = new L.layerGroup();
 District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
-VDC_labels.addTo(map);
+//VDC_labels.addTo(map);
 
 var overlays = {
     "layers": {
@@ -79,7 +79,7 @@ map.on("overlayadd", function(layer) {
     if (LABELS[layer.name + "_labels"]) {
         map.addLayer(LABELS[layer.name + "_labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
-        layersControlSettings.addOverlay(LABELS[layer.name + "_labels"], layer.name + "_labels");
+        layersControlSettings.addOverlay(LABELS[layer.name + "_labels"], layer.name + "_labels", "Labels");
     }
 })
 map.on("overlayremove", function(layer) {
@@ -88,7 +88,7 @@ map.on("overlayremove", function(layer) {
     // debugger;
     if (map.hasLayer(LABELS[layer.name + "_labels"])) {
         map.removeLayer(LABELS[layer.name + "_labels"]);
-        layersControlSettings.removeLayer(LABELS[layer.name + "_labels"], layer.name + "_labels");
+        layersControlSettings.removeLayer(LABELS[layer.name + "_labels"], layer.name + "_labels", "Labels");
         // console.log(LABELS[layer.name + "_labels removed"]);
     }
 })

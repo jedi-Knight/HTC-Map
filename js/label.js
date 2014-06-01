@@ -1,10 +1,13 @@
 function labels(data, layer_calling) {
     _test = data.target._layers;
+    //make seperate works  for the vdc and district because they have difrent 
+    //places coordinates stored and the names 
     console.log(_test);
     for (aht in _test) {
         var b = _test[aht]
         var district = L.polygon(b._latlngs);
         district_name = b.feature.properties.NAME_3; //label content
+
         var labelLocation = new L.LatLng(district.getBounds().getCenter().lat, district.getBounds().getCenter().lng);
         var labelTitle = new L.LabelOverlays(labelLocation, district_name);
         if (layer_calling == district_boundary) {
