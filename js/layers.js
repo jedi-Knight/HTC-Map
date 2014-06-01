@@ -28,7 +28,7 @@ var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
     map.spin(false);
-    labels(data);
+    labels(data, district_boundary);
 });
 district_boundary.addTo(map);
 
@@ -36,6 +36,7 @@ var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
 vdc_boundary.on('data:loaded', function(data) {
     vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
     map.spin(false);
+    labels(data, vdc_boundary);
 });
 // vdc_boundary.addTo(map);
 
