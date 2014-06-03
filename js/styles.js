@@ -52,7 +52,7 @@ HTC_sites_styles = {
         "style": style_htc_default,
         "legend": "This is HTC Sites Default Legend"
     },
-    "Marker": {
+    "Supported By": {
         "style": style_htc,
         "legend": "This is HTC Sites Marker Legend"
     }

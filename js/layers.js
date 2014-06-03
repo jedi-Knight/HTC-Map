@@ -65,34 +65,34 @@ var overlays = {
         "HTC Sites": HTC_sites
     },
     "Labels": {
-        "District_labels": District_labels
+        "District Labels": District_labels
     }
 };
 
 
 //label variable key must [key]_labels where key is the key defined in overlays. this is used to accesss value using string notation
 var LABELS = {
-    "VDC_labels": VDC_labels,
-    "District_labels": District_labels
+    "VDC Labels": VDC_labels,
+    "District Labels": District_labels
 }
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
     // console.log('layer add', layer);
     //console.log('onoverlayadd');
-    if (LABELS[layer.name + "_labels"]) {
-        map.addLayer(LABELS[layer.name + "_labels"]);
+    if (LABELS[layer.name + " Labels"]) {
+        map.addLayer(LABELS[layer.name + " Labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
 
-        layersControlSettings.addOverlay(LABELS[layer.name + "_labels"], layer.name + "_labels", "Labels");
+        layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
 })
 map.on("overlayremove", function(layer) {
     // console.log('layer remove', layer);
-    // console.log('layer.name + "_labels" ', layer.name + "_labels");
+    // console.log('layer.name + " Labels" ', layer.name + " Labels");
     // debugger;
-    if (map.hasLayer(LABELS[layer.name + "_labels"])) {
-        map.removeLayer(LABELS[layer.name + "_labels"]);
-        layersControlSettings.removeLayer(LABELS[layer.name + "_labels"], layer.name + "_labels", "Labels");
+    if (map.hasLayer(LABELS[layer.name + " Labels"])) {
+        map.removeLayer(LABELS[layer.name + " Labels"]);
+        layersControlSettings.removeLayer(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
         // console.log(LABELS[layer.name + "_labels removed"]);
     }
 })
