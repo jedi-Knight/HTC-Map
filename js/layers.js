@@ -21,7 +21,8 @@ osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
 osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors';
 var osm = L.TileLayer.boundaryCanvas(osmUrl, {
     boundary: nep_latlng_array,
-    attribution: osmAttribution
+    attribution: osmAttribution,
+    doubleClickZoom: true
 }).addTo(map);
 
 //for the labels
@@ -82,7 +83,6 @@ map.on("overlayadd", function(layer) {
     if (LABELS[layer.name + " Labels"]) {
         map.addLayer(LABELS[layer.name + " Labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
-
         layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
 })
@@ -105,18 +105,16 @@ layersControlSettings.addTo(map);
 $('#layersControl').append(layersControlSettings.onAdd(map));
 $('.leaflet-top.leaflet-right').hide(); // temporary solution for hiding layers control
 
-
-// $.ajax({
-//     dataType: "json",
-//     url: "data/vdc.geojson",
-//     success: function(data) {
-//         $(data.features).each(function(key, data) {
-//             vdc_boundary.addData(data);
-//             vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
-//             map.spin(false);
-//         });
-
-//     }
-// }).error(function() {
-//     map.spin(false);
-// });;
+//check the active layers first 
+district_boundary.on('dblclick', function(e) {
+    a = map.getZoom();
+    if (a < 19) {
+        map.setZoom(a + 1);
+    }
+})
+vdc_boundary.on('dblclick', function(e) {
+    a = map.getZoom();
+    if (a < 19) {
+        map.setZoom(a + 1);
+    }
+});

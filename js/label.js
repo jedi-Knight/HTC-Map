@@ -22,21 +22,23 @@ function labels(data, layer_calling) {
 }
 //event on mapzoom
 //hide or show the district_label on zoom level greater than 8
+
+//check if in layercontrol the layer is enabled or not
+
 map.on('zoomend', function(e) {
     console.log(map.getZoom());
-    if (map.getZoom() < 8) {
-        if (map.hasLayer(VDC_labels)) {
-            map.removeLayer(VDC_labels);
-        }
+    if (map.getZoom() <= 8) {
+        map.removeLayer(VDC_labels);
         if (map.hasLayer(District_labels)) {
             map.removeLayer(District_labels);
             console.log('district_label removed');
         }
 
-    } else if (map.getZoom() > 8 && map.getZoom() < 13) {
+    } else if (map.getZoom() > 8 && map.getZoom() < 11) {
         map.addLayer(District_labels);
+        map.removeLayer(VDC_labels);
         //console.log('greater than 8');
-    } else if (map.getZoom() >= 15) {
+    } else if (map.getZoom() >= 11) {
         map.addLayer(VDC_labels);
         map.removeLayer(District_labels);
     }
