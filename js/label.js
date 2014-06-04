@@ -24,9 +24,8 @@ function labels(data, layer_calling) {
 //hide or show the district_label on zoom level greater than 8
 
 //check if in layercontrol the layer is enabled or not
-
-map.on('zoomend', function(e) {
-    console.log(map.getZoom());
+function check_zooms() {
+    console.log('......check_zooms called');
     if (map.getZoom() <= 8) {
         map.removeLayer(VDC_labels);
         if (map.hasLayer(District_labels)) {
@@ -42,5 +41,7 @@ map.on('zoomend', function(e) {
         map.addLayer(VDC_labels);
         map.removeLayer(District_labels);
     }
-    //console.log('the zoom level is ', map._zoom);
+}
+map.on('zoomend', function(e) {
+    check_zooms();
 });

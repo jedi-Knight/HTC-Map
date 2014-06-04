@@ -48,6 +48,7 @@ vdc_boundary.on('data:loaded', function(data) {
 // vdc_boundary.addTo(map);
 
 var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
+//HTC_sites.onEachLayer
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     map.spin(false);
@@ -83,6 +84,8 @@ map.on("overlayadd", function(layer) {
     if (LABELS[layer.name + "_labels"]) {
         map.addLayer(LABELS[layer.name + "_labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
+        //console.log('check_zooms calling....');
+        check_zooms();
         layersControlSettings.addOverlay(LABELS[layer.name + "_labels"], layer.name + "_labels", "Labels");
     }
 })
