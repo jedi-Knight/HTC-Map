@@ -10,8 +10,11 @@ function style_polygon() {
     };
 }
 
+//include popup also
 function style_htc(marker) {
     // Creates a red marker with the coffee icon
+    console.log('red markers');
+    console.log(marker);
     var redMarker = L.AwesomeMarkers.icon({
         icon: 'header',
         markerColor: 'red'
@@ -28,7 +31,7 @@ function style_htc_default(marker) {
         iconUrl: 'img/htc.png',
         iconSize: [28, 25], // size of the icon
         // iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
     });
     return marker.setIcon(HTC_icon)
 }

@@ -27,14 +27,19 @@ function labels(data, layer_calling) {
 function check_zooms() {
     console.log('......check_zooms called');
     if (map.getZoom() <= 8) {
-        map.removeLayer(VDC_labels);
+        if (map.hasLayer(VDC_labels)) {
+            map.removeLayer(VDC_labels);
+        }
         if (map.hasLayer(District_labels)) {
             map.removeLayer(District_labels);
             console.log('district_label removed');
         }
 
     } else if (map.getZoom() > 8 && map.getZoom() < 11) {
-        map.addLayer(District_labels);
+        if (!(map.hasLayer())) {
+            map.addLayer(District_labels);
+        }
+
         map.removeLayer(VDC_labels);
         //console.log('greater than 8');
     } else if (map.getZoom() >= 11) {

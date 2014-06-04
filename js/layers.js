@@ -1,4 +1,3 @@
-console.log('layers.js');
 var map = L.map('map').setView([28.425, 84.435], 7);
 
 var north_east = new L.latLng(26.328231, 80.029907);
@@ -46,9 +45,37 @@ vdc_boundary.on('data:loaded', function(data) {
     labels(data, vdc_boundary);
 });
 // vdc_boundary.addTo(map);
+function popUp(feature, layer) {
+    //debugger;
+    //popUpContent = "";
+    //popUpContent += '<table>';
+    popUpContent = '<b>' + feature.properties.Name + '</b>';
+    layer.bindPopup(popUpContent);
+}
+var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson", {
+    onEachFeature: popUp
+});
 
-var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
-//HTC_sites.onEachLayer
+var searchControl = new L.Control.Search({
+    layer: HTC_sites,
+    propertyName: 'Name',
+    circleLocation: false
+});
+//var searchControl = new L.Control.Search();
+searchControl.on('search_locationfound', function(e) {
+    map.setZoom(e.latlng);
+    e.layer.openPopup();
+    //debugger;
+
+});
+
+map.addControl(searchControl); //inizialize search control
+
+// onEachFeature: function(feature, layer) {
+//     console.log('on the run');
+//     // layer.bindPopup(feature.properties.description);
+// });
+
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     map.spin(false);
@@ -120,4 +147,8 @@ vdc_boundary.on('dblclick', function(e) {
     if (a < 19) {
         map.setZoom(a + 1);
     }
+});
+HTC_sites.on('dblclick', function(e) {
+    console.log('htc sites ma double click');
+    map.setZoom(e.latlng);
 });
