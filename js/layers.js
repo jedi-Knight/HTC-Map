@@ -48,6 +48,7 @@ vdc_boundary.on('data:loaded', function(data) {
 // vdc_boundary.addTo(map);
 
 var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
+//HTC_sites.onEachLayer
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     map.spin(false);
@@ -59,7 +60,7 @@ baseLayers = {};
 
 
 var overlays = {
-    "layers": {
+    "Layers": {
         "OpenStreetMap": osm,
         "District": district_boundary,
         "VDC": vdc_boundary,
@@ -92,7 +93,7 @@ map.on("overlayremove", function(layer) {
     // debugger;
     if (map.hasLayer(LABELS[layer.name + " Labels"])) {
         map.removeLayer(LABELS[layer.name + " Labels"]);
-        layersControlSettings.removeLayer(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
+        layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
         // console.log(LABELS[layer.name + "_labels removed"]);
     }
 })
