@@ -1,12 +1,45 @@
 // define styles
-function style_polygon() {
+function style_district_polygon() {
+    return {
+        fillColor: '#94F0F8',
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '3',
+        fillOpacity: 0.8
+    };
+}
+
+function style_district_unique() {
+    return {
+        fillColor: randomColor(),
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '3',
+        fillOpacity: 0.8
+    };
+}
+
+function style_vdc_polygon() {
     return {
         fillColor: '#C8C582',
         weight: 1,
         opacity: 1,
         color: 'black',
         dashArray: '3',
-        fillOpacity: 0.7
+        fillOpacity: 0.4
+    };
+}
+
+function style_vdc_unique() {
+    return {
+        fillColor: randomColor(),
+        weight: 1,
+        opacity: 1,
+        color: 'black',
+        dashArray: '3',
+        fillOpacity: 0.4
     };
 }
 
@@ -36,13 +69,13 @@ function style_htc_default(marker) {
 // arrange styles to groups
 district_boundary_styles = {
     "Default": {
-        "style": style_polygon,
+        "style": style_district_unique,
         "legend": "This is District Boundry Default Legend"
     }
 }
 vdc_boundary_styles = {
     "Default": {
-        "style": style_polygon,
+        "style": style_vdc_unique,
         "legend": "This is VDC Boundry Default Legend"
     }
 }
