@@ -118,21 +118,7 @@
     z-index: 1;
 }
 
-
-
-
-/**this block can be safely removed: need to locate element generating javascript to properly implement these rules**/
-#map{
-    background-color: #d9ddd9; /*sets background color for map div*/
-}
-path.leaflet-clickable{
-    fill-color: #ffffff;  
-    fill-opacity:0.2;
-            /*sets color and opacity for map of Nepal*/
-}
-
-/*Poshan: give id to this element (vdc names)*/
-.leaflet-label-overlay{
+.leaflet-label-overlay{    /*for district and vdc names*/
     padding: 2px;
     font-family: "verdana", "sans-serif";
     font-size: 8pt;
@@ -140,4 +126,20 @@ path.leaflet-clickable{
     border-radius: 6px;
     box-shadow: 0px 0px 3px rgba(0,0,100,0.4);
 }
-/****/
+
+
+
+
+/**this block can be safely removed**/
+/**start of block**/
+/*Poshan: need to locate element generating javascript to properly implement these rules**/
+#map{
+    background-color: #d9ddd9; /*sets background color for map div*/
+}
+path.leaflet-clickable{
+    fill-color: #ffffff;  
+    fill-opacity:0.2;
+            /*sets color and opacity for map of Nepal*/
+            /*implement same color and rules for both district and vdc divs*/
+}
+/**end of block**/
