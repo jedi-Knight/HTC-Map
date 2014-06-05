@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="js/leaflet-0.7/leaflet.css" />
+        <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min1.css">
+        <link rel="stylesheet" type="text/css" href="js\Leaflet.awesome-markers-2.0-develop\leaflet.awesome-markers.css">
+        <script src = "js/jquery-1.7.2.min.js"></script>
+        <script src = "js/bootstrap/js/bootstrap.min.js"></script>
+        <script src = "js/leaflet-0.7/leaflet.js"></script>
+        <script src = "js/BoundaryCanvas.js"></script>
+        <script src = "js/Leaflet.debug-0.0.1.js"></script>
+        <script src = "js/spin.min.js"></script>
+        <script src = "js/leaflet.spin.js"></script>
+        <script src = "js\Leaflet.awesome-markers-2.0-develop\leaflet.awesome-markers.min.js"></script>
+        <script src = "js/styles.js"></script>
+        <script src = "data/testgeom.js"></script>
+        
+        <!-- // <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+
+        <style>
+            
+            .info {
+                padding: 6px 8px;
+                font: 14px/16px Arial, Helvetica, sans-serif;
+                background: white;
+                background: rgba(255,255,255,0.8);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                border-radius: 5px;
+            }
+
+            .info h4 {
+                margin: 0 0 5px;
+                color: #777;
+            }
+
+            .legend {
+                line-height: 18px;
+                color: #555;
+            }
+            .legend i {
+                width: 18px;
+                height: 18px;
+                float: left;
+                margin-right: 8px;
+                opacity: 0.7;
+            }
+            #map{
+                height:80%;
+                /*width:80%;*/
+            }
+            #click{
+                top:250px;
+                left:50px;
+                z-index:1001;
+            }
+            #styleChooser{
+              width: 20%;
+              position: absolute;
+              left: 80%;
+            }
+        </style>
+    </head>
+    <body>
+      <div class = 'row'>
+        <div class = 'col-md-8'>
+          <div id="map"></div>
+        </div>
+        <div class = 'col-md-4'>Layers
+          <div id="layersControl"></div>
+          Styles
+          <div id="styleChooser">
+          </div>
+        </div>
+      </div>
+      <script src = "js/styles.js"></script>
+      <script type="text/javascript">
+        var map = L.map('map').setView([28.425, 84.435], 7);
+        var HTC_sites = new L.geoJson(
+            null, {
+                style: style_htc
+            }
+        );
+        HTC_sites.addTo(map);
+
+        map.spin(true);
+        $.ajax({
+            dataType: "json",
+            url: "data/htc_dummy.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    // L.geoJson(data).addTo(map);
+                    HTC_sites.addData(data);
+                    map.spin(false);
+                });
+
+            }
+        }).error(function() {
+            map.spin(false);
+        });
+
+        var redMarker = L.AwesomeMarkers.icon({
+            icon: 'coffee',
+            markerColor: 'red'
+          });
+        mark = L.marker([27.6,84.6]).addTo(map);
+
+        var district_boundary = new L.geoJson();
+        district_boundary.addTo(map);
+
+        //district data
+        $.ajax({
+            dataType: "json",
+            url: "data/district.geojson",
+            success: function(data) {
+                $(data.features).each(function(key, data) {
+                    district_boundary.addData(data);
+
+                });
+
+
+            }
+        });
+
+      </script>
+    </body>
+    </html>
+
