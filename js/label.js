@@ -45,7 +45,7 @@ function labels(data, layer_calling) {
 //     }
 // }
 function displayLabel(labelLayer, zoom, mainLayer, displayName) {
-    console.log('labelLayer, zoom, mainLayer ', labelLayer, map.getZoom(), mainLayer);
+    // console.log('labelLayer, zoom, mainLayer ', labelLayer, map.getZoom(), mainLayer);
 
     if (!map.hasLayer(mainLayer)) {
         if (map.hasLayer(labelLayer)) {
@@ -84,7 +84,7 @@ function displayLayer(layer, zoom, displayName) {
     };
 }
 map.on('zoomend', function(e) {
-    console.log('e ', e);
+    // console.log('e ', e);
     displayLayer(district_boundary, 1, "District");
     displayLabel(District_labels, 7, district_boundary, "District");
     displayLayer(vdc_boundary, 11, "VDC");
