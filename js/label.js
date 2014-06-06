@@ -24,29 +24,70 @@ function labels(data, layer_calling) {
 //hide or show the district_label on zoom level greater than 8
 
 //check if in layercontrol the layer is enabled or not
-function check_zooms() {
-    console.log('......check_zooms called');
-    if (map.getZoom() <= 8) {
-        if (map.hasLayer(VDC_labels)) {
-            map.removeLayer(VDC_labels);
-        }
-        if (map.hasLayer(District_labels)) {
-            map.removeLayer(District_labels);
-            console.log('district_label removed');
-        }
+// function check_zooms() {
+//     console.log('......check_zooms called');
+//     if (map.getZoom() <= 8) {
+//         if (map.hasLayer(VDC_labels)) {
+//             map.removeLayer(VDC_labels);
+//         }
+//         if (map.hasLayer(District_labels)) {
+//             map.removeLayer(District_labels);
+//             console.log('district_label removed');
+//         }
 
-    } else if (map.getZoom() > 8 && map.getZoom() < 11) {
-        if (!(map.hasLayer())) {
-            map.addLayer(District_labels);
-        }
+//     } else if (map.getZoom() > 8 && map.getZoom() < 11) {
+//         map.addLayer(District_labels);
+//         map.removeLayer(VDC_labels);
+//         //console.log('greater than 8');
+//     } else if (map.getZoom() >= 11) {
+//         map.addLayer(VDC_labels);
+//         map.removeLayer(District_labels);
+//     }
+// }
+function displayLabel(labelLayer, zoom, mainLayer, displayName) {
+    // console.log('labelLayer, zoom, mainLayer ', labelLayer, map.getZoom(), mainLayer);
 
-        map.removeLayer(VDC_labels);
-        //console.log('greater than 8');
-    } else if (map.getZoom() >= 11) {
-        map.addLayer(VDC_labels);
-        map.removeLayer(District_labels);
-    }
+    if (!map.hasLayer(mainLayer)) {
+        if (map.hasLayer(labelLayer)) {
+            map.removeLayer(labelLayer);
+            layersControlSettings.removeLayer(labelLayer);
+            console.log("no main layer");
+        }
+    } else {
+        if (map.getZoom() <= zoom) {
+            if (map.hasLayer(labelLayer)) {
+                map.removeLayer(labelLayer);
+                layersControlSettings.removeLayer(labelLayer);
+            }
+        } else {
+            if (map.hasLayer(mainLayer)) {
+                if (!map.hasLayer(labelLayer)) {
+                    map.addLayer(labelLayer);
+                };
+                layersControlSettings.addOverlay(labelLayer, displayName + " Labels", "Labels");
+            }
+        }
+    };
+}
+
+function displayLayer(layer, zoom, displayName) {
+    if (map.getZoom() < zoom) {
+        if (map.hasLayer(layer)) {
+            map.removeLayer(layer);
+            layersControlSettings.removeLayer(layer);
+        }
+    } else {
+        if (!map.hasLayer(layer)) {
+            map.addLayer(layer);
+            layersControlSettings.addOverlay(layer, displayName, "Layers");
+        }
+    };
 }
 map.on('zoomend', function(e) {
-    check_zooms();
+    // console.log('e ', e);
+    displayLayer(district_boundary, 1, "District");
+    displayLabel(District_labels, 7, district_boundary, "District");
+    displayLayer(vdc_boundary, 11, "VDC");
+    displayLabel(VDC_labels, 11, vdc_boundary, "VDC");
+
 });
