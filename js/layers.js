@@ -26,7 +26,7 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
 
 //for the labels
 var District_labels = new L.layerGroup();
-// District_labels.addTo(map);
+//District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
 
@@ -45,9 +45,37 @@ vdc_boundary.on('data:loaded', function(data) {
     labels(data, vdc_boundary);
 });
 // vdc_boundary.addTo(map);
+function popUp(feature, layer) {
+    //debugger;
+    //popUpContent = "";
+    //popUpContent += '<table>';
+    popUpContent = '<b>' + feature.properties.Name + '</b>';
+    layer.bindPopup(popUpContent);
+}
+var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson", {
+    onEachFeature: popUp
+});
 
-var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson");
-//HTC_sites.onEachLayer
+var searchControl = new L.Control.Search({
+    layer: HTC_sites,
+    propertyName: 'Name',
+    circleLocation: false
+});
+//var searchControl = new L.Control.Search();
+searchControl.on('search_locationfound', function(e) {
+    map.setZoom(e.latlng);
+    e.layer.openPopup();
+    //debugger;
+
+});
+
+map.addControl(searchControl); //inizialize search control
+
+// onEachFeature: function(feature, layer) {
+//     console.log('on the run');
+//     // layer.bindPopup(feature.properties.description);
+// });
+
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     map.spin(false);
@@ -79,7 +107,8 @@ map.on("overlayadd", function(layer) {
     // console.log('layer add', layer);
     //console.log('onoverlayadd');
     if (LABELS[layer.name + " Labels"]) {
-        map.addLayer(LABELS[layer.name + " Labels"]);
+        displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
+        //map.addLayer(LABELS[layer.name + " Labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
         layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
@@ -132,4 +161,8 @@ vdc_boundary.on('dblclick', function(e) {
     if (a < 19) {
         map.setZoom(a + 1);
     }
+});
+HTC_sites.on('dblclick', function(e) {
+    console.log('htc sites ma double click');
+    map.setZoom(e.latlng);
 });
