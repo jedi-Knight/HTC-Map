@@ -26,7 +26,7 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
 
 //for the labels
 var District_labels = new L.layerGroup();
-District_labels.addTo(map);
+//District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
 
@@ -107,7 +107,8 @@ map.on("overlayadd", function(layer) {
     // console.log('layer add', layer);
     //console.log('onoverlayadd');
     if (LABELS[layer.name + " Labels"]) {
-        map.addLayer(LABELS[layer.name + " Labels"]);
+        displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
+        //map.addLayer(LABELS[layer.name + " Labels"]);
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
         layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
