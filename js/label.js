@@ -65,29 +65,19 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
                     map.addLayer(labelLayer);
                 };
                 layersControlSettings.addOverlay(labelLayer, displayName + " Labels", "Labels");
+                if (displayName == "VDC") {
+                    console.log("VDC Labels added");
+                }
             }
         }
-    };
+    }
 }
 
-function displayLayer(layer, zoom, displayName) {
-    if (map.getZoom() < zoom) {
-        if (map.hasLayer(layer)) {
-            map.removeLayer(layer);
-            layersControlSettings.removeLayer(layer);
-        }
-    } else {
-        if (!map.hasLayer(layer)) {
-            map.addLayer(layer);
-            layersControlSettings.addOverlay(layer, displayName, "Layers");
-        }
-    };
-}
 map.on('zoomend', function(e) {
     // console.log('e ', e);
-    displayLayer(district_boundary, 1, "District");
+
     displayLabel(District_labels, 7, district_boundary, "District");
-    displayLayer(vdc_boundary, 11, "VDC");
+
     displayLabel(VDC_labels, 11, vdc_boundary, "VDC");
 
 });

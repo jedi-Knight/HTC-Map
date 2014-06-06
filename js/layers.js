@@ -26,7 +26,7 @@ var osm = L.TileLayer.boundaryCanvas(osmUrl, {
 
 //for the labels
 var District_labels = new L.layerGroup();
-District_labels.addTo(map);
+// District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
 
@@ -95,6 +95,23 @@ map.on("overlayremove", function(layer) {
     }
 })
 
+function displayLayer(layer, zoom, displayName) {
+    if (map.getZoom() < zoom) {
+        if (map.hasLayer(layer)) {
+            map.removeLayer(layer);
+            layersControlSettings.removeLayer(layer);
+        }
+    } else {
+        if (!map.hasLayer(layer)) {
+            map.addLayer(layer);
+            layersControlSettings.addOverlay(layer, displayName, "Layers");
+        }
+    };
+}
+map.on('zoomend', function(e) {
+    displayLayer(district_boundary, 1, "District");
+    displayLayer(vdc_boundary, 11, "VDC");
+});
 // layers control
 layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
     collapsed: false
