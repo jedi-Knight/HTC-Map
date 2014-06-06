@@ -1,4 +1,3 @@
-console.log('layers.js');
 var map = L.map('map').setView([28.425, 84.435], 7);
 
 var north_east = new L.latLng(26.328231, 80.029907);
@@ -56,8 +55,6 @@ HTC_sites.on('data:loaded', function(data) {
 HTC_sites.addTo(map);
 
 baseLayers = {};
-
-
 
 var overlays = {
     "Layers": {
