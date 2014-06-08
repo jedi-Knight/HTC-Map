@@ -44,7 +44,7 @@ function style_vdc_unique() {
 }
 
 //include popup also
-function style_htc(marker) {
+function style_htc_suppoerted_by(marker) {
     // Creates a red marker with the coffee icon
     console.log('red markers');
     console.log(marker);
@@ -57,6 +57,17 @@ function style_htc(marker) {
     } else {
         return marker.setIcon(new L.Icon.Default())
     }
+}
+
+function style_htc_no_of_cases(marker) {
+    // debugger;
+    var iconSize = marker.feature.properties["no_of_case"] / 10;
+    var icon = L.divIcon({
+        html: marker.feature.properties["no_of_case"],
+        className: "no-cases-icon",
+        iconSize: [iconSize, iconSize]
+    })
+    return marker.setIcon(icon)
 }
 
 function style_htc_default(marker) {
@@ -73,13 +84,13 @@ function style_htc_default(marker) {
 district_boundary_styles = {
     "Default": {
         "style": style_district_unique,
-        "legend": "This is District Boundry Default Legend"
+        "legend": ""
     }
 }
 vdc_boundary_styles = {
     "Default": {
         "style": style_vdc_unique,
-        "legend": "This is VDC Boundry Default Legend"
+        "legend": ""
     }
 }
 
@@ -89,7 +100,11 @@ HTC_sites_styles = {
         "legend": "<img src = 'img/marker22.png'>HTC Sites"
     },
     "Supported By": {
-        "style": style_htc,
+        "style": style_htc_suppoerted_by,
         "legend": "This is HTC Sites Marker Legend"
+    },
+    "No of Case": {
+        "style": style_htc_no_of_cases,
+        "legend": "Replace this with no_of_cases Legend"
     }
 }

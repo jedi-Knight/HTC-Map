@@ -23,7 +23,7 @@ legend.onAdd = function(map) {
 };
 
 legend.update = function(legends) {
-    todisplay = '';
+    todisplay = '<h3>Legend</h3>';
     for (le in legends) {
         this._legends[le] = legends[le];
         // console.log('this._legends ', this._legends);
