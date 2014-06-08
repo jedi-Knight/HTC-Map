@@ -93,10 +93,10 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
             if (map.hasLayer(mainLayer)) {
                 if (!map.hasLayer(labelLayer)) {
                     map.addLayer(labelLayer);
-                };
-                layersControlSettings.addOverlay(labelLayer, displayName + " Labels", "Labels");
-                if (displayName == "VDC") {
-                    console.log("VDC Labels added");
+                    if (displayName == "VDC") {
+                        console.log("VDC Labels added");
+                    }
+                    layersControlSettings.addOverlay(labelLayer, displayName + " Labels", "Labels");
                 }
             }
         }
