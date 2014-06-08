@@ -73,13 +73,13 @@ function style_htc_default(marker) {
 district_boundary_styles = {
     "Default": {
         "style": style_district_unique,
-        "legend": "This is District Boundry Default Legend"
+        "legend": ""
     }
 }
 vdc_boundary_styles = {
     "Default": {
         "style": style_vdc_unique,
-        "legend": "This is VDC Boundry Default Legend"
+        "legend": ""
     }
 }
 
