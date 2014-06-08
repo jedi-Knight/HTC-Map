@@ -143,3 +143,14 @@ path.leaflet-clickable{
             /*implement same color and rules for both district and vdc divs*/
 }
 /**end of block**/
+
+/* styling of no of cases in htc divicon*/
+.no-cases-icon {
+  background:#ff8888;
+  border:5px solid rgba(255,255,255,0.5);
+  color:#fff;
+  font-weight:bold;
+  text-align:center;
+  border-radius:50%;
+  line-height:30px;
+  }
