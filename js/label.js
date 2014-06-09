@@ -1,23 +1,53 @@
+Object.size = function(obj) {
+    var size = 0,
+        key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
 function labels(data, layer_calling) {
-    _test = data.target._layers;
+    i = 1;
+    console.log('layer_Calling', layer_calling);
+    // debugger;
     if (layer_calling == district_boundary) {
+        _test = data.target._layers;
         for (aht in _test) {
-            var b = _test[aht]
-            var district = L.polygon(b._latlngs);
-            district_name = b.feature.properties.NAME_3; //label content
+            var a = _test[aht]
+            var district = L.polygon(a._latlngs);
+            district_name = a.feature.properties.NAME_3; //label content
             var labelLocation = new L.LatLng(district.getBounds().getCenter().lat, district.getBounds().getCenter().lng);
             var labelTitle = new L.LabelOverlays(labelLocation, district_name);
             District_labels.addLayer(labelTitle);
         }
     } else if (layer_calling == vdc_boundary) {
-        for (aht in _test) {
-            var b = _test[aht]
+        _test = data.target._layers;
+        var size = Object.size(_test);
+        // console.log(size);
+        var a = Object.keys(_test);
+        // console.log(a);
+        for (var i = a.length - 1; i >= 0; i--) {
+            var b = _test[a[i]];
             var vdc = L.polygon(b._latlngs);
+            vdc_name = b.feature.properties.NAME_4;
+            var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
+            var labelTitle = new L.LabelOverlays(labelLocation, vdc_name);
+            VDC_labels.addLayer(labelTitle);
+            console.log(vdc_name);
+        };
+        /*
+        for (ath in _test) {
+            var b = _test[ath];
+            var vdc = L.polygon(b._latlngs);
+            // console.log(i);
+            // i++
             vdc_name = b.feature.properties.NAME_4; //label content
             var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
             var labelTitle = new L.LabelOverlays(labelLocation, vdc_name);
             VDC_labels.addLayer(labelTitle);
         }
+        */
     }
 }
 //event on mapzoom
