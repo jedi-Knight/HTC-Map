@@ -97,7 +97,7 @@ vdc_boundary_styles = {
 HTC_sites_styles = {
     "Default": {
         "style": style_htc_default,
-        "legend": "<img src = 'img/marker22.png'>HTC Sites"
+        "legend": "<img src = 'img/marker22.png' style = 'height:40'>HTC Sites"
     },
     "Supported By": {
         "style": style_htc_suppoerted_by,
