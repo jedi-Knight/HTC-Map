@@ -63,7 +63,8 @@ var searchControl = new L.Control.Search({
 });
 //var searchControl = new L.Control.Search();
 searchControl.on('search_locationfound', function(e) {
-    map.setZoom(e.latlng);
+    map.setView(e.latlng, 17);
+    //pan to 
     e.layer.openPopup();
     //debugger;
 
@@ -135,7 +136,7 @@ function displayLayer(layer, zoom, displayName) {
             map.addLayer(layer);
             layersControlSettings.addOverlay(layer, displayName, "Layers");
         }
-    };
+    }
 }
 map.on('zoomend', function(e) {
     displayLayer(district_boundary, 1, "District");
