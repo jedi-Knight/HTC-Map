@@ -43,19 +43,62 @@ function style_vdc_unique() {
     };
 }
 
-//include popup also
-function style_htc_suppoerted_by(marker) {
-    // Creates a red marker with the coffee icon
-    console.log('red markers');
-    console.log(marker);
-    var redMarker = L.AwesomeMarkers.icon({
-        icon: 'header',
-        markerColor: 'red'
-    });
-    if (marker.feature.properties["Supported"] == "FHI 360") {
-        return marker.setIcon(redMarker)
+// style_htc_supported_by
+var iconSize = [20, 30],
+    popupAnchor = [0, 0];
+var icon = new L.Icon({
+    iconSize: iconSize,
+    popupAnchor: popupAnchor
+});
+var icons = {
+    "FHI 360": new L.Icon({
+        iconUrl: 'img/newmarkers/s.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "FPAN/GF": new L.Icon({
+        iconUrl: 'img/newmarkers/f.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "Gov/Pool Fund": new L.Icon({
+        iconUrl: 'img/newmarkers/f.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "IPPF": new L.Icon({
+        iconUrl: 'img/newmarkers/i.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "Others": new L.Icon({
+        iconUrl: 'img/newmarkers/o.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "STC": new L.Icon({
+        iconUrl: 'img/newmarkers/c.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    })
+};
+
+function iconToLegendString() {
+    var legendHTML = "";
+    for (icon in icons) {
+        console.log('icon', icons[icon]);
+        legendHTML += "<img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</br>";
+    }
+    return legendHTML
+}
+
+function style_htc_supported_by(marker) {
+    if (icons[marker.feature.properties["Supported"]]) {
+        return marker.setIcon(icons[marker.feature.properties["Supported"]])
     } else {
-        return marker.setIcon(new L.Icon.Default())
+        return marker.setIcon(new L.Icon.Default({
+            iconSize: [30, 35]
+        }))
     }
 }
 
@@ -97,14 +140,10 @@ vdc_boundary_styles = {
 HTC_sites_styles = {
     "Default": {
         "style": style_htc_default,
-        "legend": "<img src = 'img/marker22.png'>HTC Sites"
+        "legend": "<img src = 'img/marker22.png' style = 'height:40'>HTC Sites"
     },
     "Supported By": {
-        "style": style_htc_suppoerted_by,
-        "legend": "This is HTC Sites Marker Legend"
-    },
-    "No of Case": {
-        "style": style_htc_no_of_cases,
-        "legend": "Replace this with no_of_cases Legend"
+        "style": style_htc_supported_by,
+        "legend": iconToLegendString()
     }
 }
