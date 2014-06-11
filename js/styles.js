@@ -46,16 +46,19 @@ function style_vdc_unique() {
 //include popup also
 function style_htc_suppoerted_by(marker) {
     // Creates a red marker with the coffee icon
-    console.log('red markers');
-    console.log(marker);
+    // console.log('red markers');
+    // console.log(marker);
     var redMarker = L.AwesomeMarkers.icon({
         icon: 'header',
-        markerColor: 'red'
+        markerColor: 'red',
+        iconSize: [30, 35]
     });
     if (marker.feature.properties["Supported"] == "FHI 360") {
         return marker.setIcon(redMarker)
     } else {
-        return marker.setIcon(new L.Icon.Default())
+        return marker.setIcon(new L.Icon.Default({
+            iconSize: [30, 35]
+        }))
     }
 }
 

@@ -16,7 +16,8 @@ for (any in testGeom) {
     }
 }
 
-osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
+// osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
+osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
 osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors';
 var osm = L.TileLayer.boundaryCanvas(osmUrl, {
     boundary: nep_latlng_array,
@@ -63,7 +64,7 @@ var searchControl = new L.Control.Search({
 });
 //var searchControl = new L.Control.Search();
 searchControl.on('search_locationfound', function(e) {
-    map.setView(e.latlng, 17);
+    map.setView(e.latlng, 14);
     //pan to 
     e.layer.openPopup();
     //debugger;

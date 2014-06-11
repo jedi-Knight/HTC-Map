@@ -9,7 +9,7 @@ Object.size = function(obj) {
 
 function labels(data, layer_calling) {
     i = 1;
-    console.log('layer_Calling', layer_calling);
+    // console.log('layer_Calling', layer_calling);
     // debugger;
     if (layer_calling == district_boundary) {
         _test = data.target._layers;
@@ -34,7 +34,7 @@ function labels(data, layer_calling) {
             var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
             var labelTitle = new L.LabelOverlays(labelLocation, vdc_name);
             VDC_labels.addLayer(labelTitle);
-            console.log(vdc_name);
+            // console.log(vdc_name);
         };
         /*
         for (ath in _test) {
