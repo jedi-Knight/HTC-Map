@@ -34,7 +34,7 @@ var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
     map.spin(false);
-    labels(data, district_boundary);
+    labels(data, 'district');
 });
 district_boundary.addTo(map);
 
@@ -42,7 +42,7 @@ var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
 vdc_boundary.on('data:loaded', function(data) {
     vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
     map.spin(false);
-    labels(data, vdc_boundary);
+    labels(data, 'vdc');
 });
 // vdc_boundary.addTo(map);
 function popUp(feature, layer) {
@@ -63,7 +63,7 @@ var searchControl = new L.Control.Search({
 });
 //var searchControl = new L.Control.Search();
 searchControl.on('search_locationfound', function(e) {
-    map.setView(e.latlng, 17);
+    map.setView(e.latlng, 14);
     //pan to 
     e.layer.openPopup();
     //debugger;
@@ -165,5 +165,5 @@ vdc_boundary.on('dblclick', function(e) {
 });
 HTC_sites.on('dblclick', function(e) {
     console.log('htc sites ma double click');
-    map.setZoom(e.latlng);
+    map.setView(e.latlng, 17);
 });
