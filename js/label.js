@@ -11,7 +11,7 @@ function labels(data, layer_calling) {
     i = 1;
     // console.log('layer_Calling', layer_calling);
     // debugger;
-    if (layer_calling == district_boundary) {
+    if (layer_calling == 'district') {
         _test = data.target._layers;
         for (aht in _test) {
             var a = _test[aht]
@@ -21,20 +21,22 @@ function labels(data, layer_calling) {
             var labelTitle = new L.LabelOverlays(labelLocation, district_name);
             District_labels.addLayer(labelTitle);
         }
-    } else if (layer_calling == vdc_boundary) {
+    } else if (layer_calling == 'vdc') {
         _test = data.target._layers;
         var size = Object.size(_test);
         // console.log(size);
         var a = Object.keys(_test);
-        // console.log(a);
-        for (var i = a.length - 1; i >= 0; i--) {
+        for (var i = 0; i < a.length - 1; i++) {
             var b = _test[a[i]];
             var vdc = L.polygon(b._latlngs);
             vdc_name = b.feature.properties.NAME_4;
-            var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
+            // console.log(vdc_name, i);
+            var labelLocation = vdc.getBounds().getCenter();
+            // var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
+            // debugger;
             var labelTitle = new L.LabelOverlays(labelLocation, vdc_name);
             VDC_labels.addLayer(labelTitle);
-            // console.log(vdc_name);
+            // console.log(vdc_name, i);
         };
         /*
         for (ath in _test) {
