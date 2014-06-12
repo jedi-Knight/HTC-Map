@@ -106,10 +106,10 @@ var icons = {
 function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
-        console.log('icon', icons[icon]);
+        // console.log('icon', icons[icon]);
         legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div></br>";
     }
-    return legendHTML
+    return legendHTML;
 }
 
 function style_htc_supported_by(marker) {

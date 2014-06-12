@@ -51,7 +51,7 @@ function highlightFeature(e) {
 function resetHighlight(e) {
 
     var layer = e.target;
-    console.log(layer);
+    // console.log(layer);
     // layer.setStyle(style_district_unique);
     // layer.setStyle(each_district_reset_Style);
     district_boundary.setStyle(each_district_reset_Style);
