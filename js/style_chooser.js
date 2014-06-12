@@ -23,6 +23,9 @@ $.each(STYLES, function(index1, val1) {
                     class: 'btn btn-default style-radio btn-block',
                     click: function() {
                         val1['layer'].eachLayer(val1['styles'][index]['style']);
+                        legendObj = {};
+                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
                 styleDiv.prepend('<input type="radio" name="options' + index1 + '" id="options_' + index + '"></input>');
