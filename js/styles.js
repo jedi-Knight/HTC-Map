@@ -87,7 +87,7 @@ function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
         console.log('icon', icons[icon]);
-        legendHTML += "<img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</br>";
+        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div></br>";
     }
     return legendHTML
 }
@@ -140,7 +140,7 @@ vdc_boundary_styles = {
 HTC_sites_styles = {
     "Default": {
         "style": style_htc_default,
-        "legend": "<img src = 'img/marker22.png' style = 'height:40'>HTC Sites"
+        "legend": "<div><img src = 'img/marker22.png' style = 'height:40'>HTC Sites</div>"
     },
     "Supported By": {
         "style": style_htc_supported_by,
