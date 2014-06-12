@@ -30,18 +30,43 @@ var District_labels = new L.layerGroup();
 //District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
+function highlightFeature(e) {
+    // district_boundary.resetStyle(e.target);
+    var layer = e.target;
+    layer.setStyle(district_highlight_style);
+    /*layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });*/
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    }
+}
+
+
+
+function resetHighlight(e) {
+
+    var layer = e.target;
+    console.log(layer);
+    // layer.setStyle(style_district_unique);
+    // layer.setStyle(each_district_reset_Style);
+    district_boundary.setStyle(each_district_reset_Style);
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
 
 function districtpopUp(feature, layer) {
-    // debugger;
-    /*
-    @#^&*(%$#$%^&*((^%@#$%^&*((*&^%$#$%^)))))
-    do this insted of the current way
-    */
-    // layer.on({
-    //     mouseover: highlightFeature,
-    //     mouseout: resetHighlight,
-    //     click: zoomToFeature
-    // });
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
     var popUp = '';
     popUp += layer.feature.properties.NAME_3;
     popUp += '</br>';

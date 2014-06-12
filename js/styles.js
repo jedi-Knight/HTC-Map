@@ -10,6 +10,26 @@ function style_district_polygon() {
     };
 }
 
+function district_highlight_style() {
+    return {
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    };
+}
+
+function each_district_reset_Style() {
+    return {
+        // fillColor: randomColor(),
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '3',
+        // fillOpacity: 0.8
+    };
+}
+
 function style_district_unique() {
     return {
         fillColor: randomColor(),
