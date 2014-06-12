@@ -8,7 +8,7 @@ Object.size = function(obj) {
 };
 
 function labels(data, layer_calling) {
-    // i = 1;
+    i = 1;
     // console.log('layer_Calling', layer_calling);
     // debugger;
     if (layer_calling == 'district') {
