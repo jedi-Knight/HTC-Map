@@ -46,8 +46,6 @@ function highlightFeature(e) {
     }
 }
 
-
-
 function resetHighlight(e) {
 
     var layer = e.target;
@@ -61,105 +59,14 @@ function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
-function districtpopUp(feature, layer) {
-    // debugger;
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-    });
-    var popUp = '';
-    popUp += layer.feature.properties.NAME_3;
-    popUp += '</br>';
-    popUp += layer.feature.properties.district_ANC_PosWomen_tripleARV_Prophylaxis_2012;
-    popUp += '</br>';
-    popUp += layer.feature.properties.district_ANC_Women_ARV_Prophylaxis_2010;
-    popUp += '</br>';
-    popUp += layer.feature.properties.district_ANC_Women_ARV_Prophylaxis_2011;
-    popUp += '</br>';
-    popUp += layer.feature.properties.district_Contact;
-    popUp += '</br>';
-    popUp += layer.feature.properties.district_Cum_death_2010;
-    /*popUp += layer.feature.properties.district_Cum_death_2011;
-    popUp += layer.feature.properties.district_Cum_death_2012;
-    popUp += layer.feature.properties.district_Cum_on_ART_2010;
-    popUp += layer.feature.properties.district_Cum_on_ART_2011;
-    popUp += layer.feature.properties.district_Cum_on_ART_2012;
-    popUp += layer.feature.properties.district_Est_FSWs;
-    popUp += layer.feature.properties.district_Est_MTC;
-    popUp += layer.feature.properties.district_HIV_Pos_Female_2010;
-    popUp += layer.feature.properties.district_HIV_Pos_Female_2011;
-    popUp += layer.feature.properties.district_HIV_Pos_Female_2012;
-    popUp += layer.feature.properties.district_HIV_Pos_TG_2012;
-    popUp += layer.feature.properties.district_HIV_Pos_delivery_2010;
-    popUp += layer.feature.properties.district_HIV_Pos_delivery_2011;
-    popUp += layer.feature.properties.district_HIV_Pos_delivery_2012;
-    popUp += layer.feature.properties.district_HIV_Pos_male_2010;
-    popUp += layer.feature.properties.district_HIV_Pos_male_2011;
-    popUp += layer.feature.properties.district_HIV_Pos_male_2012;
-    popUp += layer.feature.properties.district_IA_TI_FSW;
-    popUp += layer.feature.properties.district_IA_TI_MSM;
-    popUp += layer.feature.properties.district_IA_TI_Migrants: ""
-    popUp += layer.feature.properties.district_IA_TI_PLHIV: ""
-    popUp += layer.feature.properties.district_IA_TI_PWIDs: ""
-    popUp += layer.feature.properties.district_IA_TI_Prison: ""
-    popUp += layer.feature.properties.district_No_of_ART_OI: "1"
-    popUp += layer.feature.properties.district_No_of_CCC: "2"
-    popUp += layer.feature.properties.district_No_of_CCC_FHI360: ""
-    popUp += layer.feature.properties.district_No_of_CCC_FPAN: ""
-    popUp += layer.feature.properties.district_No_of_CCC_GoV: ""
-    popUp += layer.feature.properties.district_No_of_CCC_Others: ""
-    popUp += layer.feature.properties.district_No_of_CCC_PF: ""
-    popUp += layer.feature.properties.district_No_of_CCC_Save: ""
-    popUp += layer.feature.properties.district_No_of_CHBC: ""
-    popUp += layer.feature.properties.district_No_of_CHBC_FHI360: ""
-    popUp += layer.feature.properties.district_No_of_CHBC_FPAN: ""
-    popUp += layer.feature.properties.district_No_of_CHBC_GoV: ""
-    popUp += layer.feature.properties.district_No_of_CHBC_Save: ""
-    popUp += layer.feature.properties.district_No_of_CHBC_Save_1: ""
-    popUp += layer.feature.properties.district_No_of_CHBC_others: ""
-    popUp += layer.feature.properties.district_No_of_HIV_tested_2010: "2463"
-    district_No_of_HIV_tested_2011: "2358"
-    district_No_of_HIV_tested_2012: "3108"
-    district_No_of_HTC: "3"
-    district_No_of_HTC_FHI360: ""
-    district_No_of_HTC_FPAN: "2"
-    district_No_of_HTC_GoV: "1"
-    district_No_of_HTC_Others: ""
-    district_No_of_HTC_PF: ""
-    district_No_of_HTC_Save: ""
-    district_No_of_PMTCT: "1"
-    district_No_of_STI: "3"
-    district_No_of_STI_FHI360: ""
-    district_No_of_STI_FPAN: ""
-    district_No_of_STI_Gov: ""
-    district_No_of_STI_PF: ""
-    district_No_of_STI_Save: ""
-    district_No_of_STI_others: ""
-    district_No_of_TI_FSWs: ""
-    district_No_of_TI_MSM: ""
-    district_No_of_TI_PLHIV: "1"
-    district_No_of_TI_PWIDs: ""
-    district_No_of_TI_migrants: ""
-    district_No_of_TI_prison: ""
-    district_Positive_ANC_2010: "0"
-    district_Positive_ANC_2011: "0"
-    district_Positive_ANC_2012: "0"
-    district_Region: "Western"
-    district_SN: "36"
-    district_Total_PLHIV_2010;
-    district_Total_PLHIV_2011;
-    district_Total_PLHIV_2012;
-    district_Women_tested_on_ANC_2010;
-    district_Women_tested_on_ANC_2011;
-    district_Women_tested_on_ANC_2012;
-    district_baby_received_ARV_Pro_2010;
-    district_baby_received_ARV_Pro_2011;
-    district_baby_received_ARV_Pro_2012;*/
-    layer.bindPopup(popUp);
-}
 var district_boundary = new L.geoJson.ajax("data/district.geojson", {
-    onEachFeature: districtpopUp
+    onEachFeature: function(feature, layer) {
+        // console.log('layer ', layer);
+        districtpopUp(feature, layer);
+        // console.log('feature', feature);
+        district_colors[feature.properties.NAME_3] = randomColor();
+    }
+
 });
 // var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
@@ -182,7 +89,8 @@ function popUp(feature, layer) {
     var popUpContent = "";
     popUpContent += '<table><tr>';
     popUpContent += '<td>';
-    popUpContent += 'NAME:';
+    popUpContent += '<i>'
+    popUpContent += 'NAME:</i>';
     popUpContent += '</td>';
     popUpContent += '<td>';
     popUpContent += '<b>' + feature.properties.Name + '</b>';
@@ -202,7 +110,6 @@ function popUp(feature, layer) {
     popUpContent += '<b>' + feature.properties.Service_Co + '</b>';
     popUpContent += '</td>';
     popUpContent += '</tr>';
-    popUpContent += '</table>';
     popUpContent += '</table>';
     layer.bindPopup(popUpContent);
 }
@@ -294,7 +201,7 @@ function displayLayer(layer, zoom, displayName) {
 }
 map.on('zoomend', function(e) {
     displayLayer(district_boundary, 1, "District");
-    displayLayer(vdc_boundary, 11, "VDC");
+    displayLayer(vdc_boundary, 10, "VDC");
 });
 // layers control
 layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
