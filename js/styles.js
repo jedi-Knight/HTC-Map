@@ -1,4 +1,5 @@
 // define styles
+
 function style_district_polygon() {
     return {
         fillColor: '#94F0F8',
@@ -30,9 +31,10 @@ function each_district_reset_Style() {
     };
 }
 
-function style_district_unique() {
+function style_district_unique(oneDistrict) {
+    // console.log('oneDistrict ', oneDistrict);
     return {
-        fillColor: randomColor(),
+        fillColor: district_colors[oneDistrict.properties.NAME_3],
         weight: 2,
         opacity: 1,
         color: 'black',
@@ -41,7 +43,7 @@ function style_district_unique() {
     };
 }
 
-function style_vdc_polygon() {
+function style_vdc_polygon(oneVdc) {
     return {
         fillColor: '#C8C582',
         weight: 1,
@@ -52,9 +54,10 @@ function style_vdc_polygon() {
     };
 }
 
-function style_vdc_unique() {
+function style_vdc_unique(oneVdc) {
+    console.log('oneVdc ', oneVdc);
     return {
-        fillColor: randomColor(),
+        fillColor: district_colors[oneVdc.properties.NAME_3],
         weight: 1,
         opacity: 1,
         color: 'black',

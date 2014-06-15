@@ -83,7 +83,7 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
         if (map.hasLayer(labelLayer)) {
             map.removeLayer(labelLayer);
             layersControlSettings.removeLayer(labelLayer);
-            console.log("no main layer");
+            // console.log("no main layer");
         }
     } else {
         if (map.getZoom() <= zoom) {
@@ -96,7 +96,7 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
                 if (!map.hasLayer(labelLayer)) {
                     map.addLayer(labelLayer);
                     if (displayName == "VDC") {
-                        console.log("VDC Labels added");
+                        // console.log("VDC Labels added");
                     }
                     layersControlSettings.addOverlay(labelLayer, displayName + " Labels", "Labels");
                 }
@@ -110,6 +110,6 @@ map.on('zoomend', function(e) {
 
     displayLabel(District_labels, 7, district_boundary, "District");
 
-    displayLabel(VDC_labels, 11, vdc_boundary, "VDC");
+    displayLabel(VDC_labels, 10, vdc_boundary, "VDC");
 
 });

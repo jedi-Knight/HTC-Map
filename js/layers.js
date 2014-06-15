@@ -46,8 +46,6 @@ function highlightFeature(e) {
     }
 }
 
-
-
 function resetHighlight(e) {
 
     var layer = e.target;
@@ -158,7 +156,13 @@ function districtpopUp(feature, layer) {
     layer.bindPopup(popUp);
 }
 var district_boundary = new L.geoJson.ajax("data/district.geojson", {
-    onEachFeature: districtpopUp
+    onEachFeature: function(feature, layer) {
+        // console.log('layer ', layer);
+        districtpopUp;
+        // console.log('feature', feature);
+        district_colors[feature.properties.NAME_3] = randomColor();
+    }
+
 });
 // var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
@@ -270,7 +274,7 @@ function displayLayer(layer, zoom, displayName) {
 }
 map.on('zoomend', function(e) {
     displayLayer(district_boundary, 1, "District");
-    displayLayer(vdc_boundary, 11, "VDC");
+    displayLayer(vdc_boundary, 10, "VDC");
 });
 // layers control
 layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
