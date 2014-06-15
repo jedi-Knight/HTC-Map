@@ -83,38 +83,9 @@ vdc_boundary.on('data:loaded', function(data) {
     labels(data, 'vdc');
 });
 // vdc_boundary.addTo(map);
-function popUp(feature, layer) {
-    //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
-    //add the supported by and HealthFacility type in Popup Table
-    var popUpContent = "";
-    popUpContent += '<table><tr>';
-    popUpContent += '<td>';
-    popUpContent += '<i>'
-    popUpContent += 'NAME:</i>';
-    popUpContent += '</td>';
-    popUpContent += '<td>';
-    popUpContent += '<b>' + feature.properties.Name + '</b>';
-    popUpContent += '</td>';
-    popUpContent += '</tr>';
-    popUpContent += '<tr><td>';
-    popUpContent += 'Supported By:';
-    popUpContent += '</td>';
-    popUpContent += '<td>';
-    popUpContent += '<b>' + feature.properties.Supported + '</b>';
-    popUpContent += '</td>';
-    popUpContent += '</tr>';
-    popUpContent += '<tr><td>';
-    popUpContent += 'Health Facility Type';
-    popUpContent += '</td>';
-    popUpContent += '<td>';
-    popUpContent += '<b>' + feature.properties.Service_Co + '</b>';
-    popUpContent += '</td>';
-    popUpContent += '</tr>';
-    popUpContent += '</table>';
-    layer.bindPopup(popUpContent);
-}
-var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson", {
-    onEachFeature: popUp
+
+var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
+    onEachFeature: htc_popUp
 });
 
 var searchControl = new L.Control.Search({

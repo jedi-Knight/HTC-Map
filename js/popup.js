@@ -7,7 +7,7 @@ function districtpopUp(feature, layer) {
     var popUp = '<div id="popup">';
     popUp += '<table>';
     for (data in layer.feature.properties) {
-        console.log('feature ', feature);
+        // console.log('feature ', feature);
         // console.log('data ', layer.feature.properties[data]);
         popUp += "<tr>" + "<td>" + data + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
 
@@ -109,4 +109,53 @@ function districtpopUp(feature, layer) {
         maxHeight: 400,
         minWidth: 500
     }).setContent(popUp));
+}
+
+
+function htc_popUp(feature, layer) {
+    //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
+    //add the supported by and HealthFacility type in Popup Table
+    var popUpContent = "";
+    /*
+    popUpContent += '<table><tr>';
+    popUpContent += '<td>';
+    popUpContent += '<i>';
+    popUpContent += 'NAME:</i>';
+    popUpContent += '</td>';
+    popUpContent += '<td>';
+    popUpContent += '<b>' + feature.properties.Name + '</b>';
+    popUpContent += '</td>';
+    popUpContent += '</tr>';
+    popUpContent += '<tr><td>';
+    popUpContent += 'Supported By:';
+    popUpContent += '</td>';
+    popUpContent += '<td>';
+    popUpContent += '<b>' + feature.properties.Supported + '</b>';
+    popUpContent += '</td>';
+    popUpContent += '</tr>';
+    popUpContent += '<tr><td>';
+    popUpContent += 'Health Facility Type';
+    popUpContent += '</td>';
+    popUpContent += '<td>';
+    popUpContent += '<b>' + feature.properties.Service_Co + '</b>';
+    popUpContent += '</td>';
+    popUpContent += '</tr>';
+    popUpContent += '</table>';
+    
+    */
+    popUpContent += '<table>';
+    for (data in layer.feature.properties) {
+        console.log('feature ', feature);
+        popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
+    }
+    popUpContent += '</table>';
+
+    layer.bindPopup(L.popup({
+        closeOnClick: true,
+        closeButton: true,
+        keepInView: true,
+        autoPan: true,
+        maxHeight: 200,
+        minWidth: 350
+    }).setContent(popUpContent));
 }
