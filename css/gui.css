@@ -114,12 +114,16 @@
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>h3{
     margin-top: 0px;
+    font-size:14pt;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>img{
-    padding: 3px;
-    margin-top: 5px;
-    margin-right: 10px;
-    margin-bottom: 2px;
+    padding : 3px;
+    margin-top : 5px;
+    margin-right : 10px;
+    margin-bottom : 2px;
+    border-radius : 10px;
+    border-left : #cccccc thin solid;
+    border-bottom : #cccccc thin solid;
 }
 
 #zoom{
