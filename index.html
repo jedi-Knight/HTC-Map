@@ -22,70 +22,68 @@
         <link rel="stylesheet" href="css/gui.css"/> <!--css rules for GUI-->
         <script type="text/javascript" src="js/guiInteractivity.js"></script><!--interactivity script for GUI-->
         <style>
-            
-            .info {
-                padding: 6px 8px;
-                font: 14px/16px Arial, Helvetica, sans-serif;
-                background: white;
-                background: rgba(255,255,255,0.8);
-                box-shadow: 0 0 15px rgba(0,0,0,0.2);
-                border-radius: 5px;
-            }
-
-            .info h4 {
-                margin: 0 0 5px;
-                color: #777;
-            }
-
-            .legend {
-                line-height: 18px;
-                color: #555;
-            }
-            .legend i {
-                width: 18px;
-                height: 18px;
-                float: left;
-                margin-right: 8px;
-                opacity: 0.7;
-            }
-            #map{
-                //height:80%;
-                /*width:80%;*/
-            }
-            #click{
-                top:250px;
-                left:50px;
-                z-index:1001;
-            }
-            #zoom{
-
-            }
+        
+        .info {
+        padding: 6px 8px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        background: white;
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        }
+        .info h4 {
+        margin: 0 0 5px;
+        color: #777;
+        }
+        .legend {
+        line-height: 18px;
+        color: #555;
+        }
+        .legend i {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-right: 8px;
+        opacity: 0.7;
+        }
+        #map{
+        //height:80%;
+        /*width:80%;*/
+        }
+        #click{
+        top:250px;
+        left:50px;
+        z-index:1001;
+        }
+        #zoom{
+        }
         </style>
     </head>
     <body>
-      <div id = "zoom">
-        <img src = "img/MapFullExtent.png" onclick = 'fullextent()'>
-      </div>
-      <div class = 'row'>
+        <div id = "zoom">
+            <img src = "img/MapFullExtent.png" onclick = 'fullextent()'>
+        </div>
+        <div class = 'row'>
             <div class = 'col-xs-8 mapBox'>
-          <div id="map"></div>
-        </div>
+                <div id="map"></div>
+            </div>
             <div class = 'col-xs-4 panel'>
-          <div id="layersControl"></div>
+                <div id="layersControl"></div>
                 <div class="styleChooser"><div class="control-styles">
-                        <div class='trigger styles passive'>Styles<div class="lever off"></div></div><div id="styleChooser" class="collapse in">
-          </div>
-        </div>
-      </div>
+                    <div class='trigger styles passive'>Styles<div class="lever off"></div></div><div id="styleChooser" class="collapse in">
+                </div>
             </div>
         </div>
-        <script src = "js/globalVariables.js"></script>
-      <script src = "js/styles.js"></script>
-      <script src = "js/layers.js"></script>  
-      <script src = "js/label.js"></script>
-      <script src = "js/styles_layers.js"></script>
-      <script src = "js/style_chooser.js"></script>
-      <script src = "js/legend.js"></script>
-      <script src = "js/main.js"></script>      
-    </body>
-    </html>
+    </div>
+</div>
+<script src = "js/globalVariables.js"></script>
+<script src = "js/popup.js"></script>
+<script src = "js/styles.js"></script>
+<script src = "js/layers.js"></script>
+<script src = "js/label.js"></script>
+<script src = "js/styles_layers.js"></script>
+<script src = "js/style_chooser.js"></script>
+<script src = "js/legend.js"></script>
+<script src = "js/main.js"></script>
+</body>
+</html>
