@@ -87,6 +87,7 @@ vdc_boundary.on('data:loaded', function(data) {
 var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
     onEachFeature: htc_popUp
 });
+var art_sites = new L.geoJson.ajax("data/art_data.geojson");
 
 var searchControl = new L.Control.Search({
     layer: HTC_sites,
@@ -115,6 +116,12 @@ HTC_sites.on('data:loaded', function(data) {
 });
 HTC_sites.addTo(map);
 
+art_sites.on('data:loaded', function(data) {
+    art_sites.eachLayer(art_sites_styles["Default" ["style"]]);
+    map.spin(false);
+});
+art_sites.addTo(map);
+
 baseLayers = {};
 
 var overlays = {
@@ -122,7 +129,8 @@ var overlays = {
         "OpenStreetMap": osm,
         "District": district_boundary,
         "VDC": vdc_boundary,
-        "HTC Sites": HTC_sites
+        "HTC Sites": HTC_sites,
+        "ART Sites": art_sites
     },
     "Labels": {
         "District Labels": District_labels
