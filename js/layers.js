@@ -62,6 +62,7 @@ function zoomToFeature(e) {
 }
 
 function districtpopUp(feature, layer) {
+    // debugger;
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
@@ -176,10 +177,33 @@ vdc_boundary.on('data:loaded', function(data) {
 });
 // vdc_boundary.addTo(map);
 function popUp(feature, layer) {
-    //debugger;
-    //popUpContent = "";
-    //popUpContent += '<table>';
-    popUpContent = '<b>' + feature.properties.Name + '</b>';
+    //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
+    //add the supported by and HealthFacility type in Popup Table
+    var popUpContent = "";
+    popUpContent += '<table><tr>';
+    popUpContent += '<td>';
+    popUpContent += 'NAME:';
+    popUpContent += '</td>';
+    popUpContent += '<td>';
+    popUpContent += '<b>' + feature.properties.Name + '</b>';
+    popUpContent += '</td>';
+    popUpContent += '</tr>';
+    popUpContent += '<tr><td>';
+    popUpContent += 'Supported By:';
+    popUpContent += '</td>';
+    popUpContent += '<td>';
+    popUpContent += '<b>' + feature.properties.Supported + '</b>';
+    popUpContent += '</td>';
+    popUpContent += '</tr>';
+    popUpContent += '<tr><td>';
+    popUpContent += 'Health Facility Type';
+    popUpContent += '</td>';
+    popUpContent += '<td>';
+    popUpContent += '<b>' + feature.properties.Service_Co + '</b>';
+    popUpContent += '</td>';
+    popUpContent += '</tr>';
+    popUpContent += '</table>';
+    popUpContent += '</table>';
     layer.bindPopup(popUpContent);
 }
 var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson", {
