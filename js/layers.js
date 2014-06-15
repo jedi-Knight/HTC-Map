@@ -30,12 +30,50 @@ var District_labels = new L.layerGroup();
 //District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
+function highlightFeature(e) {
+    // district_boundary.resetStyle(e.target);
+    var layer = e.target;
+    layer.setStyle(district_highlight_style);
+    /*layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });*/
 
-var district_boundary = new L.geoJson.ajax("data/district.geojson");
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    }
+}
+
+function resetHighlight(e) {
+
+    var layer = e.target;
+    // console.log(layer);
+    // layer.setStyle(style_district_unique);
+    // layer.setStyle(each_district_reset_Style);
+    district_boundary.setStyle(each_district_reset_Style);
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+
+var district_boundary = new L.geoJson.ajax("data/district.geojson", {
+    onEachFeature: function(feature, layer) {
+        // console.log('layer ', layer);
+        districtpopUp(feature, layer);
+        // console.log('feature', feature);
+        district_colors[feature.properties.NAME_3] = randomColor();
+    }
+
+});
+// var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
     map.spin(false);
-    labels(data, district_boundary);
+    labels(data, 'district');
 });
 district_boundary.addTo(map);
 
@@ -43,7 +81,7 @@ var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
 vdc_boundary.on('data:loaded', function(data) {
     vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
     map.spin(false);
-    labels(data, vdc_boundary);
+    labels(data, 'vdc');
 });
 // vdc_boundary.addTo(map);
 function popUp(feature, layer) {
@@ -141,7 +179,7 @@ function displayLayer(layer, zoom, displayName) {
 }
 map.on('zoomend', function(e) {
     displayLayer(district_boundary, 1, "District");
-    displayLayer(vdc_boundary, 11, "VDC");
+    displayLayer(vdc_boundary, 10, "VDC");
 });
 // layers control
 layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
@@ -166,5 +204,5 @@ vdc_boundary.on('dblclick', function(e) {
 });
 HTC_sites.on('dblclick', function(e) {
     console.log('htc sites ma double click');
-    map.setZoom(e.latlng);
+    map.setView(e.latlng, 17);
 });

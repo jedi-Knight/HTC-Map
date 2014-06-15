@@ -1,4 +1,5 @@
 // define styles
+
 function style_district_polygon() {
     return {
         fillColor: '#94F0F8',
@@ -10,9 +11,30 @@ function style_district_polygon() {
     };
 }
 
-function style_district_unique() {
+function district_highlight_style() {
     return {
-        fillColor: randomColor(),
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    };
+}
+
+function each_district_reset_Style() {
+    return {
+        // fillColor: randomColor(),
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '3',
+        // fillOpacity: 0.8
+    };
+}
+
+function style_district_unique(oneDistrict) {
+    // console.log('oneDistrict ', oneDistrict);
+    return {
+        fillColor: district_colors[oneDistrict.properties.NAME_3],
         weight: 2,
         opacity: 1,
         color: 'black',
@@ -21,7 +43,7 @@ function style_district_unique() {
     };
 }
 
-function style_vdc_polygon() {
+function style_vdc_polygon(oneVdc) {
     return {
         fillColor: '#C8C582',
         weight: 1,
@@ -32,9 +54,10 @@ function style_vdc_polygon() {
     };
 }
 
-function style_vdc_unique() {
+function style_vdc_unique(oneVdc) {
+    console.log('oneVdc ', oneVdc);
     return {
-        fillColor: randomColor(),
+        fillColor: district_colors[oneVdc.properties.NAME_3],
         weight: 1,
         opacity: 1,
         color: 'black',
@@ -86,10 +109,10 @@ var icons = {
 function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
-        console.log('icon', icons[icon]);
-        legendHTML += "<img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</br>";
+        // console.log('icon', icons[icon]);
+        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div></br>";
     }
-    return legendHTML
+    return legendHTML;
 }
 
 function style_htc_supported_by(marker) {
@@ -140,7 +163,7 @@ vdc_boundary_styles = {
 HTC_sites_styles = {
     "Default": {
         "style": style_htc_default,
-        "legend": "<img src = 'img/marker22.png' style = 'height:40'>HTC Sites"
+        "legend": "<div><img src = 'img/marker22.png' style = 'height:40'>HTC Sites</div>"
     },
     "Supported By": {
         "style": style_htc_supported_by,

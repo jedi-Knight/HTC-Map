@@ -10,13 +10,6 @@ $.each(STYLES, function(index1, val1) {
             }).appendTo(styleChooserDiv);
             nameDiv.append('</br>');
 
-        // buttonsDiv = $('<div>', {
-        //     class: 'btn-group'
-        // }).appendTo(nameDiv);
-        // buttonsDiv.attr(
-        //     'data-toggle', 'buttons'
-        // );
-
             $.each(val1['styles'], function(index, val2) {
                 styleDiv = $('<label>', {
                     text: index,
@@ -38,13 +31,6 @@ $.each(STYLES, function(index1, val1) {
                 text: val1['display']
             }).appendTo(styleChooserDiv);
             nameDiv.append('</br>');
-
-            // buttonsDiv = $('<div>', {
-            //     class: 'btn-group'
-            // }).appendTo(nameDiv);
-            // buttonsDiv.attr(
-            //     'data-toggle', 'buttons'
-            // );
 
             $.each(val1['styles'], function(index, val2) {
                 styleDiv = $('<label>', {
