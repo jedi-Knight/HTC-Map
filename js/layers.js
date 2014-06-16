@@ -84,10 +84,16 @@ vdc_boundary.on('data:loaded', function(data) {
 });
 // vdc_boundary.addTo(map);
 
+
 var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
     onEachFeature: htc_popUp
 });
-var art_sites = new L.geoJson.ajax("data/art_data.geojson");
+var art_sites = new L.geoJson.ajax("data/art_data.geojson", {
+    onEachFeature: htc_popUp
+});
+var cd4_sites = new L.geoJson.ajax("data/cd4_data.geojson", {
+    onEachFeature: htc_popUp
+});
 
 var searchControl = new L.Control.Search({
     layer: HTC_sites,
@@ -117,10 +123,16 @@ HTC_sites.on('data:loaded', function(data) {
 HTC_sites.addTo(map);
 
 art_sites.on('data:loaded', function(data) {
-    art_sites.eachLayer(art_sites_styles["Default" ["style"]]);
+    art_sites.eachLayer(art_sites_styles["Default"]["style"]);
     map.spin(false);
 });
 art_sites.addTo(map);
+
+cd4_sites.on('data:loaded', function(data) {
+    cd4_sites.eachLayer(cd4_sites_styles["Default"]["style"]);
+    map.spin(false);
+});
+cd4_sites.addTo(map);
 
 baseLayers = {};
 
@@ -130,7 +142,8 @@ var overlays = {
         "District": district_boundary,
         "VDC": vdc_boundary,
         "HTC Sites": HTC_sites,
-        "ART Sites": art_sites
+        "ART Sites": art_sites,
+        "CD4 Sites": cd4_sites
     },
     "Labels": {
         "District Labels": District_labels

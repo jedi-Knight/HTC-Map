@@ -154,8 +154,16 @@ function style_htc_default(marker) {
 
 function style_art_default(marker) {
     var art_icon = L.icon({
-        iconUrl: 'img/newmarkers/artmarker.png', //use the art marker instead
-        iconSize: [20, 30]
+        iconUrl: 'img/newmarkers/artmarker.png',
+        iconSize: [25, 35]
+    });
+    return marker.setIcon(art_icon)
+}
+
+function style_cd4_default(marker) {
+    var art_icon = L.icon({
+        iconUrl: 'img/newmarkers/cd4marker.png',
+        iconSize: [25, 35]
     });
     return marker.setIcon(art_icon)
 }
@@ -187,7 +195,12 @@ HTC_sites_styles = {
 art_sites_styles = {
     "Default": {
         "style": style_art_default,
-        "legend": "<div><img src = 'img/markers/artmarker.png' style = 'height:40'>HTC Sites</div>"
-        //change the image
+        "legend": "<div><img src = 'img/newmarkers/artmarker.png' style = 'height:40'>ART Sites</div>"
+    }
+}
+cd4_sites_styles = {
+    "Default": {
+        "style": style_cd4_default,
+        "legned": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
     }
 }
