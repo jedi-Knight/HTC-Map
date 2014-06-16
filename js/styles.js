@@ -161,11 +161,11 @@ function style_art_default(marker) {
 }
 
 function style_cd4_default(marker) {
-    var art_icon = L.icon({
+    var cd4_icon = L.icon({
         iconUrl: 'img/newmarkers/cd4marker.png',
         iconSize: [25, 35]
     });
-    return marker.setIcon(art_icon)
+    return marker.setIcon(cd4_icon)
 }
 
 // arrange styles to groups
@@ -201,6 +201,6 @@ art_sites_styles = {
 cd4_sites_styles = {
     "Default": {
         "style": style_cd4_default,
-        "legned": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
     }
 }
