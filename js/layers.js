@@ -59,7 +59,6 @@ function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
-
 var district_boundary = new L.geoJson.ajax("data/district.geojson", {
     onEachFeature: function(feature, layer) {
         // console.log('layer ', layer);
@@ -84,15 +83,9 @@ vdc_boundary.on('data:loaded', function(data) {
     labels(data, 'vdc');
 });
 // vdc_boundary.addTo(map);
-function popUp(feature, layer) {
-    //debugger;
-    //popUpContent = "";
-    //popUpContent += '<table>';
-    popUpContent = '<b>' + feature.properties.Name + '</b>';
-    layer.bindPopup(popUpContent);
-}
-var HTC_sites = new L.geoJson.ajax("data/htc_dummy.geojson", {
-    onEachFeature: popUp
+
+var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
+    onEachFeature: htc_popUp
 });
 
 var searchControl = new L.Control.Search({

@@ -85,7 +85,7 @@ var icons = {
         popupAnchor: popupAnchor
     }),
     "Gov/Pool Fund": new L.Icon({
-        iconUrl: 'img/newmarkers/f.png',
+        iconUrl: 'img/newmarkers/p.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
@@ -103,6 +103,11 @@ var icons = {
         iconUrl: 'img/newmarkers/c.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
+    }),
+    "Gov": new L.Icon({
+        iconUrl: 'img/newmarkers/g.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
     })
 };
 
@@ -116,8 +121,8 @@ function iconToLegendString() {
 }
 
 function style_htc_supported_by(marker) {
-    if (icons[marker.feature.properties["Supported"]]) {
-        return marker.setIcon(icons[marker.feature.properties["Supported"]])
+    if (icons[marker.feature.properties["Supported By"]]) {
+        return marker.setIcon(icons[marker.feature.properties["Supported By"]])
     } else {
         return marker.setIcon(new L.Icon.Default({
             iconSize: [30, 35]
