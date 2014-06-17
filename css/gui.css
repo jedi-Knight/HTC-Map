@@ -108,23 +108,40 @@
     font-weight: normal;
 }
 
+/**legend**/
 .leaflet-bottom.leaflet-left .info1.leaflet-control{
     margin-bottom: 27px;
     border-radius: 6px;
+    max-width: 300px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding:10px;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>h3{
     margin-top: 0px;
-    font-size:14pt;
+    font-size: 14pt;
+    width: 300px;
+    text-align: center;
 }
-.leaflet-bottom.leaflet-left .info1.leaflet-control>img{
+.leaflet-bottom.leaflet-left .info1.leaflet-control img{
     padding : 3px;
     margin-top : 5px;
     margin-right : 10px;
     margin-bottom : 2px;
-    border-radius : 10px;
-    border-left : #cccccc thin solid;
-    border-bottom : #cccccc thin solid;
 }
+.leaflet-bottom.leaflet-left .info1.leaflet-control>div{
+    min-width: 136px;
+    border-radius : 6px;
+    border: #eeeeee thin solid;
+    margin: 4px 4px 0px 0px;
+}
+/****/
+
+/**district info popup**/
+#popup td{
+    border: #eeeeee thin solid;
+}
+/****/
 
 #zoom{
     position: absolute;

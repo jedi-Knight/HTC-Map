@@ -8,7 +8,7 @@ $(document).ready(function() {
         $(".trigger.styles .lever").toggleClass("on off");
     });
     //map.setZoom(7.4);
-
+    
 
     /**this code block can be safely removed**/
     
