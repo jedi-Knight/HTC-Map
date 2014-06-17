@@ -49,7 +49,7 @@ function highlightFeature(e) {
 function resetHighlight(e) {
 
     var layer = e.target;
-    // console.log(layer);
+    //
     // layer.setStyle(style_district_unique);
     // layer.setStyle(each_district_reset_Style);
     district_boundary.setStyle(each_district_reset_Style);
@@ -61,9 +61,9 @@ function zoomToFeature(e) {
 
 var district_boundary = new L.geoJson.ajax("data/district.geojson", {
     onEachFeature: function(feature, layer) {
-        // console.log('layer ', layer);
+        //
         districtpopUp(feature, layer);
-        // console.log('feature', feature);
+        //
         district_colors[feature.properties.NAME_3] = randomColor();
     }
 
@@ -105,7 +105,7 @@ searchControl.on('search_locationfound', function(e) {
 map.addControl(searchControl); //inizialize search control
 
 // onEachFeature: function(feature, layer) {
-//     console.log('on the run');
+//
 //     // layer.bindPopup(feature.properties.description);
 // });
 
@@ -137,8 +137,8 @@ var LABELS = {
 }
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
-    // console.log('layer add', layer);
-    //console.log('onoverlayadd');
+    //
+    //
     if (LABELS[layer.name + " Labels"]) {
         displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
         //map.addLayer(LABELS[layer.name + " Labels"]);
@@ -147,13 +147,13 @@ map.on("overlayadd", function(layer) {
     }
 })
 map.on("overlayremove", function(layer) {
-    // console.log('layer remove', layer);
-    // console.log('layer.name + " Labels" ', layer.name + " Labels");
+    //
+    //
     // debugger;
     if (map.hasLayer(LABELS[layer.name + " Labels"])) {
         map.removeLayer(LABELS[layer.name + " Labels"]);
         layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
-        // console.log(LABELS[layer.name + "_labels removed"]);
+        //
     }
 })
 
@@ -196,6 +196,5 @@ vdc_boundary.on('dblclick', function(e) {
     }
 });
 HTC_sites.on('dblclick', function(e) {
-    console.log('htc sites ma double click');
     map.setView(e.latlng, 17);
 });

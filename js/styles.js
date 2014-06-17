@@ -32,7 +32,7 @@ function each_district_reset_Style() {
 }
 
 function style_district_unique(oneDistrict) {
-    // console.log('oneDistrict ', oneDistrict);
+    //
     return {
         fillColor: district_colors[oneDistrict.properties.NAME_3],
         weight: 2,
@@ -55,7 +55,6 @@ function style_vdc_polygon(oneVdc) {
 }
 
 function style_vdc_unique(oneVdc) {
-    console.log('oneVdc ', oneVdc);
     return {
         fillColor: district_colors[oneVdc.properties.NAME_3],
         weight: 1,
@@ -114,7 +113,7 @@ var icons = {
 function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
-        // console.log('icon', icons[icon]);
+        //
         legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div></br>";
     }
     return legendHTML;

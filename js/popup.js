@@ -7,8 +7,8 @@ function districtpopUp(feature, layer) {
     var popUp = '<div id="popup">';
     popUp += '<table>';
     for (data in layer.feature.properties) {
-        // console.log('feature ', feature);
-        // console.log('data ', layer.feature.properties[data]);
+        //
+        //
         popUp += "<tr>" + "<td>" + data + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
 
     }
@@ -145,7 +145,6 @@ function htc_popUp(feature, layer) {
     */
     popUpContent += '<table>';
     for (data in layer.feature.properties) {
-        console.log('feature ', feature);
         popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
     }
     popUpContent += '</table>';

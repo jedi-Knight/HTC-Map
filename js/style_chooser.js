@@ -4,7 +4,7 @@ styleChooserDiv = $('#styleChooser');
 $.each(STYLES, function(index1, val1) {
     switch (val1['geometry']) {
         case "point":
-            // console.log(val['geometry']);
+            //
             nameDiv = $('<div>', {
                 text: val1['display']
             }).appendTo(styleChooserDiv);
@@ -26,7 +26,7 @@ $.each(STYLES, function(index1, val1) {
 
             break;
         default:
-            // console.log(val['geometry']);
+            //
             nameDiv = $('<div>', {
                 text: val1['display']
             }).appendTo(styleChooserDiv);

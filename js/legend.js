@@ -15,14 +15,14 @@ legend.update = function(legends) {
     todisplay = '<h3>Legend</h3>';
     // update layer in legend
     for (le in legends) {
-        // console.log('le ', le);
-        // console.log('legends[le] ', legends[le]);
+        //
+        //
         this._legends[le] = legends[le];
         if (!this._legends[le]) {
-            // console.log('this._legends[le] ', this._legends[le]);
+            //
             delete this._legends[le];
         }
-        // console.log('this._legends ', this._legends);
+        //
     }
     // write out html for legend
     for (le in this._legends) {
