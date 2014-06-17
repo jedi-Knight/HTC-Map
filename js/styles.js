@@ -140,6 +140,7 @@ function style_htc_no_of_cases(marker) {
     return marker.setIcon(icon)
 }
 
+
 function style_htc_default(marker) {
     var HTC_icon = L.icon({
         iconUrl: 'img/marker22.png',
@@ -148,6 +149,22 @@ function style_htc_default(marker) {
         popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
     });
     return marker.setIcon(HTC_icon)
+}
+
+function style_art_default(marker) {
+    var art_icon = L.icon({
+        iconUrl: 'img/newmarkers/artmarker.png',
+        iconSize: [25, 35]
+    });
+    return marker.setIcon(art_icon)
+}
+
+function style_cd4_default(marker) {
+    var cd4_icon = L.icon({
+        iconUrl: 'img/newmarkers/cd4marker.png',
+        iconSize: [25, 35]
+    });
+    return marker.setIcon(cd4_icon)
 }
 
 // arrange styles to groups
@@ -172,5 +189,17 @@ HTC_sites_styles = {
     "Supported By": {
         "style": style_htc_supported_by,
         "legend": iconToLegendString()
+    }
+}
+art_sites_styles = {
+    "Default": {
+        "style": style_art_default,
+        "legend": "<div><img src = 'img/newmarkers/artmarker.png' style = 'height:40'>ART Sites</div>"
+    }
+}
+cd4_sites_styles = {
+    "Default": {
+        "style": style_cd4_default,
+        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
     }
 }
