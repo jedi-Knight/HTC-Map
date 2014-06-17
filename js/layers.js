@@ -71,7 +71,7 @@ var district_boundary = new L.geoJson.ajax("data/district.geojson", {
 // var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
     labels(data, 'district');
 });
 district_boundary.addTo(map);
@@ -79,7 +79,7 @@ district_boundary.addTo(map);
 var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
 vdc_boundary.on('data:loaded', function(data) {
     vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
     labels(data, 'vdc');
 });
 // vdc_boundary.addTo(map);
@@ -118,19 +118,19 @@ map.addControl(searchControl); //inizialize search control
 
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
 });
 HTC_sites.addTo(map);
 
 art_sites.on('data:loaded', function(data) {
     art_sites.eachLayer(art_sites_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
 });
 art_sites.addTo(map);
 
 cd4_sites.on('data:loaded', function(data) {
     cd4_sites.eachLayer(cd4_sites_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
 });
 cd4_sites.addTo(map);
 
