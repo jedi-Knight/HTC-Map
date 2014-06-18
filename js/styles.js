@@ -73,17 +73,17 @@ var icon = new L.Icon({
     popupAnchor: popupAnchor
 });
 var icons = {
-    "FHI 360": new L.Icon({
-        iconUrl: 'img/newmarkers/s.png',
-        iconSize: iconSize,
-        popupAnchor: popupAnchor
-    }),
-    "FPAN/GF": new L.Icon({
+    "Family Planning/Global Fund": new L.Icon({
         iconUrl: 'img/newmarkers/f.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Gov/Pool Fund": new L.Icon({
+    "Government": new L.Icon({
+        iconUrl: 'img/newmarkers/g.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "Government Pool Fund": new L.Icon({
         iconUrl: 'img/newmarkers/p.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
@@ -93,18 +93,18 @@ var icons = {
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Others": new L.Icon({
-        iconUrl: 'img/newmarkers/o.png',
+    "Saath Saath": new L.Icon({
+        iconUrl: 'img/newmarkers/s.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "STC": new L.Icon({
+    "Save The Children": new L.Icon({
         iconUrl: 'img/newmarkers/c.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Gov": new L.Icon({
-        iconUrl: 'img/newmarkers/g.png',
+    "Others": new L.Icon({
+        iconUrl: 'img/newmarkers/o.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     })
@@ -114,7 +114,7 @@ function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
         //
-        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div></br>";
+        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div>";
     }
     return legendHTML;
 }
