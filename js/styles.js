@@ -157,7 +157,7 @@ function style_art_default(marker) {
         iconUrl: 'img/newmarkers/artmarker.png',
         iconSize: [25, 35]
     });
-    return marker.setIcon(art_icon)
+    return marker.setIcon(art_icon);
 }
 
 function style_cd4_default(marker) {
