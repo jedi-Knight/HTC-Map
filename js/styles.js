@@ -168,6 +168,14 @@ function style_cd4_default(marker) {
     return marker.setIcon(cd4_icon)
 }
 
+function style_pmtct_default(marker) {
+    var pmtct_icon = L.icon({
+        iconUrl: 'img/newmarkers/cd4marker.png', //use the pmtct marker instead
+        iconSize: [25, 35]
+    });
+    return marker.setIcon(pmtct_icon)
+}
+
 // arrange styles to groups
 district_boundary_styles = {
     "Default": {
@@ -202,5 +210,13 @@ cd4_sites_styles = {
     "Default": {
         "style": style_cd4_default,
         "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
+    }
+}
+
+//use the pmtct icon instead of cd4marker.png
+pmtct_sites_styles = {
+    "Default": {
+        "style": style_pmtct_default,
+        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>PMTCT Sites</div>"
     }
 }
