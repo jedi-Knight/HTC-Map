@@ -84,9 +84,19 @@ vdc_boundary.on('data:loaded', function(data) {
 });
 // vdc_boundary.addTo(map);
 
+
 var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
     onEachFeature: htc_popUp
 });
+var art_sites = new L.geoJson.ajax("data/art_data.geojson", {
+    onEachFeature: htc_popUp
+});
+var cd4_sites = new L.geoJson.ajax("data/cd4_data.geojson", {
+    onEachFeature: htc_popUp
+});
+var pmtct_sites = new L.geoJson.ajax("data/pmtct.geojson", {
+    onEachFeature: htc_popUp
+})
 
 var searchControl = new L.Control.Search({
     layer: HTC_sites,
@@ -109,11 +119,33 @@ map.addControl(searchControl); //inizialize search control
 //     // layer.bindPopup(feature.properties.description);
 // });
 
+//htc sites
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     map.spin(false);
 });
 HTC_sites.addTo(map);
+
+//art sites
+art_sites.on('data:loaded', function(data) {
+    art_sites.eachLayer(art_sites_styles["Default"]["style"]);
+    map.spin(false);
+});
+art_sites.addTo(map);
+
+//cd4 sites
+cd4_sites.on('data:loaded', function(data) {
+    cd4_sites.eachLayer(cd4_sites_styles["Default"]["style"]);
+    map.spin(false);
+});
+cd4_sites.addTo(map);
+
+//pmtct sites
+pmtct_sites.on('data:loaded', function(data) {
+    pmtct_sites.eachLayer(pmtct_sites_styles["Default"]["style"]);
+    map.spin(false);
+});
+pmtct_sites.addTo(map);
 
 baseLayers = {};
 
@@ -122,7 +154,10 @@ var overlays = {
         "OpenStreetMap": osm,
         "District": district_boundary,
         "VDC": vdc_boundary,
-        "HTC Sites": HTC_sites
+        "HTC Sites": HTC_sites,
+        "ART Sites": art_sites,
+        "CD4 Sites": cd4_sites,
+        "PMTCT Sites": pmtct_sites
     },
     "Labels": {
         "District Labels": District_labels
