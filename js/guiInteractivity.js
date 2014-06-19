@@ -58,7 +58,7 @@ $(document).ready(function() {
     });
     
     /**popup styling**/
-    sublist = ["Gov","FHI360","Save","FPAN","Others"];
+    sublist = ["GoV","FHI360","Save","FPAN","Others"];
     listenToElementChange(".leaflet-popup-pane", function(){
         $("#popup tr").addClass("listitem");
         for(txt in sublist){
