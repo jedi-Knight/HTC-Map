@@ -38,10 +38,7 @@ $(document).ready(function() {
     $("#styleChooser").hide(1000);
     
     /**zoom-to-full-extent button position**/
-    z = $("#zoom");
-    $(z).remove();
-    $("div.leaflet-control-zoom").append("<a class='new-control' href=# title='Zoom to extent'/>");
-    $("div.leaflet-control-zoom a.new-control").append(z);
+    $("div.leaflet-control-zoom").append("<a class='new-control' href=# title='Zoom to extent' onclick = 'fullextent()'><div id = 'zoom'><img src = 'img/MapFullExtent.png'></div></a>");
     /****/
     
     /**resize legend width according to number of items**/
