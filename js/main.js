@@ -1,3 +1,5 @@
+L.control.scale().addTo(map);
+
 function getColor(d) {
     return d > 1000 ? '#800026' :
         d > 500 ? '#BD0026' :

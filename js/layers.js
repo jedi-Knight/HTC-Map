@@ -126,13 +126,13 @@ art_sites.on('data:loaded', function(data) {
     art_sites.eachLayer(art_sites_styles["Default"]["style"]);
     // map.spin(false);
 });
-art_sites.addTo(map);
+// art_sites.addTo(map);
 
 cd4_sites.on('data:loaded', function(data) {
     cd4_sites.eachLayer(cd4_sites_styles["Default"]["style"]);
     // map.spin(false);
 });
-cd4_sites.addTo(map);
+// cd4_sites.addTo(map);
 
 baseLayers = {};
 
@@ -182,12 +182,12 @@ function displayLayer(layer, zoom, displayName) {
     if (map.getZoom() < zoom) {
         if (map.hasLayer(layer)) {
             map.removeLayer(layer);
-            layersControlSettings.removeLayer(layer);
+            // layersControlSettings.removeLayer(layer);
         }
     } else {
         if (!map.hasLayer(layer)) {
             map.addLayer(layer);
-            layersControlSettings.addOverlay(layer, displayName, "Layers");
+            // layersControlSettings.addOverlay(layer, displayName, "Layers");
         }
     }
 }
@@ -217,5 +217,5 @@ vdc_boundary.on('dblclick', function(e) {
     }
 });
 HTC_sites.on('dblclick', function(e) {
-    map.setView(e.latlng, 17);
+    map.setView(e.latlng, 14);
 });
