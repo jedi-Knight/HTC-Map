@@ -118,9 +118,14 @@ map.addControl(searchControl); //inizialize search control
 //     // layer.bindPopup(feature.properties.description);
 // });
 
+markers = new L.markerClusterGroup();
+
+
 //htc sites
 HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
+    markers.addLayer(HTC_sites);
+    map.removeLayer(HTC_sites);
     map.spin(false);
 });
 HTC_sites.addTo(map);
@@ -233,3 +238,5 @@ HTC_sites.on('dblclick', function(e) {
     console.log('htc sites ma double click');
     map.setView(e.latlng, 17);
 });
+
+map.addLayer(markers);
