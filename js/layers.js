@@ -84,7 +84,6 @@ vdc_boundary.on('data:loaded', function(data) {
 });
 // vdc_boundary.addTo(map);
 
-
 var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
     onEachFeature: htc_popUp
 });
@@ -96,7 +95,7 @@ var cd4_sites = new L.geoJson.ajax("data/cd4_data.geojson", {
 });
 var pmtct_sites = new L.geoJson.ajax("data/pmtct.geojson", {
     onEachFeature: htc_popUp
-})
+});
 
 var searchControl = new L.Control.Search({
     layer: HTC_sites,
@@ -169,7 +168,7 @@ var overlays = {
 var LABELS = {
     "VDC Labels": VDC_labels,
     "District Labels": District_labels
-}
+};
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
     // console.log('layer add', layer);
@@ -180,7 +179,7 @@ map.on("overlayadd", function(layer) {
         // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
         layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
-})
+});
 map.on("overlayremove", function(layer) {
     // console.log('layer remove', layer);
     // console.log('layer.name + " Labels" ', layer.name + " Labels");
@@ -190,7 +189,7 @@ map.on("overlayremove", function(layer) {
         layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
         // console.log(LABELS[layer.name + "_labels removed"]);
     }
-})
+});
 
 function displayLayer(layer, zoom, displayName) {
     if (map.getZoom() < zoom) {
