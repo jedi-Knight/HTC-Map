@@ -35,7 +35,13 @@ $(document).ready(function() {
     
     
     //$(".leaflet-control-layers").prepend(layersControlLabel);
-    $("#styleChooser").hide(1000);
+//    $("#styleChooser").hide(1000);
+    /**temporary solution for stylechooser**/
+    z=[];
+    $("div.control-styles div#styleChooser div").hide();
+    z.push($("div.control-styles div#styleChooser div")[2]);
+    $(z).show();
+    /****/
     
     /**zoom-to-full-extent button position**/
     $("div.leaflet-control-zoom").append("<a class='new-control' href=# title='Zoom to extent' onclick = 'fullextent()'><div id = 'zoom'><img src = 'img/MapFullExtent.png'></div></a>");
@@ -44,7 +50,7 @@ $(document).ready(function() {
     /**resize legend width according to number of items**/
     listenToElementChange(".leaflet-bottom.leaflet-left .info1.leaflet-control>div", function(){
         console.log("inside triggered function");
-        if($(".leaflet-bottom.leaflet-left .info1.leaflet-control>div").length > 1){
+        if($(".leaflet-bottom.leaflet-left .info1.leaflet-control>div").length > 4){
             $(".leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","300px");
         }else{
             $(".leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","160px");
@@ -67,6 +73,10 @@ $(document).ready(function() {
         $("#popup tr.sublist").prev(".listitem").addClass("expandable");
     }, "childnodecountchanged");
     /****/
+    
+    
+    
+    
     
     
     //map.setZoom(7.4);
