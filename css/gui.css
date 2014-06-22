@@ -55,11 +55,11 @@ div.title{
    position:absolute;
    left:40%;
    right:40%;
-/*margin:auto;*/
    top:10px;
    width:auto;
    z-index:2;
    padding:10px;
+   border-radius: 6px;
 }
 
 div.title>h3{
