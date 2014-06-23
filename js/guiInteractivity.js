@@ -50,10 +50,12 @@ $(document).ready(function() {
     /**resize legend width according to number of items**/
     listenToElementChange(".leaflet-bottom.leaflet-left .info1.leaflet-control>div", function(){
         console.log("inside triggered function");
-        if($(".leaflet-bottom.leaflet-left .info1.leaflet-control>div").length > 4){
-            $(".leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","300px");
+        if($("div.leaflet-bottom.leaflet-left .info1.leaflet-control>div").length > 4){
+            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control>h3").css("width","236px");
+            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","236px");
         }else{
-            $(".leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","160px");
+            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control>h3").css("width","120px");
+            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","120px");
         };
     }, "countchanged");
     /****/
