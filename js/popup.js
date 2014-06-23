@@ -1,6 +1,12 @@
 /*
     make the z-index of label greater than that of markers
 */
+function underscoreToSpace(naaaaame) {
+    var underscored = naaaaame;
+    var spaced = underscored.replace(/_/g, " ");
+    return spaced;
+
+}
 
 
 function districtpopUp(feature, layer) {
@@ -14,7 +20,8 @@ function districtpopUp(feature, layer) {
     for (data in layer.feature.properties) {
         // console.log('feature ', feature);
         // console.log('data ', layer.feature.properties[data]);
-        popUp += "<tr>" + "<td>" + data + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
+        dataspaced = underscoreToSpace(data);
+        popUp += "<tr>" + "<td>" + dataspaced + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
 
     }
     popUp += '</table>';
@@ -124,18 +131,22 @@ function oasis(e) {
     }).setContent(popUpContent));
 }
 */
+
 function htc_popUp(feature, layer) {
     //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
     //add the supported by and HealthFacility type in Popup Table
     // layer.bindLabel(
     // debugger;
     var name = layer.feature.properties.Name;
+    //send this to a function which converts _ to space
+
     layer.bindLabel(name);
     var popUpContent = "";
     popUpContent += '<table>';
     for (data in layer.feature.properties) {
         // console.log('feature ', feature);
-        popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
+        dataspaced = underscoreToSpace(data);
+        popUpContent += "<tr>" + "<td>" + dataspaced + "</td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
     }
     popUpContent += '</table>';
 
