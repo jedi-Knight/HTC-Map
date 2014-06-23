@@ -93,7 +93,7 @@ var icons = {
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Saath Saath": new L.Icon({
+    "Saath Saath Project": new L.Icon({
         iconUrl: 'img/newmarkers/s.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
