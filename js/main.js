@@ -1,4 +1,6 @@
-L.control.scale().addTo(map);
+L.control.scale({
+    position: 'bottomright'
+}).addTo(map);
 
 function getColor(d) {
     return d > 1000 ? '#800026' :

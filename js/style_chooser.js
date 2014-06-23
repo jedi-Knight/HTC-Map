@@ -17,7 +17,7 @@ $.each(STYLES, function(index1, val1) {
                     click: function() {
                         val1['layer'].eachLayer(val1['styles'][index]['style']);
                         legendObj = {};
-                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legendObj[val1.display] = val1['styles'][index]['legend'];
                         legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
@@ -39,7 +39,7 @@ $.each(STYLES, function(index1, val1) {
                     click: function() {
                         val1['layer'].setStyle(val1['styles'][index]['style']);
                         legendObj = {};
-                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legendObj[val1.display] = val1['styles'][index]['legend'];
                         legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
