@@ -1,3 +1,8 @@
+/*
+    make the z-index of label greater than that of markers
+*/
+
+
 function districtpopUp(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
@@ -24,6 +29,7 @@ function districtpopUp(feature, layer) {
     }).setContent(popUp));
 }
 
+/*
 function black(e) {
     // debugger;
     var layer = e.target;
@@ -42,8 +48,9 @@ function black(e) {
 
     layer.bindPopup(popUP, {
         offset: offsetValue
-    }).openPopup();*/
+    }).openPopup();
 }
+*/
 
 /*
 
@@ -86,6 +93,7 @@ function _popupMouseOut(e) {
 };
 
 */
+/*
 function pearljam(e) {
     // debugger;
     // hide the popup
@@ -93,7 +101,9 @@ function pearljam(e) {
     // console.log(e);
     // console.log('mouseout');
 }
+*/
 
+/*
 function oasis(e) {
     var layer = e.target;
     var popUpContent = "";
@@ -112,15 +122,35 @@ function oasis(e) {
         minWidth: 350
     }).setContent(popUpContent));
 }
-
+*/
 function htc_popUp(feature, layer) {
     //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
     //add the supported by and HealthFacility type in Popup Table
-    // layer.bindLabel()
+    // layer.bindLabel(
+    // debugger;
+    var name = layer.feature.properties.Name;
+    layer.bindLabel(name);
+    var popUpContent = "";
+    popUpContent += '<table>';
+    for (data in layer.feature.properties) {
+        // console.log('feature ', feature);
+        popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
+    }
+    popUpContent += '</table>';
+
+    layer.bindPopup(L.popup({
+        closeOnClick: true,
+        closeButton: true,
+        keepInView: true,
+        autoPan: true,
+        maxHeight: 200,
+        minWidth: 350
+    }).setContent(popUpContent));
+    /*
     layer.on({
         mouseover: black,
         mouseout: pearljam,
         click: oasis
     });
-
+    */
 }
