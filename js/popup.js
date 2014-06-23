@@ -28,6 +28,8 @@ function black(e) {
     // debugger;
     var layer = e.target;
     var name = layer.feature.properties.Name;
+    layer.bindLabel(name);
+    /*var name = layer.feature.properties.Name;
     offsetValue = L.point(20, -20);
     var popUP = L.popup({
         closeOnClick: true,
@@ -40,8 +42,10 @@ function black(e) {
 
     layer.bindPopup(popUP, {
         offset: offsetValue
-    }).openPopup();
+    }).openPopup();*/
 }
+
+/*
 
 function _getParent(element, className) {
 
@@ -81,6 +85,7 @@ function _popupMouseOut(e) {
 
 };
 
+*/
 function pearljam(e) {
     // debugger;
     // hide the popup
@@ -90,12 +95,11 @@ function pearljam(e) {
 }
 
 function oasis(e) {
-    console.log('clicked');
     var layer = e.target;
     var popUpContent = "";
     popUpContent += '<table>';
     for (data in layer.feature.properties) {
-        popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
+        popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
     }
     popUpContent += '</table>';
 
@@ -112,6 +116,7 @@ function oasis(e) {
 function htc_popUp(feature, layer) {
     //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
     //add the supported by and HealthFacility type in Popup Table
+    // layer.bindLabel()
     layer.on({
         mouseover: black,
         mouseout: pearljam,

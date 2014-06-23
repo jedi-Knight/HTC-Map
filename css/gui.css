@@ -1,3 +1,8 @@
+#banner{
+    width: 100%;
+    height: 160px;
+}
+
 #map{
     width:100%;
     height:100%;
@@ -15,33 +20,59 @@
 }
 .panel{
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 50px;
+    right: 6px;
     z-index: 2;
     width: initial;
     background-color: initial;
     border: none;
     box-shadow:none;
-    padding: 6px 6px 4px 6px;
+    padding: 6px 10px 4px 10px;
 }
 
 /**bootstrap overrides**/
-.panel label, .leaflet-bottom.leaflet-left .info1.leaflet-control{
+.title, .panel *, .leaflet-bottom.leaflet-left .info1.leaflet-control{
     font-family: "Verdana", "sans-serif";
     font-weight: 400;
     color:#000;
     font-size: 10pt;
-    text-shadow: 0px 0px 0.5px rgba(0,0,0,0.4);
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.4);
 }
 /****/
 
 
-.panel>div>div, .leaflet-bottom.leaflet-left .info1.leaflet-control{
+.title, .panel>div>div, .leaflet-bottom.leaflet-left .info1.leaflet-control{
     margin-bottom:2px;
     border-radius: 0px;
-    box-shadow: 0px 1.5px 6px rgba(50, 50, 50, 0.8), 0px 0px 1px rgba(100, 100, 0, 0.6), 0px 0px 6px rgba(20, 20, 0, 0.5) inset;
+    box-shadow: 0px 2px 6px rgba(50, 50, 50, 0.8), 0px 0px 1px rgba(100, 100, 0, 0.6), 0px 0px 6px rgba(20, 20, 0, 0.5) inset;
     padding: 6px 10px 6px 6px;
     background-color: #ffffff;
+}
+
+div.titleContainer{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+}
+
+div.title{
+   position:absolute;
+   left:40%;
+   right:40%;
+   top:10px;
+   width:auto;
+   z-index:2;
+   padding:10px;
+   border-radius: 6px;
+   transform: scale(1.25, 1);
+}
+
+div.title>h3{
+    text-align:center;
+    font-size:20pt;
+    margin:0px;
+    text-shadow: 0px 0px 1px rgb(50,50,0);
 }
 
 #layersControl>div{
@@ -108,40 +139,62 @@
     font-weight: normal;
 }
 
+/**Layers and StyleChooser labels**/
+div.control-styles, div.leaflet-control-layers-group span.leaflet-control-layers-group-name{
+    font-family: "Verdana", "sans-serif";
+    font-size: 12pt;
+    font-weight: normal;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+div.leaflet-control-layers-group label:first-of-type{
+    margin-top:10px
+}
+
+div.control-styles div#styleChooser{
+    margin-top:10px;
+    font-size:10pt;
+}
+/****/
+
 /**legend**/
 .leaflet-bottom.leaflet-left .info1.leaflet-control{
     margin-bottom: 27px;
     border-radius: 6px;
-    max-width: 160px;
+    max-width: 120px;
     display: inline-flex;
     flex-wrap: wrap;
-    padding:10px;
+    padding:2px;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>h3{
-    margin-top: 0px;
-    font-size: 14pt;
-    width: 300px;
+    margin-top: 6px;
+    font-size: 12pt;
+    width: 120px;
     text-align: center;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control img{
     padding: 3px;
     margin-top: 5px;
-    margin-right: 10px;
+    margin-right : 2px;
     margin-bottom: 2px;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>div{
-    min-width: 136px;
-    border-radius : 6px;
+    min-width: 116px;
+    border-radius : 0px;
     border: #eeeeee thin solid;
-    margin: 4px 4px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    font-size:8pt;
 }
 /****/
 
-/**district info popup**/
-#popup td{
-    border: #eeeeee thin solid;
+/**zoom controls**/
+div.leaflet-control-zoom{
+    top:5px;
+    margin-top:0px;
 }
-/****/
+div.leaflet-control-search{
+    top:5px;
+}
 
 #zoom{
     padding: 3px;
@@ -157,10 +210,11 @@
     height: 20px;
     outline: rgba(230,230,230,1) solid thin;
 }
+/****/
 
 .leaflet-label-overlay{    /*for district and vdc names*/
     padding: 2px;
-    font-family: "verdana", "sans-serif";
+    font-family: "Verdana", "sans-serif";
     font-size: 8pt;
     background-color: #ffffff;
     border-radius: 6px;
@@ -198,7 +252,7 @@ path.leaflet-clickable{
     font-family:"Verdana", "sans-serif";
     font-weight:400;
     font-size: 10pt;
-    text-shadow:0px 0px 0.5px rgba(0,0,0,0.4);
+    text-shadow:0px 0px 1px rgba(0,0,0,0.4);
 }
 
 .info {
@@ -239,6 +293,10 @@ path.leaflet-clickable{
 
 }
 /**district popup**/
+#popup td{
+    border: #cccccc thin solid;
+}
+
 #popup tr{
     font-weight: bold;
 }

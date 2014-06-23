@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="js/leaflet-0.7/leaflet.css" />
         <link rel = "stylesheet" type = "text/css" href = "css/leaflet-search.min.css"/>
         <link rel="stylesheet" href="css/gui.css"/> <!--css rules for GUI-->
+        <link rel="stylesheet" type= "text/css" href = "css/leaflet.label.css">
         <!--<link rel="stylesheet" href="http://leaflet.github.io/Leaflet.label/leaflet.label.css" />-->
         <link rel = "stylesheet" href = "css/label1.css">
         <script src = "js/jquery-1.7.2.min.js"></script>
@@ -19,14 +20,21 @@
         <script src = "js/leaflet.groupedlayercontrol.js"></script>
         <script src = "js/leaflet-search.min.js"></script>
         <script src = "data/testgeom.js"></script>
+        <script src="js/leaflet.label.js"></script>
+        <link rel="stylesheet" href="css/gui.css"/> <!--css rules for GUI-->
         <script type="text/javascript" src="js/guiInteractivity.js"></script><!--interactivity script for GUI-->
         <style>
 
 
         </style>
+        <title>HTC Map of Nepal</title>
     </head>
     <body>
+        <div id = "banner">
+        <img src="img/FHI360.png" alt="FHI360 Banner" >
+    </div>
         <div class = 'row'>
+            <div class="title" id="title"><h3>HTC Map of Nepal</h3></div>
             <div class = 'col-xs-8 mapBox'>
                 <div id="map"></div>
             </div>

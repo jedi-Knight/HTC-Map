@@ -192,7 +192,7 @@ vdc_boundary_styles = {
 HTC_sites_styles = {
     "Default": {
         "style": style_htc_default,
-        "legend": "<div><img src = 'img/marker22.png' style = 'height:40'>HTC Sites</div>"
+        "legend": "<div><img src = 'img/marker22.png' style = 'height:30'>HTC Sites</div>"
     },
     "Supported By": {
         "style": style_htc_supported_by,
@@ -202,13 +202,13 @@ HTC_sites_styles = {
 art_sites_styles = {
     "Default": {
         "style": style_art_default,
-        "legend": "<div><img src = 'img/newmarkers/artmarker.png' style = 'height:40'>ART Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/artmarker.png' style = 'height:30'>ART Sites</div>"
     }
 }
 cd4_sites_styles = {
     "Default": {
         "style": style_cd4_default,
-        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:30'>CD4 Sites</div>"
     }
 }
 
@@ -216,6 +216,6 @@ cd4_sites_styles = {
 pmtct_sites_styles = {
     "Default": {
         "style": style_pmtct_default,
-        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>PMTCT Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/pmtctmarker.png' style = 'height:30'>PMTCT Sites</div>"
     }
 }

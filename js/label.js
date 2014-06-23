@@ -52,7 +52,7 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
             //
         }
     } else {
-        if (map.getZoom() == zoom) {
+        if (map.getZoom() <= zoom) {
             if (map.hasLayer(labelLayer)) {
                 map.removeLayer(labelLayer);
                 layersControlSettings.removeLayer(labelLayer);
