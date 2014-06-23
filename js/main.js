@@ -1,7 +1,3 @@
-L.control.scale({
-    position: 'bottomright'
-}).addTo(map);
-
 function getColor(d) {
     return d > 1000 ? '#800026' :
         d > 500 ? '#BD0026' :
@@ -53,4 +49,16 @@ function fullextent() {
     bounds.extend(map.getBounds()._southWest);
     map.fitBounds(bounds);
     */
+}
+
+function underscoreToSpace(naaaaame) {
+    var underscored = naaaaame;
+    var spaced = underscored.replace(/_/g, " ");
+    return spaced;
+}
+
+function spaceToUnderscore(naaaaame) {
+    var underscored = naaaaame;
+    var spaced = underscored.replace(/ /g, "_");
+    return spaced;
 }

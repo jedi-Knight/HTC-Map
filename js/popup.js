@@ -1,13 +1,6 @@
 /*
     make the z-index of label greater than that of markers
 */
-function underscoreToSpace(naaaaame) {
-    var underscored = naaaaame;
-    var spaced = underscored.replace(/_/g, " ");
-    return spaced;
-
-}
-
 
 function districtpopUp(feature, layer) {
     layer.on({

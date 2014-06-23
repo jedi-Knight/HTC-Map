@@ -6,7 +6,8 @@ $.each(STYLES, function(index1, val1) {
         case "point":
             //
             nameDiv = $('<div>', {
-                text: val1['display']
+                text: val1['display'],
+                class: index1
             }).appendTo(styleChooserDiv);
             nameDiv.append('</br>');
 
@@ -28,7 +29,8 @@ $.each(STYLES, function(index1, val1) {
         default:
             //
             nameDiv = $('<div>', {
-                text: val1['display']
+                text: val1['display'],
+                class: index1
             }).appendTo(styleChooserDiv);
             nameDiv.append('</br>');
 

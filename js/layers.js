@@ -30,12 +30,13 @@ var District_labels = new L.layerGroup();
 //District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
-markers = new L.MarkerClusterGroup({
+var markers = new L.MarkerClusterGroup({
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
     maxClusterRadius: 50,
     spiderfyOnMaxZoom: true
 });
+markers.addTo(map);
 
 function highlightFeature(e) {
     // district_boundary.resetStyle(e.target);
@@ -134,14 +135,15 @@ HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     // markers.addLayer(HTC_sites);
     markers.addLayer(data.target);
-    map.removeLayer(HTC_sites);
-    map.spin(false);
+    // map.removeLayer(HTC_sites);
+    // map.spin(false);
 });
 // HTC_sites.addTo(map);
 
 //art sites
 art_sites.on('data:loaded', function(data) {
     art_sites.eachLayer(art_sites_styles["Default"]["style"]);
+    markers.addLayer(data.target);
     // map.spin(false);
 });
 // art_sites.addTo(map);
@@ -149,6 +151,7 @@ art_sites.on('data:loaded', function(data) {
 //cd4 sites
 cd4_sites.on('data:loaded', function(data) {
     cd4_sites.eachLayer(cd4_sites_styles["Default"]["style"]);
+    markers.addLayer(data.target);
     // map.spin(false);
 });
 // cd4_sites.addTo(map);
@@ -156,9 +159,10 @@ cd4_sites.on('data:loaded', function(data) {
 //pmtct sites
 pmtct_sites.on('data:loaded', function(data) {
     pmtct_sites.eachLayer(pmtct_sites_styles["Default"]["style"]);
-    map.spin(false);
+    markers.addLayer(data.target);
+    // map.spin(false);
 });
-pmtct_sites.addTo(map);
+// pmtct_sites.addTo(map);
 
 baseLayers = {};
 
@@ -167,7 +171,7 @@ var overlays = {
         "OpenStreetMap": osm,
         "District": district_boundary,
         "VDC": vdc_boundary,
-        "HTC Sites": markers,
+        "HTC Sites": HTC_sites,
         "ART Sites": art_sites,
         "CD4 Sites": cd4_sites,
         "PMTCT Sites": pmtct_sites
@@ -185,8 +189,18 @@ var LABELS = {
 };
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
-    //
-    //
+
+    legendObj = {};
+    divInStyleChooser = $('.' + spaceToUnderscore(layer.name) + '_styles');
+
+    if (divInStyleChooser.find('input:checked').length) {
+        selectedStyle = divInStyleChooser.find('input:checked').attr('id').slice(8);
+    } else {
+        selectedStyle = "Default";
+    }
+    // debugger;
+    legendObj[layer.name] = STYLES[spaceToUnderscore(layer.name) + "_styles"]["styles"][selectedStyle]["legend"];
+    legend.update(legendObj);
     if (LABELS[layer.name + " Labels"]) {
         displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
         //map.addLayer(LABELS[layer.name + " Labels"]);
@@ -195,13 +209,12 @@ map.on("overlayadd", function(layer) {
     }
 });
 map.on("overlayremove", function(layer) {
-    //
-    //
-    // debugger;
+    legendObj = {};
+    legendObj[layer.name] = "";
+    legend.update(legendObj);
     if (map.hasLayer(LABELS[layer.name + " Labels"])) {
         map.removeLayer(LABELS[layer.name + " Labels"]);
         layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
-        //
     }
 });
 
@@ -247,4 +260,7 @@ HTC_sites.on('dblclick', function(e) {
     map.setView(e.latlng, 14);
 });
 
-map.addLayer(markers);
+// map.addLayer(markers);
+L.control.scale({
+    position: 'bottomright'
+}).addTo(map);

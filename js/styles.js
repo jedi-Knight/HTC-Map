@@ -67,6 +67,7 @@ function style_vdc_unique(oneVdc) {
 
 // style_htc_supported_by
 var iconSize = [20, 30],
+    iconAnchor = [iconSize[0] / 2, iconSize[1]],
     popupAnchor = [0, 0];
 var icon = new L.Icon({
     iconSize: iconSize,
@@ -145,7 +146,7 @@ function style_htc_default(marker) {
     var HTC_icon = L.icon({
         iconUrl: 'img/marker22.png',
         iconSize: [20, 30], // size of the icon
-        // iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+        iconAnchor: [10, 30], // point of the icon which will correspond to marker's location
         popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
     });
     return marker.setIcon(HTC_icon)
