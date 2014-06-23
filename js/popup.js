@@ -1,5 +1,5 @@
 /*
-    make the z-index of label greater than the markers'
+    make the z-index of label greater than that of markers
 */
 
 

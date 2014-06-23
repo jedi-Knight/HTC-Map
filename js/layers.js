@@ -4,7 +4,7 @@ var north_east = new L.latLng(26.328231, 80.029907);
 var south_west = new L.latLng(30.605155, 88.225708);
 var bounds = new L.latLngBounds(north_east, south_west);
 var nep_latlng_array = [];
-
+// var markers = new L.MarkerClusterGroup();
 //get coordinates from geojson
 var testGeom = testGeom || [];
 
@@ -30,6 +30,13 @@ var District_labels = new L.layerGroup();
 //District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
+markers = new L.MarkerClusterGroup({
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    maxClusterRadius: 50,
+    spiderfyOnMaxZoom: true
+});
+
 function highlightFeature(e) {
     // district_boundary.resetStyle(e.target);
     var layer = e.target;
@@ -118,17 +125,19 @@ map.addControl(searchControl); //inizialize search control
 //     // layer.bindPopup(feature.properties.description);
 // });
 
-markers = new L.markerClusterGroup();
+
 
 
 //htc sites
 HTC_sites.on('data:loaded', function(data) {
+    // debugger;
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
-    markers.addLayer(HTC_sites);
+    // markers.addLayer(HTC_sites);
+    markers.addLayer(data.target);
     map.removeLayer(HTC_sites);
     map.spin(false);
 });
-HTC_sites.addTo(map);
+// HTC_sites.addTo(map);
 
 //art sites
 art_sites.on('data:loaded', function(data) {
@@ -158,7 +167,7 @@ var overlays = {
         "OpenStreetMap": osm,
         "District": district_boundary,
         "VDC": vdc_boundary,
-        "HTC Sites": HTC_sites,
+        "HTC Sites": markers,
         "ART Sites": art_sites,
         "CD4 Sites": cd4_sites,
         "PMTCT Sites": pmtct_sites
@@ -227,7 +236,7 @@ district_boundary.on('dblclick', function(e) {
     if (a < 19) {
         map.setZoom(a + 1);
     }
-})
+});
 vdc_boundary.on('dblclick', function(e) {
     a = map.getZoom();
     if (a < 19) {
