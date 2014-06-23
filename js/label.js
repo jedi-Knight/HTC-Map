@@ -38,44 +38,10 @@ function labels(data, layer_calling) {
             VDC_labels.addLayer(labelTitle);
             //
         };
-        /*
-        for (ath in _test) {
-            var b = _test[ath];
-            var vdc = L.polygon(b._latlngs);
-            //
-            // i++
-            vdc_name = b.feature.properties.NAME_4; //label content
-            var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
-            var labelTitle = new L.LabelOverlays(labelLocation, vdc_name);
-            VDC_labels.addLayer(labelTitle);
-        }
-        */
     }
 }
 //event on mapzoom
-//hide or show the district_label on zoom level greater than 8
-
-//check if in layercontrol the layer is enabled or not
-// function check_zooms() {
-//
-//     if (map.getZoom() <= 8) {
-//         if (map.hasLayer(VDC_labels)) {
-//             map.removeLayer(VDC_labels);
-//         }
-//         if (map.hasLayer(District_labels)) {
-//             map.removeLayer(District_labels);
-//
-//         }
-
-//     } else if (map.getZoom() > 8 && map.getZoom() < 11) {
-//         map.addLayer(District_labels);
-//         map.removeLayer(VDC_labels);
-//         //
-//     } else if (map.getZoom() >= 11) {
-//         map.addLayer(VDC_labels);
-//         map.removeLayer(District_labels);
-//     }
-// }
+//hide or show the district_label on zoom level
 function displayLabel(labelLayer, zoom, mainLayer, displayName) {
     //
 
@@ -86,7 +52,7 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
             //
         }
     } else {
-        if (map.getZoom() <= zoom) {
+        if (map.getZoom() == zoom) {
             if (map.hasLayer(labelLayer)) {
                 map.removeLayer(labelLayer);
                 layersControlSettings.removeLayer(labelLayer);
@@ -107,7 +73,7 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
 
 map.on('zoomend', function(e) {
     //
-
+    console.log('displayLabel first');
     displayLabel(District_labels, 7, district_boundary, "District");
 
     displayLabel(VDC_labels, 10, vdc_boundary, "VDC");
