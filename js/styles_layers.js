@@ -3,16 +3,16 @@
 /* associate layer with sytles: styles are defined in styles.js and layers in layers.js
  */
 var STYLES = {
-    "district_boundary_styles": {
+    "district_styles": {
         "geometry": "polygon",
-        "styles": district_boundary_styles,
-        "layer": district_boundary,
+        "styles": district_styles,
+        "layer": district,
         "display": "District"
     },
-    "vdc_boundary_styles": {
+    "vdc_styles": {
         "geometry": "polygon",
-        "styles": vdc_boundary_styles,
-        "layer": vdc_boundary,
+        "styles": vdc_styles,
+        "layer": vdc,
         "display": "VDC"
     },
     "htc_sites_styles": {
