@@ -32,10 +32,6 @@ function listenToElementChange(selector, fn, trigger){
 
 
 $(document).ready(function() {
-    
-    
-    //$(".leaflet-control-layers").prepend(layersControlLabel);
-//    $("#styleChooser").hide(1000);
     /**temporary solution for stylechooser**/
     z=[];
     $("div.control-styles div#styleChooser div").hide();
