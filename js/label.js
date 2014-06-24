@@ -22,7 +22,6 @@ function labels(data, layer_calling) {
             var b = _test[a[i]];
             var vdc = L.polygon(b._latlngs);
             vdc_name = b.feature.properties.NAME_4;
-            //
             var labelLocation = vdc.getBounds().getCenter();
             // var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
             // debugger;
