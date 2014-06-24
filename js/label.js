@@ -67,6 +67,6 @@ map.on('zoomend', function(e) {
     console.log('displayLabel first');
     displayLabel(District_labels, 7, district_boundary, "District");
 
-    displayLabel(VDC_labels, 10, vdc_boundary, "VDC");
+    displayLabel(VDC_labels, 11, vdc_boundary, "VDC");
 
 });

@@ -11,10 +11,10 @@
 .mapBox{
     display: block;
     position:absolute;
-    top:0;
+    top:20%;
     left:0;
     width: 100%;
-    height: 100%;
+    height: 80%;
     z-index:0;
     padding: 0px;
 }
@@ -179,7 +179,7 @@ div.control-styles div#styleChooser{
     margin-bottom: 2px;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>div{
-    min-width: 116px;
+    min-width: 216px;
     border-radius : 0px;
     border: #eeeeee thin solid;
     margin: 0px 0px 0px 0px;

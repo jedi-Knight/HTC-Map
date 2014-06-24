@@ -26,7 +26,7 @@ legend.update = function(legends) {
     }
     // write out html for legend
     for (le in this._legends) {
-        todisplay += "<div>" + le + this._legends[le] + "</div>";
+        todisplay += "<div><h6>" + le + "</h6></div><div>" + this._legends[le] + "</div>";
         todisplay += "";
     }
     this._div.innerHTML = todisplay
