@@ -1,8 +1,5 @@
-//var layersControlLabel = "<div class='trigger layers passive'> Layers</div>";
-
 function listenToElementChange(selector, fn, trigger){
     if(trigger==="countchanged"){
-        //console.log("inside..what??");
         $(selector).parent().bind(trigger, fn);
         m = $(selector).length;
     }else if(trigger==="childnodecountchanged"){
