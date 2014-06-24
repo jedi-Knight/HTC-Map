@@ -33,7 +33,7 @@ function each_district_reset_Style() {
 }
 
 function style_district_unique(oneDistrict) {
-    // console.log('oneDistrict ', oneDistrict);
+    //
     return {
         fillColor: district_colors[oneDistrict.properties.NAME_3],
         weight: 2,
@@ -56,7 +56,6 @@ function style_vdc_polygon(oneVdc) {
 }
 
 function style_vdc_unique(oneVdc) {
-    // console.log('oneVdc ', oneVdc);
     return {
         fillColor: district_colors[oneVdc.properties.NAME_3],
         weight: 1,
@@ -69,23 +68,24 @@ function style_vdc_unique(oneVdc) {
 
 // style_htc_supported_by
 var iconSize = [20, 30],
+    iconAnchor = [iconSize[0] / 2, iconSize[1]],
     popupAnchor = [0, 0];
 var icon = new L.Icon({
     iconSize: iconSize,
     popupAnchor: popupAnchor
 });
 var icons = {
-    "FHI 360": new L.Icon({
-        iconUrl: 'img/newmarkers/s.png',
-        iconSize: iconSize,
-        popupAnchor: popupAnchor
-    }),
-    "FPAN/GF": new L.Icon({
+    "Family Planning/Global Fund": new L.Icon({
         iconUrl: 'img/newmarkers/f.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Gov/Pool Fund": new L.Icon({
+    "Government": new L.Icon({
+        iconUrl: 'img/newmarkers/g.png',
+        iconSize: iconSize,
+        popupAnchor: popupAnchor
+    }),
+    "Government Pool Fund": new L.Icon({
         iconUrl: 'img/newmarkers/p.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
@@ -95,18 +95,18 @@ var icons = {
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Others": new L.Icon({
-        iconUrl: 'img/newmarkers/o.png',
+    "Saath Saath Project": new L.Icon({
+        iconUrl: 'img/newmarkers/s.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "STC": new L.Icon({
+    "Save The Children": new L.Icon({
         iconUrl: 'img/newmarkers/c.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     }),
-    "Gov": new L.Icon({
-        iconUrl: 'img/newmarkers/g.png',
+    "Others": new L.Icon({
+        iconUrl: 'img/newmarkers/o.png',
         iconSize: iconSize,
         popupAnchor: popupAnchor
     })
@@ -115,8 +115,8 @@ var icons = {
 function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
-        // console.log('icon', icons[icon]);
-        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div></br>";
+        //
+        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div>";
     }
     return legendHTML;
 }
@@ -147,7 +147,7 @@ function style_htc_default(marker) {
     var HTC_icon = L.icon({
         iconUrl: 'img/marker22.png',
         iconSize: [20, 30], // size of the icon
-        // iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+        iconAnchor: [10, 30], // point of the icon which will correspond to marker's location
         popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
     });
     return marker.setIcon(HTC_icon)
@@ -194,7 +194,7 @@ vdc_boundary_styles = {
 HTC_sites_styles = {
     "Default": {
         "style": style_htc_default,
-        "legend": "<div><img src = 'img/marker22.png' style = 'height:40'>HTC Sites</div>"
+        "legend": "<div><img src = 'img/marker22.png' style = 'height:30'>HTC Sites</div>"
     },
     "Supported By": {
         "style": style_htc_supported_by,
@@ -204,13 +204,13 @@ HTC_sites_styles = {
 art_sites_styles = {
     "Default": {
         "style": style_art_default,
-        "legend": "<div><img src = 'img/newmarkers/artmarker.png' style = 'height:40'>ART Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/artmarker.png' style = 'height:30'>ART Sites</div>"
     }
 }
 cd4_sites_styles = {
     "Default": {
         "style": style_cd4_default,
-        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>CD4 Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:30'>CD4 Sites</div>"
     }
 }
 
@@ -218,6 +218,6 @@ cd4_sites_styles = {
 pmtct_sites_styles = {
     "Default": {
         "style": style_pmtct_default,
-        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:40'>PMTCT Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/pmtctmarker.png' style = 'height:30'>PMTCT Sites</div>"
     }
 }

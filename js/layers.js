@@ -30,12 +30,13 @@ var District_labels = new L.layerGroup();
 //District_labels.addTo(map);
 var VDC_labels = new L.layerGroup();
 //VDC_labels.addTo(map);
-markers = new L.MarkerClusterGroup({
+var markers = new L.MarkerClusterGroup({
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
     maxClusterRadius: 50,
-    spiderfyOnMaxZoom: true
+    spiderfyOnMaxZoom: false
 });
+markers.addTo(map);
 
 function highlightFeature(e) {
     // district_boundary.resetStyle(e.target);
@@ -56,7 +57,7 @@ function highlightFeature(e) {
 function resetHighlight(e) {
 
     var layer = e.target;
-    // console.log(layer);
+    //
     // layer.setStyle(style_district_unique);
     // layer.setStyle(each_district_reset_Style);
     district_boundary.setStyle(each_district_reset_Style);
@@ -68,9 +69,9 @@ function zoomToFeature(e) {
 
 var district_boundary = new L.geoJson.ajax("data/district.geojson", {
     onEachFeature: function(feature, layer) {
-        // console.log('layer ', layer);
+        //
         districtpopUp(feature, layer);
-        // console.log('feature', feature);
+        //
         district_colors[feature.properties.NAME_3] = randomColor();
     }
 
@@ -78,7 +79,7 @@ var district_boundary = new L.geoJson.ajax("data/district.geojson", {
 // var district_boundary = new L.geoJson.ajax("data/district.geojson");
 district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
     labels(data, 'district');
 });
 district_boundary.addTo(map);
@@ -86,7 +87,7 @@ district_boundary.addTo(map);
 var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
 vdc_boundary.on('data:loaded', function(data) {
     vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
-    map.spin(false);
+    // map.spin(false);
     labels(data, 'vdc');
 });
 // vdc_boundary.addTo(map);
@@ -121,7 +122,7 @@ searchControl.on('search_locationfound', function(e) {
 map.addControl(searchControl); //inizialize search control
 
 // onEachFeature: function(feature, layer) {
-//     console.log('on the run');
+//
 //     // layer.bindPopup(feature.properties.description);
 // });
 
@@ -134,31 +135,34 @@ HTC_sites.on('data:loaded', function(data) {
     HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
     // markers.addLayer(HTC_sites);
     markers.addLayer(data.target);
-    map.removeLayer(HTC_sites);
-    map.spin(false);
+    // map.removeLayer(HTC_sites);
+    // map.spin(false);
 });
 // HTC_sites.addTo(map);
 
 //art sites
 art_sites.on('data:loaded', function(data) {
     art_sites.eachLayer(art_sites_styles["Default"]["style"]);
-    map.spin(false);
+    markers.addLayer(data.target);
+    // map.spin(false);
 });
-art_sites.addTo(map);
+// art_sites.addTo(map);
 
 //cd4 sites
 cd4_sites.on('data:loaded', function(data) {
     cd4_sites.eachLayer(cd4_sites_styles["Default"]["style"]);
-    map.spin(false);
+    markers.addLayer(data.target);
+    // map.spin(false);
 });
-cd4_sites.addTo(map);
+// cd4_sites.addTo(map);
 
 //pmtct sites
 pmtct_sites.on('data:loaded', function(data) {
     pmtct_sites.eachLayer(pmtct_sites_styles["Default"]["style"]);
-    map.spin(false);
+    markers.addLayer(data.target);
+    // map.spin(false);
 });
-pmtct_sites.addTo(map);
+// pmtct_sites.addTo(map);
 
 baseLayers = {};
 
@@ -167,7 +171,7 @@ var overlays = {
         "OpenStreetMap": osm,
         "District": district_boundary,
         "VDC": vdc_boundary,
-        "HTC Sites": markers,
+        "HTC Sites": HTC_sites,
         "ART Sites": art_sites,
         "CD4 Sites": cd4_sites,
         "PMTCT Sites": pmtct_sites
@@ -185,8 +189,18 @@ var LABELS = {
 };
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
-    // console.log('layer add', layer);
-    //console.log('onoverlayadd');
+
+    legendObj = {};
+    divInStyleChooser = $('.' + spaceToUnderscore(layer.name) + '_styles');
+
+    if (divInStyleChooser.find('input:checked').length) {
+        selectedStyle = divInStyleChooser.find('input:checked').attr('id').slice(8);
+    } else {
+        selectedStyle = "Default";
+    }
+    // debugger;
+    legendObj[layer.name] = STYLES[spaceToUnderscore(layer.name) + "_styles"]["styles"][selectedStyle]["legend"];
+    legend.update(legendObj);
     if (LABELS[layer.name + " Labels"]) {
         displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
         //map.addLayer(LABELS[layer.name + " Labels"]);
@@ -195,13 +209,12 @@ map.on("overlayadd", function(layer) {
     }
 });
 map.on("overlayremove", function(layer) {
-    // console.log('layer remove', layer);
-    // console.log('layer.name + " Labels" ', layer.name + " Labels");
-    // debugger;
+    legendObj = {};
+    legendObj[layer.name] = "";
+    legend.update(legendObj);
     if (map.hasLayer(LABELS[layer.name + " Labels"])) {
         map.removeLayer(LABELS[layer.name + " Labels"]);
         layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
-        // console.log(LABELS[layer.name + "_labels removed"]);
     }
 });
 
@@ -209,12 +222,12 @@ function displayLayer(layer, zoom, displayName) {
     if (map.getZoom() < zoom) {
         if (map.hasLayer(layer)) {
             map.removeLayer(layer);
-            layersControlSettings.removeLayer(layer);
+            // layersControlSettings.removeLayer(layer);
         }
     } else {
         if (!map.hasLayer(layer)) {
             map.addLayer(layer);
-            layersControlSettings.addOverlay(layer, displayName, "Layers");
+            // layersControlSettings.addOverlay(layer, displayName, "Layers");
         }
     }
 }
@@ -244,8 +257,11 @@ vdc_boundary.on('dblclick', function(e) {
     }
 });
 HTC_sites.on('dblclick', function(e) {
-    console.log('htc sites ma double click');
-    map.setView(e.latlng, 17);
+    map.setView(e.latlng, 14);
 });
 
-map.addLayer(markers);
+// map.addLayer(markers);
+L.control.scale({
+    position: 'bottomright'
+}).addTo(map);
+// map.removeLayer(HTC_sites);

@@ -4,9 +4,10 @@ styleChooserDiv = $('#styleChooser');
 $.each(STYLES, function(index1, val1) {
     switch (val1['geometry']) {
         case "point":
-            // console.log(val['geometry']);
+            //
             nameDiv = $('<div>', {
-                text: val1['display']
+                text: val1['display'],
+                class: index1
             }).appendTo(styleChooserDiv);
             nameDiv.append('</br>');
 
@@ -17,7 +18,7 @@ $.each(STYLES, function(index1, val1) {
                     click: function() {
                         val1['layer'].eachLayer(val1['styles'][index]['style']);
                         legendObj = {};
-                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legendObj[val1.display] = val1['styles'][index]['legend'];
                         legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);
@@ -26,9 +27,10 @@ $.each(STYLES, function(index1, val1) {
 
             break;
         default:
-            // console.log(val['geometry']);
+            //
             nameDiv = $('<div>', {
-                text: val1['display']
+                text: val1['display'],
+                class: index1
             }).appendTo(styleChooserDiv);
             nameDiv.append('</br>');
 
@@ -39,7 +41,7 @@ $.each(STYLES, function(index1, val1) {
                     click: function() {
                         val1['layer'].setStyle(val1['styles'][index]['style']);
                         legendObj = {};
-                        legendObj[index1] = val1['styles'][index]['legend'];
+                        legendObj[val1.display] = val1['styles'][index]['legend'];
                         legend.update(legendObj);
                     }
                 }).appendTo(nameDiv);

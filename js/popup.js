@@ -1,13 +1,6 @@
 /*
     make the z-index of label greater than that of markers
 */
-function underscoreToSpace(naaaaame) {
-    var underscored = naaaaame;
-    var spaced = underscored.replace(/_/g, " ");
-    return spaced;
-
-}
-
 
 function districtpopUp(feature, layer) {
     layer.on({
@@ -18,10 +11,7 @@ function districtpopUp(feature, layer) {
     var popUp = '<div id="popup">';
     popUp += '<table>';
     for (data in layer.feature.properties) {
-        // console.log('feature ', feature);
-        // console.log('data ', layer.feature.properties[data]);
-        dataspaced = underscoreToSpace(data);
-        popUp += "<tr>" + "<td>" + dataspaced + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
+        popUp += "<tr>" + "<td>" + underscoreToSpace(data) + "</td>" + "<td>" + layer.feature.properties[data] + "</td>" + "</tr>";
 
     }
     popUp += '</table>';
@@ -116,7 +106,6 @@ function oasis(e) {
     var popUpContent = "";
     popUpContent += '<table>';
     for (data in layer.feature.properties) {
-        // console.log('feature ', feature);
         popUpContent += "<tr>" + "<td>" + data + "</td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
     }
     popUpContent += '</table>';
