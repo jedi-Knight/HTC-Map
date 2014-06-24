@@ -1,26 +1,26 @@
-function listenToElementChange(selector, fn, trigger){
-    if(trigger==="countchanged"){
-        $(selector).parent().bind(trigger, fn);
-        m = $(selector).length;
-    }else if(trigger==="childnodecountchanged"){
+function listenToElementChange(selector, fn /*, trigger*/){
+//    if(trigger==="countchanged"){
+//        $(selector).parent().bind(trigger, fn);
+//        m = $(selector).length;
+//    }else if(trigger==="childnodecountchanged"){
         $(selector).bind(trigger,fn);
         n=$(selector).children().length;
-    }else{
-        return;
-    };
+//    }else{
+//        return;
+//    };
     
     id = setInterval(function(){    
-        if(trigger==="countchanged"){
-            if(($(selector).length - m) !== 0){
-                $(selector).parent().trigger(trigger);
-                m = $(selector).length;
-            };
-        }else{
+//        if(trigger==="countchanged"){
+//            if(($(selector).length - m) !== 0){
+//                $(selector).parent().trigger(trigger);
+//                m = $(selector).length;
+//            };
+//        }else{
         if(($(selector).children().length - n) !== 0){
                 $(selector).trigger(trigger);
                 n = $(selector).children().length;
         };
-        };
+//        };
         
     }, 30);
     
@@ -41,16 +41,16 @@ $(document).ready(function() {
     /****/
     
     /**resize legend width according to number of items**/
-    listenToElementChange(".leaflet-bottom.leaflet-left .info1.leaflet-control>div", function(){
-        console.log("inside triggered function");
-        if($("div.leaflet-bottom.leaflet-left .info1.leaflet-control>div").length > 4){
-            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control>h3").css("width","236px");
-            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","236px");
-        }else{
-            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control>h3").css("width","120px");
-            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","120px");
-        };
-    }, "countchanged");
+    
+//    listenToElementChange(".leaflet-bottom.leaflet-left .info1.leaflet-control>div", function(){        
+//        if($("div.leaflet-bottom.leaflet-left .info1.leaflet-control>div").length > 4){
+////            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control>h3").css("width","236px");
+////            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","236px");
+//        }else{
+////            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control>h3").css("width","120px");
+////            $("div.leaflet-bottom.leaflet-left .info1.leaflet-control").css("max-width","120px");
+//        };
+//    }, "countchanged");
     /****/
 
     $(".trigger.styles").click(function() {
@@ -66,7 +66,7 @@ $(document).ready(function() {
             $("#popup td:contains('"+sublist[txt]+"')").parent().toggleClass("listitem sublist");
         };
         $("#popup tr.sublist").prev(".listitem").addClass("expandable");
-    }, "childnodecountchanged");
+    }); //, "childnodecountchanged");
     /****/
     
     

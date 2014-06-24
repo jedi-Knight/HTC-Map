@@ -135,6 +135,9 @@ div.control-styles div#styleChooser{
     margin-bottom: 27px;
     border-radius: 6px;
     max-width: 220px;
+    max-height:190px;
+    overflow-y:auto;
+    overflow-x:hidden;
     display: inline-flex;
     flex-wrap: wrap;
     padding:2px;
