@@ -50,3 +50,15 @@ function fullextent() {
     map.fitBounds(bounds);
     */
 }
+
+function underscoreToSpace(naaaaame) {
+    var underscored = naaaaame;
+    var spaced = underscored.replace(/_/g, " ");
+    return spaced;
+}
+
+function spaceToUnderscore(naaaaame) {
+    var underscored = naaaaame;
+    var spaced = underscored.replace(/ /g, "_");
+    return spaced;
+}

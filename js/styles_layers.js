@@ -15,9 +15,9 @@ var STYLES = {
         "layer": vdc_boundary,
         "display": "VDC"
     },
-    "HTC_sites_styles": {
+    "htc_sites_styles": {
         "geometry": "point",
-        "styles": HTC_sites_styles,
+        "styles": htc_sites_styles,
         "layer": HTC_sites,
         "display": "HTC Sites"
     },
