@@ -132,15 +132,15 @@ div.control-styles div#styleChooser{
 
 /**legend**/
 .leaflet-bottom.leaflet-left .info1.leaflet-control{
-    margin-bottom: 27px;
-    border-radius: 6px;
-    max-width: 220px;
-    max-height:190px;
-    overflow-y:auto;
-    overflow-x:hidden;
     display: inline-flex;
     flex-wrap: wrap;
     padding:2px;
+    margin-bottom: 27px;
+    border-radius: 6px;
+    max-width: 220px;
+    max-height:325px;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>h3{
     margin-top: 6px;
