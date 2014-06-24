@@ -172,7 +172,7 @@ function style_cd4_default(marker) {
 
 function style_pmtct_default(marker) {
     var pmtct_icon = L.icon({
-        iconUrl: 'img/newmarkers/cd4marker.png', //use the pmtct marker instead
+        iconUrl: 'img/newmarkers/pmtctmarker.png', //use the pmtct marker instead
         iconSize: [25, 35],
         iconAnchor: [12, 35]
     });
@@ -180,13 +180,13 @@ function style_pmtct_default(marker) {
 }
 
 // arrange styles to groups
-district_boundary_styles = {
+district_styles = {
     "Default": {
         "style": style_district_unique,
         "legend": ""
     }
 }
-vdc_boundary_styles = {
+vdc_styles = {
     "Default": {
         "style": style_vdc_unique,
         "legend": ""

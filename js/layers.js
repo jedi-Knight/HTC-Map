@@ -39,7 +39,7 @@ var markers = new L.MarkerClusterGroup({
 // markers.addTo(map);
 
 function highlightFeature(e) {
-    // district_boundary.resetStyle(e.target);
+    // district.resetStyle(e.target);
     var layer = e.target;
     layer.setStyle(district_highlight_style);
     /*layer.setStyle({
@@ -60,14 +60,14 @@ function resetHighlight(e) {
     //
     // layer.setStyle(style_district_unique);
     // layer.setStyle(each_district_reset_Style);
-    district_boundary.setStyle(each_district_reset_Style);
+    district.setStyle(each_district_reset_Style);
 }
 
 function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
-var district_boundary = new L.geoJson.ajax("data/district.geojson", {
+var district = new L.geoJson.ajax("data/district.geojson", {
     onEachFeature: function(feature, layer) {
         //
         districtpopUp(feature, layer);
@@ -76,22 +76,22 @@ var district_boundary = new L.geoJson.ajax("data/district.geojson", {
     }
 
 });
-// var district_boundary = new L.geoJson.ajax("data/district.geojson");
-district_boundary.on('data:loaded', function(data) {
-    district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
+// var district = new L.geoJson.ajax("data/district.geojson");
+district.on('data:loaded', function(data) {
+    district.setStyle(district_styles["Default"]["style"]);
     // map.spin(false);
     labels(data, 'district');
-    map.fitBounds(district_boundary.getBounds());
+    map.fitBounds(district.getBounds());
 });
-district_boundary.addTo(map);
+district.addTo(map);
 
-var vdc_boundary = new L.geoJson.ajax("data/vdc.geojson");
-vdc_boundary.on('data:loaded', function(data) {
-    vdc_boundary.setStyle(vdc_boundary_styles["Default"]["style"]);
+var vdc = new L.geoJson.ajax("data/vdc.geojson");
+vdc.on('data:loaded', function(data) {
+    vdc.setStyle(vdc_styles["Default"]["style"]);
     // map.spin(false);
     labels(data, 'vdc');
 });
-// vdc_boundary.addTo(map);
+// vdc.addTo(map);
 
 var HTC_sites = new L.geoJson.ajax("data/htc_data.geojson", {
     onEachFeature: htc_popUp
@@ -162,11 +162,11 @@ baseLayers = {};
 var overlays = {
     "Layers": {
         "OpenStreetMap": osm,
-        "District": district_boundary,
-        "VDC": vdc_boundary,
-        "HTC Sites": HTC_sites,
+        "District": district,
+        "VDC": vdc,
         "ART Sites": art_sites,
         "CD4 Sites": cd4_sites,
+        "HTC Sites": HTC_sites,
         "PMTCT Sites": pmtct_sites
     },
     "Labels": {
@@ -225,8 +225,8 @@ function displayLayer(layer, zoom, displayName) {
     }
 }
 map.on('zoomend', function(e) {
-    displayLayer(district_boundary, 1, "District");
-    displayLayer(vdc_boundary, 11, "VDC");
+    displayLayer(district, 1, "District");
+    displayLayer(vdc, 11, "VDC");
 });
 // layers control
 layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
@@ -237,13 +237,13 @@ $('#layersControl').append(layersControlSettings.onAdd(map));
 $('.leaflet-top.leaflet-right').hide(); // temporary solution for hiding layers control
 
 //check the active layers first 
-district_boundary.on('dblclick', function(e) {
+district.on('dblclick', function(e) {
     a = map.getZoom();
     if (a < 19) {
         map.setZoom(a + 1);
     }
 });
-vdc_boundary.on('dblclick', function(e) {
+vdc.on('dblclick', function(e) {
     a = map.getZoom();
     if (a < 19) {
         map.setZoom(a + 1);
