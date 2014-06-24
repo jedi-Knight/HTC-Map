@@ -24,9 +24,11 @@ legend.update = function(legends) {
         }
         //
     }
+    //sorting out the legend items
+    var sorted_legend_keys = Object.keys(legend._legends).sort();
     // write out html for legend
-    for (le in this._legends) {
-        todisplay += "<div>" + le + this._legends[le] + "</div>";
+    for (le in sorted_legend_keys) {
+        todisplay += "<div><h5>" + sorted_legend_keys[le] + "</h5></div><div>" + this._legends[sorted_legend_keys[le]] + "</div>";
         todisplay += "";
     }
     this._div.innerHTML = todisplay

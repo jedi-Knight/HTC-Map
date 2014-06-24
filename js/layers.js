@@ -1,4 +1,4 @@
-var map = L.map('map').setView([28.425, 84.435], 7);
+var map = L.map('map').setView([28.425, 84.435], 8);
 
 var north_east = new L.latLng(26.328231, 80.029907);
 var south_west = new L.latLng(30.605155, 88.225708);
@@ -36,7 +36,7 @@ var markers = new L.MarkerClusterGroup({
     maxClusterRadius: 50,
     spiderfyOnMaxZoom: false
 });
-markers.addTo(map);
+// markers.addTo(map);
 
 function highlightFeature(e) {
     // district_boundary.resetStyle(e.target);
@@ -81,6 +81,7 @@ district_boundary.on('data:loaded', function(data) {
     district_boundary.setStyle(district_boundary_styles["Default"]["style"]);
     // map.spin(false);
     labels(data, 'district');
+    map.fitBounds(district_boundary.getBounds());
 });
 district_boundary.addTo(map);
 
@@ -121,18 +122,10 @@ searchControl.on('search_locationfound', function(e) {
 
 map.addControl(searchControl); //inizialize search control
 
-// onEachFeature: function(feature, layer) {
-//
-//     // layer.bindPopup(feature.properties.description);
-// });
-
-
-
-
 //htc sites
 HTC_sites.on('data:loaded', function(data) {
     // debugger;
-    HTC_sites.eachLayer(HTC_sites_styles["Default"]["style"]);
+    HTC_sites.eachLayer(htc_sites_styles["Default"]["style"]);
     // markers.addLayer(HTC_sites);
     markers.addLayer(data.target);
     // map.removeLayer(HTC_sites);
@@ -199,7 +192,7 @@ map.on("overlayadd", function(layer) {
         selectedStyle = "Default";
     }
     // debugger;
-    legendObj[layer.name] = STYLES[spaceToUnderscore(layer.name) + "_styles"]["styles"][selectedStyle]["legend"];
+    legendObj[layer.name] = STYLES[spaceToUnderscore(layer.name).toLowerCase() + "_styles"]["styles"][selectedStyle]["legend"];
     legend.update(legendObj);
     if (LABELS[layer.name + " Labels"]) {
         displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
@@ -233,7 +226,7 @@ function displayLayer(layer, zoom, displayName) {
 }
 map.on('zoomend', function(e) {
     displayLayer(district_boundary, 1, "District");
-    displayLayer(vdc_boundary, 10, "VDC");
+    displayLayer(vdc_boundary, 11, "VDC");
 });
 // layers control
 layersControlSettings = L.control.groupedLayers(baseLayers, overlays, {
@@ -264,4 +257,8 @@ HTC_sites.on('dblclick', function(e) {
 L.control.scale({
     position: 'bottomright'
 }).addTo(map);
-// map.removeLayer(HTC_sites);
+
+map.fitBounds([
+    [27.005, 80.915],
+    [29.945, 89.255]
+]);
