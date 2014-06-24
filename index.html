@@ -25,28 +25,26 @@
         <link rel="stylesheet" href="css/gui.css"/> <!--css rules for GUI-->
         <script type="text/javascript" src="js/guiInteractivity.js"></script><!--interactivity script for GUI-->
         <style>
-
-
         </style>
         <title>Map of HIV Service Sites</title>
     </head>
     <body>
-        <div id = "banner">
-        <img src="img/placeholder.gif" alt="FHI360 Banner" >
-    </div>
-        <div class = 'row'>
-            <div class="title" id="title"><h3>Map of HIV Service Sites</h3></div>
-            <div class = 'col-xs-8 mapBox'>
-                <div id="map"></div>
-            </div>
-            <div class = 'col-xs-4 panel'>
-                <div id="layersControl"></div>
-                <div class="styleChooser"><div class="control-styles">
-                    <div class='trigger styles passive'>Styles<div class="lever off"></div></div><div id="styleChooser" class="collapse in">
-                </div>
+        <!--<div id = "banner">
+            <img src="img/placeholder.gif" alt="FHI360 Banner" >
+        </div>-->
+    <header class="title" id="title"  style="padding:10px; text-align: center;"><h3 style="font-family: 'Verdana','sans-serif'; text-shadow: 0px 0px 1px #000000;">Map of HIV Service Sites</h3></header>
+    <div class = 'row'>
+        <div class = 'col-xs-8 mapBox'>
+            <div id="map"></div>
+        </div>
+        <div class = 'col-xs-4 panel'>
+            <div id="layersControl"></div>
+            <div class="styleChooser"><div class="control-styles">
+                <div class='trigger styles passive'>Styles<div class="lever off"></div></div><div id="styleChooser" class="collapse in">
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src = "js/globalVariables.js"></script>
 <script src = "js/main.js"></script>
@@ -57,6 +55,5 @@
 <script src = "js/styles_layers.js"></script>s
 <script src = "js/legend.js"></script>
 <script src = "js/style_chooser.js"></script>
-
 </body>
 </html>
