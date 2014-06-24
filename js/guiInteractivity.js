@@ -16,10 +16,10 @@ function listenToElementChange(selector, fn, trigger){
                 m = $(selector).length;
             };
         }else{
-            if(($(selector).children().length - n) !== 0){
+        if(($(selector).children().length - n) !== 0){
                 $(selector).trigger(trigger);
                 n = $(selector).children().length;
-            };
+        };
         };
         
     }, 30);
@@ -59,7 +59,7 @@ $(document).ready(function() {
     });
     
     /**popup styling**/
-    sublist = ["GoV","FHI360","Save","FPAN","Others"];
+    sublist = ["Gov","GoV","FHI360","Save","FPAN","Others"];
     listenToElementChange(".leaflet-popup-pane", function(){
         $("#popup tr").addClass("listitem");
         for(txt in sublist){

@@ -134,7 +134,7 @@ div.control-styles div#styleChooser{
 .leaflet-bottom.leaflet-left .info1.leaflet-control{
     margin-bottom: 27px;
     border-radius: 6px;
-    max-width: 120px;
+    max-width: 220px;
     display: inline-flex;
     flex-wrap: wrap;
     padding:2px;
@@ -142,7 +142,7 @@ div.control-styles div#styleChooser{
 .leaflet-bottom.leaflet-left .info1.leaflet-control>h3{
     margin-top: 6px;
     font-size: 12pt;
-    width: 120px;
+    width: 220px;
     text-align: center;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control img{
@@ -152,9 +152,9 @@ div.control-styles div#styleChooser{
     margin-bottom : 2px;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>div{
-    min-width: 116px;
+    min-width: 216px;
     border-radius : 0px;
-    border: #eeeeee thin solid;
+    border-top: #eeeeee thin solid;
     margin: 0px 0px 0px 0px;
     font-size:8pt;
 }
