@@ -27,7 +27,6 @@ function districtpopUp(feature, layer) {
 }
 
 function htc_popUp(feature, layer) {
-    //debugger;!@#$%^&*(%$#@#$%^&*()*&^%$#$%^&*()(*&%$#@#$^&*()(*^%$#$%^&*()(*^%$#%^&*()(*^%$)))))
     //add the supported by and HealthFacility type in Popup Table
     // layer.bindLabel(
     // debugger;

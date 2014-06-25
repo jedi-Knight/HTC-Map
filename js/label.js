@@ -15,13 +15,13 @@ function labels(data, layer_calling) {
         }
     } else if (layer_calling == 'vdc') {
         _test = data.target._layers;
-        var size = Object.size(_test);
+        // var size = Object.size(_test);
         //
         var a = Object.keys(_test);
         for (var i = 0; i < a.length - 1; i++) {
             var b = _test[a[i]];
             var vdc = L.polygon(b._latlngs);
-            vdc_name = b.feature.properties.NAME_4;
+            var vdc_name = b.feature.properties.NAME_4;
             var labelLocation = vdc.getBounds().getCenter();
             // var labelLocation = new L.LatLng(vdc.getBounds().getCenter().lat, vdc.getBounds().getCenter().lng);
             // debugger;
