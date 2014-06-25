@@ -212,15 +212,16 @@ map.on("overlayremove", function(layer) {
 });
 
 function displayLayer(layer, zoom, displayName) {
-    if (map.getZoom() < zoom) {
+    if (map.getZoom() == zoom - 1) {
         if (map.hasLayer(layer)) {
             map.removeLayer(layer);
-            // layersControlSettings.removeLayer(layer);
+            layersControlSettings.removeLayer(layer);
         }
-    } else {
+    }
+    if (map.getZoom() == zoom) {
         if (!map.hasLayer(layer)) {
             map.addLayer(layer);
-            // layersControlSettings.addOverlay(layer, displayName, "Layers");
+            layersControlSettings.addOverlay(layer, displayName, "Layers");
         }
     }
 }

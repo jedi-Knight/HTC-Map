@@ -33,7 +33,7 @@ function htc_popUp(feature, layer) {
     var name = layer.feature.properties.Name;
     //send this to a function which converts _ to space
 
-    layer.bindLabel(name);
+
     var popUpContent = "";
     popUpContent += '<table>';
     for (data in layer.feature.properties) {
@@ -51,6 +51,10 @@ function htc_popUp(feature, layer) {
         maxHeight: 200,
         minWidth: 350
     }).setContent(popUpContent));
+    layer.bindLabel(name, {
+        noHide: false
+    });
+    layer.options.riseOnHover = true;
     /*
     layer.on({
         mouseover: black,

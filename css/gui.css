@@ -301,4 +301,16 @@ div.row{
 
      
 
-/****/
+/*
+
+ */
+.leaflet-marker-icon {
+    z-index: 1000;    /*This code is getting overwritten somewhere*/
+}
+.leaflet-label{
+    z-index: 1100;   /*This code is getting overwritten somewhere*/
+}
+
+.legend-layer-class{
+    background-color: blanchedalmond;
+}
