@@ -34,7 +34,7 @@ var markers = new L.MarkerClusterGroup({
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
     maxClusterRadius: 50,
-    spiderfyOnMaxZoom: true
+    spiderfyOnMaxZoom: false
 });
 // markers.addTo(map);
 
@@ -182,22 +182,20 @@ var LABELS = {
 };
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
+    if (!layer.name.match("Labels")) {
+        legendObj = {};
+        divInStyleChooser = $('.' + spaceToUnderscore(layer.name) + '_styles');
 
-    legendObj = {};
-    divInStyleChooser = $('.' + spaceToUnderscore(layer.name) + '_styles');
-
-    if (divInStyleChooser.find('input:checked').length) {
-        selectedStyle = divInStyleChooser.find('input:checked').attr('id').slice(8);
-    } else {
-        selectedStyle = "Default";
+        if (divInStyleChooser.find('input:checked').length) {
+            selectedStyle = divInStyleChooser.find('input:checked').attr('id').slice(8);
+        } else {
+            selectedStyle = "Default";
+        }
+        legendObj[layer.name] = STYLES[spaceToUnderscore(layer.name).toLowerCase() + "_styles"]["styles"][selectedStyle]["legend"];
+        legend.update(legendObj);
     }
-    // debugger;
-    legendObj[layer.name] = STYLES[spaceToUnderscore(layer.name).toLowerCase() + "_styles"]["styles"][selectedStyle]["legend"];
-    legend.update(legendObj);
     if (LABELS[layer.name + " Labels"]) {
         displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
-        //map.addLayer(LABELS[layer.name + " Labels"]);
-        // overlays[layer.name + "_labels"] = LABELS[layer.name + "_labels"];
         layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
 });

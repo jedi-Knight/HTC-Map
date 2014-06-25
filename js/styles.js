@@ -27,7 +27,8 @@ function each_district_reset_Style() {
         opacity: 1,
         color: 'black',
         dashArray: '3',
-        // fillOpacity: 0.8
+        // fillOpacity: 0.8+
+
     };
 }
 

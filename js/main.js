@@ -58,7 +58,7 @@ function underscoreToSpace(naaaaame) {
 }
 
 function spaceToUnderscore(naaaaame) {
-    var underscored = naaaaame;
-    var spaced = underscored.replace(/ /g, "_");
-    return spaced;
+    var spaced = naaaaame;
+    var underscored = spaced.replace(/ /g, "_");
+    return underscored;
 }
