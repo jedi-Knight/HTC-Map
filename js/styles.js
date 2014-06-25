@@ -116,7 +116,7 @@ function iconToLegendString() {
     var legendHTML = "";
     for (icon in icons) {
         //
-        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:40'>" + icon + "</div>";
+        legendHTML += "<div><img src ='" + icons[icon].options.iconUrl + "' style = 'height:30'>" + icon + "</div>";
     }
     return legendHTML;
 }

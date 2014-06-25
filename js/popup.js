@@ -21,8 +21,8 @@ function districtpopUp(feature, layer) {
         closeButton: true,
         keepInView: true,
         autoPan: true,
-        maxHeight: 400,
-        minWidth: 500
+        maxHeight: 300,
+        minWidth: 375
     }).setContent(popUp));
 }
 

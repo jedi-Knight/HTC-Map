@@ -1,6 +1,6 @@
 var map = L.map('map');
 if (!map.restoreView()) {
-    map.setView([28.425, 84.43], 8);
+    map.setView([28.425, 84.43], 7);
 }
 
 var north_east = new L.latLng(26.328231, 80.029907);

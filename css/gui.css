@@ -37,6 +37,15 @@
 }
 /****/
 
+/**disable user-selection of text**/
+.panel, .leaflet-bottom.leaflet-left{
+    user-select:none;
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none; 
+}
+/****/
+
 
 .panel>div>div, .leaflet-bottom.leaflet-left .info1.leaflet-control{
     margin-bottom:2px;
@@ -118,6 +127,8 @@ div.control-styles, div.leaflet-control-layers-group span.leaflet-control-layers
     font-size: 12pt;
     font-weight: normal;
     text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    
+    
 }
 
 div.leaflet-control-layers-group label:first-of-type{
@@ -132,12 +143,15 @@ div.control-styles div#styleChooser{
 
 /**legend**/
 .leaflet-bottom.leaflet-left .info1.leaflet-control{
-    margin-bottom: 27px;
-    border-radius: 6px;
-    max-width: 220px;
     display: inline-flex;
     flex-wrap: wrap;
     padding:2px;
+    margin-bottom: 27px;
+    border-radius: 6px;
+    max-width: 220px;
+    max-height:325px;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 .leaflet-bottom.leaflet-left .info1.leaflet-control>h3{
     margin-top: 6px;
@@ -154,7 +168,7 @@ div.control-styles div#styleChooser{
 .leaflet-bottom.leaflet-left .info1.leaflet-control>div{
     min-width: 216px;
     border-radius : 0px;
-    border: #eeeeee thin solid;
+    border-top: #eeeeee thin solid;
     margin: 0px 0px 0px 0px;
     font-size:8pt;
 }
@@ -232,10 +246,15 @@ path.leaflet-clickable{
 /**district popup**/
 .leaflet-popup-scrolled{
     border:none;
+    /*border: #cccccc thin solid;*/
+    outline: #cccccc thin solid;
+    outline-offset: -1px;
+    //padding:0px 2px 0px 0px;
     /*text-align:center;*/
 }
 #popup td{
     border: #cccccc thin solid;
+    text-transform: capitalize;
 }
 
 #popup tr{
@@ -276,5 +295,10 @@ div.row{
     margin:0px;
     max-height:90%;
 }
+
+/****/
+/**disable hilight of icons when text is selected**/
+
+     
 
 /****/
