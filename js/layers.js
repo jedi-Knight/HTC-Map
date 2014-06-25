@@ -1,4 +1,7 @@
-var map = L.map('map').setView([28.425, 84.435], 8);
+var map = L.map('map');
+if (!map.restoreView()) {
+    map.setView([28.425, 84.43], 8);
+}
 
 var north_east = new L.latLng(26.328231, 80.029907);
 var south_west = new L.latLng(30.605155, 88.225708);
@@ -81,7 +84,6 @@ district.on('data:loaded', function(data) {
     district.setStyle(district_styles["Default"]["style"]);
     // map.spin(false);
     labels(data, 'district');
-    map.fitBounds(district.getBounds());
 });
 district.addTo(map);
 
@@ -255,8 +257,3 @@ HTC_sites.on('dblclick', function(e) {
 L.control.scale({
     position: 'bottomright'
 }).addTo(map);
-
-map.fitBounds([
-    [27.005, 80.915],
-    [29.945, 89.255]
-]);
