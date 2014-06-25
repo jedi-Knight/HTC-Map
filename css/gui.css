@@ -235,10 +235,15 @@ path.leaflet-clickable{
 /**district popup**/
 .leaflet-popup-scrolled{
     border:none;
+    /*border: #cccccc thin solid;*/
+    outline: #cccccc thin solid;
+    outline-offset: -1px;
+    //padding:0px 2px 0px 0px;
     /*text-align:center;*/
 }
 #popup td{
     border: #cccccc thin solid;
+    text-transform: capitalize;
 }
 
 #popup tr{
