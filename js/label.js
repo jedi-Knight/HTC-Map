@@ -7,7 +7,7 @@ function labels(data, layer_calling) {
         for (aht in _test) {
             var a = _test[aht]
             var district = L.polygon(a._latlngs);
-            district_name = a.feature.properties.Name; //label content
+            district_name = a.feature.properties.NAME_3 || a.feature.properties.Name; //label content
             // var labelLocation = new L.LatLng(district.getBounds().getCenter().lat, district.getBounds().getCenter().lng);
             var labelLocation = district.getBounds().getCenter();
             var labelTitle = new L.LabelOverlays(labelLocation, district_name);

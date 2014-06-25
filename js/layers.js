@@ -72,7 +72,7 @@ var district = new L.geoJson.ajax("data/district.geojson", {
         //
         districtpopUp(feature, layer);
         //
-        district_colors[feature.properties.NAME_3] = randomColor();
+        district_colors[feature.properties.NAME_3 || feature.properties.Name] = randomColor();
     }
 
 });
