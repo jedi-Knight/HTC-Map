@@ -1,3 +1,9 @@
+/**district popup content filters**/
+sublist = ["Gov","GoV","FHI360","Save","FPAN","Others"];
+districtDataTxt = {"district":" "};
+districtSublistTxt = {"No of":" ", "HTC":" ", "STI":" ", "CCC":" ", "CHBC":" "};
+/****/
+
 function listenToElementChange(selector, fn){
     $(selector).bind("childcountchanged",fn);
     n=$(selector).children().length;
@@ -10,6 +16,13 @@ function listenToElementChange(selector, fn){
     
 }
 
+$.fn.txtContentChange = function(jsonObj){
+    return this.each(function(){
+        for(cTxt in jsonObj){
+            $(this).text($(this).text().replace(cTxt,jsonObj[cTxt]));
+        }
+    });
+};
 
 
 $(document).ready(function() {
@@ -38,13 +51,18 @@ $(document).ready(function() {
     /****/
     
     /**popup styling**/
-    sublist = ["Gov","GoV","FHI360","Save","FPAN","Others"];
+    
     listenToElementChange(".leaflet-popup-pane", function(){
         $("#popup tr").addClass("listitem");
         for(txt in sublist){
-            $("#popup td:contains('"+sublist[txt]+"')").parent().toggleClass("listitem sublist");
+            $("#popup tr.listitem td:contains('"+sublist[txt]+"')").parent().toggleClass("listitem sublist");
         };
         $("#popup tr.sublist").prev(".listitem").addClass("expandable");
+        $("#popup td").txtContentChange(districtDataTxt);
+        $("#popup tr.sublist td").txtContentChange(districtSublistTxt);
+            
+//        $("#popup tr.listitem td:contains('20')").parent().toggleClass("listitem sublist");
+//        $("#popup tr.sublist td:contains('20')").parent().prev("tr.listitem").append($($(this).parent().prev("tr.listitem").next().children()[0]).text().replace("2010", ""));
     });
     /****/    
     //map.setZoom(7.4);
