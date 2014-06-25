@@ -78,37 +78,44 @@ var icons = {
     "Family Planning/Global Fund": new L.Icon({
         iconUrl: 'img/newmarkers/f.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     }),
     "Government": new L.Icon({
         iconUrl: 'img/newmarkers/g.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     }),
     "Government Pool Fund": new L.Icon({
         iconUrl: 'img/newmarkers/p.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     }),
     "IPPF": new L.Icon({
         iconUrl: 'img/newmarkers/i.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     }),
     "Saath Saath Project": new L.Icon({
         iconUrl: 'img/newmarkers/s.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     }),
     "Save The Children": new L.Icon({
         iconUrl: 'img/newmarkers/c.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     }),
     "Others": new L.Icon({
         iconUrl: 'img/newmarkers/o.png',
         iconSize: iconSize,
-        popupAnchor: popupAnchor
+        popupAnchor: popupAnchor,
+        iconAnchor: iconAnchor
     })
 };
 
