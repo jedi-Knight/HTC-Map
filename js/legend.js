@@ -28,7 +28,7 @@ legend.update = function(legends) {
     var sorted_legend_keys = Object.keys(legend._legends).sort();
     // write out html for legend
     for (le in sorted_legend_keys) {
-        todisplay += "<div><h5>" + sorted_legend_keys[le] + "</h5></div><div>" + this._legends[sorted_legend_keys[le]] + "</div>";
+        todisplay += "<div class='legend-layer-class'><h5>" + sorted_legend_keys[le] + "</h5></div><div>" + this._legends[sorted_legend_keys[le]] + "</div>";
         todisplay += "";
     }
     this._div.innerHTML = todisplay
