@@ -37,6 +37,15 @@
 }
 /****/
 
+/**disable user-selection of text**/
+.panel, .leaflet-bottom.leaflet-left{
+    user-select:none;
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none; 
+}
+/****/
+
 
 .panel>div>div, .leaflet-bottom.leaflet-left .info1.leaflet-control{
     margin-bottom:2px;
@@ -118,6 +127,8 @@ div.control-styles, div.leaflet-control-layers-group span.leaflet-control-layers
     font-size: 12pt;
     font-weight: normal;
     text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    
+    
 }
 
 div.leaflet-control-layers-group label:first-of-type{
@@ -284,5 +295,10 @@ div.row{
     margin:0px;
     max-height:90%;
 }
+
+/****/
+/**disable hilight of icons when text is selected**/
+
+     
 
 /****/
