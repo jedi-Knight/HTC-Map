@@ -35,7 +35,7 @@ function each_district_reset_Style() {
 function style_district_unique(oneDistrict) {
     //
     return {
-        fillColor: district_colors[oneDistrict.properties.NAME_3],
+        fillColor: district_colors[oneDistrict.properties.NAME_3 || oneDistrict.properties.Name],
         weight: 2,
         opacity: 1,
         color: 'black',
