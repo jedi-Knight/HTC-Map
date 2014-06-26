@@ -6,7 +6,10 @@ function districtpopUp(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        click: zoomToFeature
+        click: zoomToFeature,
+        popupopen:function(){  //popup is formatted when it opens
+                    $("#popup").formatFlatTable(sublist, districtSublistTxt, districtDataTxt);
+                  }
     });
     var popUp = '<div id="popup">';
     popUp += '<table>';
@@ -24,8 +27,9 @@ function districtpopUp(feature, layer) {
         maxHeight: 300,
         minWidth: 375
     }).setContent(popUp));
+    layer._popup._source=layer;  //needed for catching 'popupopen' event
 }
-
+    
 function htc_popUp(feature, layer) {
     //add the supported by and HealthFacility type in Popup Table
     // layer.bindLabel(
