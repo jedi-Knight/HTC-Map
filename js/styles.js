@@ -69,7 +69,7 @@ function style_vdc_unique(oneVdc) {
 // style_htc_supported_by
 var iconSize = [20, 30],
     iconAnchor = [iconSize[0] / 2, iconSize[1]],
-    popupAnchor = [0, 0];
+    popupAnchor = [0, -iconSize[1]];
 var icon = new L.Icon({
     iconSize: iconSize,
     popupAnchor: popupAnchor
@@ -155,7 +155,7 @@ function style_htc_default(marker) {
         iconUrl: 'img/marker22.png',
         iconSize: [20, 30], // size of the icon
         iconAnchor: [10, 30], // point of the icon which will correspond to marker's location
-        popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
+        popupAnchor: [0, -30] // point from which the popup should open relative to the iconAnchor
     });
     return marker.setIcon(HTC_icon)
 }
@@ -164,7 +164,8 @@ function style_art_default(marker) {
     var art_icon = L.icon({
         iconUrl: 'img/newmarkers/artmarker_capsule.png',
         iconSize: [30, 20],
-        iconAnchor: [15, 20]
+        iconAnchor: [15, 20],
+        popupAnchor: [0, -20]
     });
     return marker.setIcon(art_icon);
 }
@@ -173,7 +174,8 @@ function style_cd4_default(marker) {
     var cd4_icon = L.icon({
         iconUrl: 'img/newmarkers/cd4marker.png',
         iconSize: [25, 35],
-        iconAnchor: [12, 35]
+        iconAnchor: [12, 35],
+        popupAnchor: [0, -35]
     });
     return marker.setIcon(cd4_icon)
 }
