@@ -4,6 +4,7 @@ districtDataTxt = {"district":" "};
 districtSublistTxt = {"No of":" ", "HTC":" ", "STI":" ", "CCC":" ", "CHBC":" "};
 sublistAnnualData = ["2010","2011","2012"]; //unresposive script
 groupHeaders=[];
+k=0;
 /****/
 
 //function listenToElementChange(selector, fn){
@@ -30,6 +31,7 @@ $.fn.formatFlatTable = function(sublistItems, sublistTxtChange, listTxtChange){
     return this.each(function(){
         console.log("hello everybody");
         $(this).find("tr").addClass("listitem");
+        $(this).find("tr").removeClass("sublist");
         for(txt in sublistItems){
             $(this).find("tr.listitem td:contains('"+sublistItems[txt]+"')").parent().toggleClass("listitem sublist");
         };
@@ -66,13 +68,16 @@ $.fn.subgroupFlatTableItems = function(sublistItems, groupHds){  //unresponsive 
 };
 
 function subgroupAndFormatTable(fnc){
-    $(document).bind("format", fnc);
-    id = setInterval(function(){
+    if($(document).triggerHandler("format"))return;  //the handler has been executed because it's not the first run of this function, and event (trigger) is alady registered, so exit
+    
+    $(document).bind("format", fnc);  //if first run, register the event (trigger)
+    id = setInterval(function(){    
             $("#popup").ready(function(){
-                clearInterval(id);
-                $(this).trigger("format");
+                clearInterval(id);  
+                $(document).triggerHandler("format");  
             });
     }, 30);
+    
 };
 
 
