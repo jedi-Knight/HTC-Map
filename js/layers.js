@@ -182,6 +182,7 @@ var LABELS = {
     "VDC Labels": VDC_labels,
     "District Labels": District_labels
 };
+
 // synchronize layer and label
 map.on("overlayadd", function(layer) {
     if (!layer.name.match("Labels")) {
@@ -197,7 +198,7 @@ map.on("overlayadd", function(layer) {
         legend.update(legendObj);
     }
     if (LABELS[layer.name + " Labels"]) {
-        displayLabel(LABELS[layer.name + " Labels"], 11, layer.name, "VDC");
+        map.addLayer(LABELS[layer.name + " Labels"]);
         layersControlSettings.addOverlay(LABELS[layer.name + " Labels"], layer.name + " Labels", "Labels");
     }
 });
@@ -205,9 +206,10 @@ map.on("overlayremove", function(layer) {
     legendObj = {};
     legendObj[layer.name] = "";
     legend.update(legendObj);
+    layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
     if (map.hasLayer(LABELS[layer.name + " Labels"])) {
         map.removeLayer(LABELS[layer.name + " Labels"]);
-        layersControlSettings.removeLayer(LABELS[layer.name + " Labels"]);
+
     }
 });
 
@@ -215,13 +217,11 @@ function displayLayer(layer, zoom, displayName) {
     if (map.getZoom() == zoom - 1) {
         if (map.hasLayer(layer)) {
             map.removeLayer(layer);
-            layersControlSettings.removeLayer(layer);
         }
     }
     if (map.getZoom() == zoom) {
         if (!map.hasLayer(layer)) {
             map.addLayer(layer);
-            layersControlSettings.addOverlay(layer, displayName, "Layers");
         }
     }
 }

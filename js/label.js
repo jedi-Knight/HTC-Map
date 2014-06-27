@@ -61,12 +61,3 @@ function displayLabel(labelLayer, zoom, mainLayer, displayName) {
         }
     }
 }
-
-map.on('zoomend', function(e) {
-    //
-    console.log('displayLabel first');
-    displayLabel(District_labels, 7, district, "District");
-
-    displayLabel(VDC_labels, 11, vdc, "VDC");
-
-});

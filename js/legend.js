@@ -4,9 +4,9 @@ var legend = L.control({
 legend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info1'); // create a div with a class "info1"
     this._legends = {};
-    for (layer in STYLES) {
-        this._legends[STYLES[layer]["display"]] = STYLES[layer]['styles']['Default']['legend'];
-    }
+    // for (layer in STYLES) {
+    //     this._legends[STYLES[layer]["display"]] = STYLES[layer]['styles']['Default']['legend'];
+    // }
     this.update(this._legends);
     return this._div;
 };
@@ -35,3 +35,8 @@ legend.update = function(legends) {
 }
 
 legend.addTo(map);
+
+// adding htc legend for first display
+var legendObj = {};
+legendObj["HTC Sites"] = STYLES[spaceToUnderscore("HTC Sites").toLowerCase() + "_styles"]["styles"]["Default"]["legend"];
+legend.update(legendObj);
