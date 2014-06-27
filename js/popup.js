@@ -7,9 +7,16 @@ function districtpopUp(feature, layer) {
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: zoomToFeature,
-        popupopen:function(){  //popup is formatted when it opens
-                    $("#popup").formatFlatTable(sublist, districtSublistTxt, districtDataTxt);
-                  }
+        popupopen: function(){  //popup is formatted when it opens
+            
+                                subgroupAndFormatTable(function(){
+                                    $(this).formatFlatTable(sublist.concat(sublistAnnualData), districtSublistTxt, districtDataTxt);
+                                    $(this).subgroupFlatTableItems(sublistAnnualData, groupHeaders);
+                                    
+                                });
+            }
+            
+        
     });
     var popUp = '<div id="popup">';
     popUp += '<table>';
