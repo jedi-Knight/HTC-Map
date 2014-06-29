@@ -2,7 +2,9 @@
 sublist = ["Gov","GoV","FHI360","Save","FPAN","Others"];
 districtDataTxt = {"district":" "};
 districtSublistTxt = {"No of":" ", "HTC":" ", "STI":" ", "CCC":" ", "CHBC":" "};
-//groupedSublistTxt = {};
+sublistAnnualData = ["2010","2011","2012"]; //unresposive script
+groupHeaders=[];
+k=0;
 /****/
 
 //function listenToElementChange(selector, fn){
@@ -29,6 +31,7 @@ $.fn.formatFlatTable = function(sublistItems, sublistTxtChange, listTxtChange){
     return this.each(function(){
         console.log("hello everybody");
         $(this).find("tr").addClass("listitem");
+        $(this).find("tr").removeClass("sublist");
         for(txt in sublistItems){
             $(this).find("tr.listitem td:contains('"+sublistItems[txt]+"')").parent().toggleClass("listitem sublist");
         };
@@ -41,7 +44,41 @@ $.fn.formatFlatTable = function(sublistItems, sublistTxtChange, listTxtChange){
     });
 };
 
-//$.fn.subgroupFlatTableItems = function(subgroupItemsContained, )
+$.fn.subgroupFlatTableItems = function(sublistItems, groupHds){  //unresponsive script when using sublistItems instead of hardcoding '2010'
+    return this.each(function(){
+        for(iTxt in sublistItems){
+            z=$(this).find("td:contains('"+sublistItems[iTxt]+"')");
+            for(jNd in z){
+                s = $(z[jNd]).text().replace(sublistItems[iTxt],"");
+                if($.inArray(s, groupHds)===-1) groupHds.push(s);
+            }
+        }
+        
+//        z=$(this).find("td").filter("td:contains('2010')");
+//            for(jNd in z){
+//                s = $(z[jNd]).text().replace("2010","");
+//                if($.inArray(s, groupHds)===-1) groupHds.push(s);
+//            }
+
+        for(kTxt in groupHds){
+            $($(this).find("td:contains('"+groupHds[kTxt]+"')")[0]).parent().before("<tr><td>"+groupHds[kTxt]+"</td><td></td></tr>");
+        }
+        return;
+    });
+};
+
+function subgroupAndFormatTable(fnc){
+    if($(document).triggerHandler("format"))return;  //the handler has been executed because it's not the first run of this function, and event (trigger) is alady registered, so exit
+    
+    $(document).bind("format", fnc);  //if first run, register the event (trigger)
+    id = setInterval(function(){    
+            $("#popup").ready(function(){
+                clearInterval(id);  
+                $(document).triggerHandler("format");  
+            });
+    }, 30);
+    
+};
 
 
 $(document).ready(function() {
