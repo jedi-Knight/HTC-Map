@@ -166,8 +166,8 @@ var overlays = {
         "OpenStreetMap": osm,
         "District": district,
         "VDC": vdc,
-        "ART Sites": art_sites,
         "CD4 Sites": cd4_sites,
+        "ART Sites": art_sites,
         "HTC Sites": HTC_sites,
         "PMTCT Sites": pmtct_sites
     },

@@ -167,16 +167,18 @@ function style_art_default(marker) {
         iconAnchor: [15, 20],
         popupAnchor: [0, -20]
     });
+    marker.setZIndexOffset(1100);
     return marker.setIcon(art_icon);
 }
 
 function style_cd4_default(marker) {
     var cd4_icon = L.icon({
-        iconUrl: 'img/newmarkers/cd4marker.png',
-        iconSize: [25, 35],
-        iconAnchor: [12, 35],
-        popupAnchor: [0, -35]
+        iconUrl: 'img/newmarkers/cd4marker22.png',
+        iconSize: [32, 18],
+        iconAnchor: [16, 0],
+        popupAnchor: [0, -18]
     });
+    marker.setZIndexOffset(1200);
     return marker.setIcon(cd4_icon)
 }
 
@@ -186,6 +188,7 @@ function style_pmtct_default(marker) {
         iconSize: [25, 35],
         iconAnchor: [12, 35]
     });
+    marker.setZIndexOffset(1000);
     return marker.setIcon(pmtct_icon)
 }
 
@@ -222,7 +225,7 @@ art_sites_styles = {
 cd4_sites_styles = {
     "Default": {
         "style": style_cd4_default,
-        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:30'>CD4 Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/cd4marker22.png' style = 'height:30;width:30;'>CD4 Sites</div>"
     }
 }
 
