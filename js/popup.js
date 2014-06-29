@@ -10,7 +10,7 @@ function districtpopUp(feature, layer) {
         popupopen: function(){  //popup is formatted when it opens
             
                                 subgroupAndFormatTable(function(){
-                                    $("#popup").subgroupFlatTableItems(sublistAnnualData, groupHeaders);
+                                    $("#popup").subgroupFlatTableItems(sublistAnnualData);
                                     $("#popup").formatFlatTable(sublist.concat(sublistAnnualData), districtSublistTxt, districtDataTxt);
                                     return 1; //return value for triggerHandler, needed to detect if first run of function
                                 });

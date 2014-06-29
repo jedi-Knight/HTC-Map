@@ -1,10 +1,8 @@
 /**district popup content filters**/
-sublist = ["Gov","GoV","FHI360","Save","FPAN","Others"];
-districtDataTxt = {"district":" "};
-districtSublistTxt = {"No of":" ", "HTC":" ", "STI":" ", "CCC":" ", "CHBC":" "};
-sublistAnnualData = ["2010","2011","2012"]; //unresposive script
-groupHeaders=[];
-k=0;
+sublist = ["Gov","GoV","FHI360","Save","FPAN","Others"];  //subgroup items containing these
+districtDataTxt = {"district":" ", "Est":"Estimated", "GoV":"Gov", "Gov":"Government", "FHI360":"Saath Saath Project","Save":"Save the Children"};     //text replace for group headers in popup
+districtSublistTxt = {"No of":" ", "HTC":" ", "STI":" ", "CCC":" ", "CHBC":" ", "GoV":"Gov", "Gov":"Government", "FHI360":"Saath Saath Project","Save":"Save the Children"};  //text replace for group items in popup
+sublistAnnualData = ["2010","2020"]; 
 /****/
 
 //function listenToElementChange(selector, fn){
@@ -36,7 +34,7 @@ $.fn.formatFlatTable = function(sublistItems, sublistTxtChange, listTxtChange){
             $(this).find("tr.listitem td:contains('"+sublistItems[txt]+"')").parent().toggleClass("listitem sublist");
         };
         $(this).find("tr.sublist").prev(".listitem").addClass("expandable");
-        $(this).find("td").txtContentChange(listTxtChange);
+        $(this).find("tr.listitem td").txtContentChange(listTxtChange);
         $(this).find("tr.sublist td").txtContentChange(sublistTxtChange);
 
 //        $(this).filter("tr.listitem td:contains('20')").parent().toggleClass("listitem sublist");
@@ -44,21 +42,16 @@ $.fn.formatFlatTable = function(sublistItems, sublistTxtChange, listTxtChange){
     });
 };
 
-$.fn.subgroupFlatTableItems = function(sublistItems, groupHds){  //unresponsive script when using sublistItems instead of hardcoding '2010'
+$.fn.subgroupFlatTableItems = function(sublistItems){  //unresponsive script when using sublistItems instead of hardcoding '2010'
+    groupHds=[];
     return this.each(function(){
         for(iTxt in sublistItems){
             z=$(this).find("td:contains('"+sublistItems[iTxt]+"')");
             for(jNd in z){
                 s = $(z[jNd]).text().replace(sublistItems[iTxt],"");
                 if($.inArray(s, groupHds)===-1) groupHds.push(s);
+                }
             }
-        }
-        
-//        z=$(this).find("td").filter("td:contains('2010')");
-//            for(jNd in z){
-//                s = $(z[jNd]).text().replace("2010","");
-//                if($.inArray(s, groupHds)===-1) groupHds.push(s);
-//            }
 
         for(kTxt in groupHds){
             $($(this).find("td:contains('"+groupHds[kTxt]+"')")[0]).parent().before("<tr><td>"+groupHds[kTxt]+"</td><td></td></tr>");
@@ -82,6 +75,12 @@ function subgroupAndFormatTable(fnc){
 
 
 $(document).ready(function() {
+    /**ready the globals**/
+    for(i=parseInt(sublistAnnualData[0]); i<parseInt(sublistAnnualData[1]); i++){
+        sublistAnnualData.push(i+'');
+    }
+    /****/
+    
     /**temporary solution for stylechooser**/
     z=[];
     $("div.control-styles div#styleChooser div").hide();
@@ -94,10 +93,10 @@ $(document).ready(function() {
     /****/
     
     /**layers panel collapsible**/
-    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name").addClass("trigger").append("<div class='lever off'></div>");
-    $(".trigger.layers").click(function() {
-        $(this).next().toggle(100);
-        $(".trigger.styles .lever").toggleClass("on off");
+    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name:first").addClass("trigger").append("<div class='lever off'></div>");
+    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name:first").click(function() {
+        $(this).nextAll().toggle(100);
+        $(".trigger.layers .lever").toggleClass("on off");
     });
     /****/
     /**stylechooser collapsible**/
