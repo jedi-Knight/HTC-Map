@@ -60,7 +60,7 @@ function htc_popUp(feature, layer) {
         keepInView: true,
         autoPan: true,
         maxHeight: 200,
-        minWidth: 350
+        minWidth: 250
     }).setContent(popUpContent));
     layer.bindLabel(name, {
         noHide: false
