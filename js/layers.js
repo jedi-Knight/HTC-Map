@@ -104,7 +104,7 @@ var art_sites = new L.geoJson.ajax("data/art_data.geojson", {
 var cd4_sites = new L.geoJson.ajax("data/cd4_data.geojson", {
     onEachFeature: htc_popUp
 });
-var pmtct_sites = new L.geoJson.ajax("data/pmtct.geojson", {
+var pmtct_sites = new L.geoJson.ajax("data/pmtct_data.geojson", {
     onEachFeature: htc_popUp
 });
 
