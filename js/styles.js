@@ -130,6 +130,7 @@ function iconToLegendString() {
 
 function style_htc_supported_by(marker) {
     if (icons[marker.feature.properties["Supported By"]]) {
+        marker.setZIndexOffset(1000);
         return marker.setIcon(icons[marker.feature.properties["Supported By"]])
     } else {
         return marker.setIcon(new L.Icon.Default({
@@ -157,6 +158,7 @@ function style_htc_default(marker) {
         iconAnchor: [10, 30], // point of the icon which will correspond to marker's location
         popupAnchor: [0, -30] // point from which the popup should open relative to the iconAnchor
     });
+    marker.setZIndexOffset(1000);
     return marker.setIcon(HTC_icon)
 }
 
@@ -188,7 +190,7 @@ function style_pmtct_default(marker) {
         iconSize: [25, 35],
         iconAnchor: [12, 35]
     });
-    marker.setZIndexOffset(1000);
+    marker.setZIndexOffset(900);
     return marker.setIcon(pmtct_icon)
 }
 
