@@ -250,10 +250,15 @@ path.leaflet-clickable{
     /*text-align:center;*/
 }
 
-div.leaflet-popup-content td, #popup td{
+div.leaflet-popup-content td{
     border: #cccccc thin solid;
     font-family: "Verdana", "sans-serif";
     text-transform: capitalize;
+    padding:4px;
+}
+
+#popup td{
+    padding:0px;
 }
 
 #popup tr{
