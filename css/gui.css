@@ -127,6 +127,10 @@ div.control-styles, div.leaflet-control-layers-group span.leaflet-control-layers
     
     
 }
+form.leaflet-control-layers-list{
+    margin:2px;
+    margin-left:0px;
+}
 
 div.leaflet-control-layers-group label:first-of-type{
     margin-top:10px
@@ -254,14 +258,14 @@ div.leaflet-popup-content td{
     border: #cccccc thin solid;
     font-family: "Verdana", "sans-serif";
     text-transform: capitalize;
-    padding:4px;
+    padding:2px;
 }
 
 #popup td{
     padding:0px;
 }
 
-#popup tr{
+div.leaflet-popup-content-wrapper tr{
     font-size: 10pt;
 }
 #popup tr.sublist{
@@ -312,4 +316,8 @@ div.row{
 
 .legend-layer-class{
     background-color: blanchedalmond;
+}
+.trigger{
+    font-size:12pt;
+    margin:2px;
 }
