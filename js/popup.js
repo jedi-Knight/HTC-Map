@@ -7,16 +7,16 @@ function districtpopUp(feature, layer) {
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: zoomToFeature,
-        popupopen: function(){  //popup is formatted when it opens
-            
-                                subgroupAndFormatTable(function(){
-                                    $("#popup").subgroupFlatTableItems(sublistAnnualData);
-                                    $("#popup").formatFlatTable(sublist.concat(sublistAnnualData), districtSublistTxt, districtDataTxt);
-                                    return 1; //return value for triggerHandler, needed to detect if first run of function
-                                });
-            }
-            
-        
+        popupopen: function() { //popup is formatted when it opens
+
+            subgroupAndFormatTable(function() {
+                $("#popup").subgroupFlatTableItems(sublistAnnualData);
+                $("#popup").formatFlatTable(sublist.concat(sublistAnnualData), districtSublistTxt, districtDataTxt);
+                return 1; //return value for triggerHandler, needed to detect if first run of function
+            });
+        }
+
+
     });
     var popUp = '<div id="popup">';
     popUp += '<table>';
@@ -34,9 +34,9 @@ function districtpopUp(feature, layer) {
         maxHeight: 300,
         minWidth: 375
     }).setContent(popUp));
-    layer._popup._source=layer;  //needed for catching 'popupopen' event
+    layer._popup._source = layer; //needed for catching 'popupopen' event
 }
-    
+
 function htc_popUp(feature, layer) {
     //add the supported by and HealthFacility type in Popup Table
     // layer.bindLabel(
@@ -46,7 +46,7 @@ function htc_popUp(feature, layer) {
 
 
     var popUpContent = "";
-    popUpContent += '<table>';
+    popUpContent += '<table style="width:100%;">';
     for (data in layer.feature.properties) {
         // console.log('feature ', feature);
         dataspaced = underscoreToSpace(data);
