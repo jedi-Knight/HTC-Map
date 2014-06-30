@@ -116,21 +116,16 @@ $(document).ready(function() {
     $("div.leaflet-control-zoom").append("<a class='new-control' href=# title='Zoom to extent' onclick = 'fullextent()'><div id = 'zoom'><img src = 'img/MapFullExtent.png'></div></a>");
     /****/
 
-    /**layers panel collapsible**/
-    $("#layersControl span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div><div class='panel-layers-content'></div>");
-    $("#layersControl div.leaflet-control-layers-group-name").parent().nextAll().appendTo($("#layersControl div.leaflet-control-layers-group-name").parent());
-    $("#layersControl div.panel-layers-content").nextAll().appendTo($("#layersControl div.panel-layers-content"));
-    $("#layersControl div.leaflet-control-layers-group-name").click(function() {
-        $($(this).next().add($(this).parent().next())).toggle(100, function(){
-            $(".trigger.layers .lever").toggleClass("on off");
-        });
-    });
-    /****/
-    /**stylechooser collapsible**/
-    $(".trigger.styles").click(function() {
-        $(this).next().toggle(100, function(){
-            $(".trigger.styles .lever").toggleClass("on off");
-        });
+    /**layers and stylechooser panels collapsible**/
+        
+        $("#layersControl span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div><div class='panel-layers-content'></div>");
+        $("#layersControl div.leaflet-control-layers-group-name").parent().nextAll().appendTo($("#layersControl div.leaflet-control-layers-group-name").parent());
+        $("#layersControl div.panel-layers-content").nextAll().appendTo($("#layersControl div.panel-layers-content"));
+        
+    $(".trigger").click(function() {
+        $(this).find("div.lever").toggleClass("on off");
+        $(this).next().toggle(100);
+        
     });
     /****/
 
