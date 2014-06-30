@@ -117,9 +117,10 @@ $(document).ready(function() {
     /****/
 
     /**layers panel collapsible**/
-    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name:first").addClass("trigger").append("<div class='lever off'></div>");
-    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name:first").click(function() {
+    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div>");
+    $("#layersControl .leaflet-control-layers-group div.leaflet-control-layers-group-name").click(function() {
         $(this).nextAll().toggle(100);
+        $(this).parent().next().toggle(100);
         $(".trigger.layers .lever").toggleClass("on off");
     });
     /****/
