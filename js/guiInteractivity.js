@@ -29,17 +29,6 @@ districtSublistTxt = {
 sublistAnnualData = ["2010", "2020"];
 /****/
 
-//function listenToElementChange(selector, fn){
-//    $(selector).bind("childcountchanged",fn);
-//    n=$(selector).children().length;
-//    setInterval(function(){    
-//        if(($(selector).children().length - n) !== 0){
-//                $(selector).trigger("childcountchanged");
-//                n = $(selector).children().length;
-//        };        
-//    }, 30);
-//    
-//}
 
 $.fn.txtContentChange = function(jsonObj) {
     return this.each(function() {
@@ -60,13 +49,10 @@ $.fn.formatFlatTable = function(sublistItems, sublistTxtChange, listTxtChange) {
         $(this).find("tr.sublist").prev(".listitem").addClass("expandable");
         $(this).find("tr.listitem td").txtContentChange(listTxtChange);
         $(this).find("tr.sublist td").txtContentChange(sublistTxtChange);
-
-        //        $(this).filter("tr.listitem td:contains('20')").parent().toggleClass("listitem sublist");
-        //        $(this).filter("tr.sublist td:contains('20')").parent().prev("tr.listitem").append($($(this).parent().prev("tr.listitem").next().children()[0]).text().replace("2010", ""));
     });
 };
 
-$.fn.subgroupFlatTableItems = function(sublistItems) { //unresponsive script when using sublistItems instead of hardcoding '2010'
+$.fn.subgroupFlatTableItems = function(sublistItems) { //bug that caused unresponsive script has been fixed
     groupHds = [];
     return this.each(function() {
         for (iTxt in sublistItems) {
@@ -112,12 +98,16 @@ $(document).ready(function() {
     $(z).show();
     /****/
 
-    /**zoom-to-full-extent button position**/
-    $("div.leaflet-control-zoom").append("<a class='new-control' href=# title='Zoom to extent' onclick = 'fullextent()'><div id = 'zoom'><img src = 'img/MapFullExtent.png'></div></a>");
+    /**zoom-to-extent button position and onClick handler**/
+    $("div.leaflet-control-zoom").append("<a class='new-control-zoom-to-extent' href=# title='Zoom to extent'><div id = 'zoom'><img src = 'img/MapFullExtent.png'></div></a>");
+    $("a.new-control-zoom-to-extent").click(function(){
+        fullextent();
+        document.activeElement.blur();
+    });
     /****/
 
     /**layers and stylechooser panels collapsible**/
-        
+    
         $("#layersControl span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div><div class='panel-layers-content'></div>");
         $("#layersControl div.leaflet-control-layers-group-name").parent().nextAll().appendTo($("#layersControl div.leaflet-control-layers-group-name").parent());
         $("#layersControl div.panel-layers-content").nextAll().appendTo($("#layersControl div.panel-layers-content"));
@@ -137,13 +127,7 @@ $(document).ready(function() {
         map.dragging.enable();
     });
     /****/
-
-    /**popup styling**/
-
-    //    listenToElementChange(".leaflet-popup-pane", function(){
-    //        $("#popup").formatFlatTable(sublist, districtSublistTxt, districtDataTxt);
-    //    });
-    /****/
+    
     //map.setZoom(7.4);
     /**this code block can be safely removed**/
     xmark = 2; //switch for trying different markers:
