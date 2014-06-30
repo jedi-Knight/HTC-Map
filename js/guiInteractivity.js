@@ -117,17 +117,20 @@ $(document).ready(function() {
     /****/
 
     /**layers panel collapsible**/
-    $("#layersControl .leaflet-control-layers-group span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div>");
-    $("#layersControl .leaflet-control-layers-group div.leaflet-control-layers-group-name").click(function() {
-        $(this).nextAll().toggle(100);
-        $(this).parent().next().toggle(100);
-        $(".trigger.layers .lever").toggleClass("on off");
+    $("#layersControl span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div><div class='panel-layers-content'></div>");
+    $("#layersControl div.leaflet-control-layers-group-name").parent().nextAll().appendTo($("#layersControl div.leaflet-control-layers-group-name").parent());
+    $("#layersControl div.panel-layers-content").nextAll().appendTo($("#layersControl div.panel-layers-content"));
+    $("#layersControl div.leaflet-control-layers-group-name").click(function() {
+        $($(this).next().add($(this).parent().next())).toggle(100, function(){
+            $(".trigger.layers .lever").toggleClass("on off");
+        });
     });
     /****/
     /**stylechooser collapsible**/
     $(".trigger.styles").click(function() {
-        $(this).next().toggle(100);
-        $(".trigger.styles .lever").toggleClass("on off");
+        $(this).next().toggle(100, function(){
+            $(".trigger.styles .lever").toggleClass("on off");
+        });
     });
     /****/
 
