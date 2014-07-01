@@ -11,7 +11,7 @@ districtDataTxt = {
     " TI": " Targeted Intervention",
     "No of": "Number of",
     "Cum": "Cummulative",
-    "null": "0"
+    "null": "NA"
 }; //text replace for group headers in popup
 districtSublistTxt = {
     "No of": " ",
@@ -24,7 +24,7 @@ districtSublistTxt = {
     "FHI360": "Saath Saath Project",
     "Save": "Save the Children",
     " FPAN": " Family Planning Association Nepal",
-    "null": "0"
+    "null": "NA"
 }; //text replace for group items in popup
 sublistAnnualData = ["2010", "2020"];
 /****/
