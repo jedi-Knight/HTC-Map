@@ -155,7 +155,7 @@ function style_htc_default(marker) {
     var HTC_icon = L.icon({
         iconUrl: 'img/marker22.png',
         iconSize: [20, 30], // size of the icon
-        iconAnchor: [10, 30], // point of the icon which will correspond to marker's location
+        iconAnchor: [8, 30], // point of the icon which will correspond to marker's location
         popupAnchor: [0, -30] // point from which the popup should open relative to the iconAnchor
     });
     marker.setZIndexOffset(1000);
@@ -175,10 +175,10 @@ function style_art_default(marker) {
 
 function style_cd4_default(marker) {
     var cd4_icon = L.icon({
-        iconUrl: 'img/newmarkers/cd4marker22.png',
+        iconUrl: 'img/newmarkers/cd4marker.png',
         iconSize: [32, 18],
-        iconAnchor: [16, 0],
-        popupAnchor: [0, -18]
+        iconSize: [44, 40],
+        iconAnchor: [19, 40],
     });
     marker.setZIndexOffset(1200);
     return marker.setIcon(cd4_icon)
@@ -227,7 +227,7 @@ art_sites_styles = {
 cd4_sites_styles = {
     "Default": {
         "style": style_cd4_default,
-        "legend": "<div><img src = 'img/newmarkers/cd4marker22.png' style = 'height:30;width:30;'>CD4 Sites</div>"
+        "legend": "<div><img src = 'img/newmarkers/cd4marker.png' style = 'height:30;width:30;'>CD4 Sites</div>"
     }
 }
 
