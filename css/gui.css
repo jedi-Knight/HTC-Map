@@ -35,7 +35,7 @@
 /****/
 
 /**disable user-selection of text in panels and legend**/
-.panel, .leaflet-bottom.leaflet-left{
+.mapBox, .panel, .leaflet-bottom.leaflet-left{
     user-select:none;
     -webkit-user-select: none;  
     -moz-user-select: none;     
@@ -78,16 +78,17 @@
     float: right;
 
     font-size: 9pt;
-    color: #eeeeee;
+    color: #cccccc;
 
     width: 14pt;
     line-height: 12pt;
     border-radius:10px;
     border-width: thin;
     border-style: solid;
-    border-color: #eeeeee;
+    border-color: #cccccc;
     text-align: center;
     padding-right:1px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
 }
 
 
@@ -97,16 +98,21 @@
 .trigger>div.lever.on:after{
     content: "-";
 }
-.trigger>div.lever:hover{
-    color: rgba(100,50,0,0.5);
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+.trigger:hover>div.lever{
+    color: rgb(100,50,0);
+    border-color: #aaaaaa;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
 }
-.trigger>div.lever:active{
-    color: rgba(100,0,0,0.5);
-    box-shadow: 0px 0px 2px rgba(100,0,0,0.2) inset;
+.trigger:active>div.lever{
+    color: rgb(100,0,0);
+    box-shadow: 0px 0px 3px rgba(100,0,0,0.3) inset;
 }
-.trigger>div.lever.on{
-    box-shadow: 0px 0px 2px rgba(100,0,0,0.2) inset;
+.trigger:hover>div.lever.on{
+    border-color: #aaaaaa;
+    box-shadow: 0px 0px 2px rgba(100,0,0,0.3) inset, 0px 0px 1px rgba(100,0,0,0.3);
+}
+.trigger:active>div.lever.on{
+    box-shadow: 0px 0px 3px rgba(100,0,0,0.5) inset;
 }
 
 .styleChooser{
@@ -267,6 +273,10 @@ div.leaflet-popup-content td{
 
 div.leaflet-popup-content-wrapper tr{
     font-size: 10pt;
+    user-select:text;
+    -webkit-user-select: text;  
+    -moz-user-select: text;     
+    -ms-user-select: text; 
 }
 #popup tr.sublist{
     font-weight: normal;
