@@ -101,22 +101,22 @@ $(document).ready(function() {
 
     /**zoom-to-extent button position and onClick handler**/
     $("div.leaflet-control-zoom").append("<a class='new-control-zoom-to-extent' href=# title='Zoom to extent'><div id = 'zoom'><img src = 'img/MapFullExtent.png'></div></a>");
-    $("a.new-control-zoom-to-extent").click(function(){
+    $("a.new-control-zoom-to-extent").click(function() {
         fullextent();
         document.activeElement.blur();
     });
     /****/
 
     /**layers and stylechooser panels collapsible**/
-    
-        $("#layersControl span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div><div class='panel-layers-content'></div>");
-        $("#layersControl div.leaflet-control-layers-group-name").parent().nextAll().appendTo($("#layersControl div.leaflet-control-layers-group-name").parent());
-        $("#layersControl div.panel-layers-content").nextAll().appendTo($("#layersControl div.panel-layers-content"));
-        
+
+    $("#layersControl span.leaflet-control-layers-group-name:first").replaceWith("<div class='leaflet-control-layers-group-name trigger layers'>Layers<div class='lever on'></div></div><div class='panel-layers-content'></div>");
+    $("#layersControl div.leaflet-control-layers-group-name").parent().nextAll().appendTo($("#layersControl div.leaflet-control-layers-group-name").parent());
+    $("#layersControl div.panel-layers-content").nextAll().appendTo($("#layersControl div.panel-layers-content"));
+
     $(".trigger").click(function() {
         $(this).find("div.lever").toggleClass("on off");
         $(this).next().toggle(100);
-        
+
     });
     /****/
 
@@ -128,9 +128,19 @@ $(document).ready(function() {
         map.dragging.enable();
     });
     /****/
-    
+
     //map.setZoom(7.4);
     /**this code block can be safely removed**/
     xmark = 2; //switch for trying different markers:
     //set xmark=1 for pink-white balloons, set xmark = 2 for red balloons
+});
+map.on('popupopen', function(centerMarker) {
+    var cM = map.project(centerMarker.popup._latlng);
+    cM.y -= centerMarker.popup._container.clientHeight / 2
+    map.setZoom((16), {
+        animate: true
+    });
+    map.panTo(map.unproject(cM), {
+        animate: true
+    });
 });

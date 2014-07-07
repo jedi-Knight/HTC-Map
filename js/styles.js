@@ -75,12 +75,12 @@ var icon = new L.Icon({
     popupAnchor: popupAnchor
 });
 var icons = {
-    "Family Planning/Global Fund": new L.Icon({
-        iconUrl: 'img/newmarkers/f.png',
-        iconSize: iconSize,
-        popupAnchor: popupAnchor,
-        iconAnchor: iconAnchor
-    }),
+    // "Family Planning/Global Fund": new L.Icon({
+    //     iconUrl: 'img/newmarkers/f.png',
+    //     iconSize: iconSize,
+    //     popupAnchor: popupAnchor,
+    //     iconAnchor: iconAnchor
+    // }),
     "Government": new L.Icon({
         iconUrl: 'img/newmarkers/g.png',
         iconSize: iconSize,
@@ -110,13 +110,14 @@ var icons = {
         iconSize: iconSize,
         popupAnchor: popupAnchor,
         iconAnchor: iconAnchor
-    }),
-    "Others": new L.Icon({
-        iconUrl: 'img/newmarkers/o.png',
-        iconSize: iconSize,
-        popupAnchor: popupAnchor,
-        iconAnchor: iconAnchor
     })
+    // ,
+    // "Others": new L.Icon({
+    //     iconUrl: 'img/newmarkers/o.png',
+    //     iconSize: iconSize,
+    //     popupAnchor: popupAnchor,
+    //     iconAnchor: iconAnchor
+    // })
 };
 
 function iconToLegendString() {
