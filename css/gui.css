@@ -3,6 +3,17 @@
     height:90%;
 }
 
+#USAID-Logo{
+    /*width: 10%;*/
+    height: 100px;
+}
+
+
+#GoN-Logo{
+    /*width: 10%;*/
+    height: 100px;
+}
+
 .mapBox{
     display: block;
     top:0;
