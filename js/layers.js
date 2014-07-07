@@ -21,7 +21,7 @@ for (any in testGeom) {
 
 // osmUrl = 'https://a.tiles.mapbox.com/v3/poshan.i65ff4hn/{z}/{x}/{y}.png',
 osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-osmAttribution = 'Map Tiles &copy; 2012 OpenStreetMap contributors';
+osmAttribution = 'Map Tiles &copy; CC BY-SA <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 var osm = L.TileLayer.boundaryCanvas(osmUrl, {
     boundary: nep_latlng_array,
     attribution: osmAttribution,
