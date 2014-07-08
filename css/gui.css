@@ -4,14 +4,20 @@
 }
 
 #USAID-Logo{
-    /*width: 10%;*/
-    height: 100px;
+    height: 60px;
+}
+
+#banner{
+    height:10%;
+}
+#banner>table>tr>td{
+    text-align:center;
 }
 
 
 #GoN-Logo{
     /*width: 10%;*/
-    height: 100px;
+    height: 60px;
 }
 
 .mapBox{
@@ -144,6 +150,7 @@ div.control-styles, div.leaflet-control-layers-group span.leaflet-control-layers
     
     
 }
+
 form.leaflet-control-layers-list{
     margin:2px;
     margin-left:0px;
