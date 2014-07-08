@@ -129,6 +129,14 @@ $(document).ready(function() {
     });
     /****/
     
+    /**disclaimer link**/
+    $("#disclaimer").click(function(){
+        $("#disclaimerMsg").show().click(function(){
+            $(this).hide();
+        });
+    });
+    /****/
+    
     //map.setZoom(7.4);
     /**this code block can be safely removed**/
     xmark = 2; //switch for trying different markers:
