@@ -344,6 +344,17 @@ div.row{
 }
 
 /**disclaimer**/
+.leaflet-bottom.leaflet-right{
+    text-align: right;
+}
+
+#disclaimer{
+    display: inline-block;
+    font-size:16pt;
+    background-color:rgba(255,255,255,0.7);
+    pointer-events:auto;
+}
+
 #disclaimerMsg{
    position: absolute;
    z-index: 100000;

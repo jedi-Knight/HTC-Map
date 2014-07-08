@@ -106,6 +106,14 @@ $(document).ready(function() {
         document.activeElement.blur();
     });
     /****/
+    
+    /**disclaimer link**/
+    $("<div id='disclaimer' class='leaflet-control-attribution'><a href='#'>Disclaimer</a></div>").insertBefore("div.leaflet-control-attribution").click(function(){
+        $("#disclaimerMsg").show().click(function(){
+            $(this).hide();
+        });
+    });
+    /****/
 
     /**layers and stylechooser panels collapsible**/
     
@@ -126,14 +134,6 @@ $(document).ready(function() {
     });
     $(".leaflet-control").mouseout(function() {
         map.dragging.enable();
-    });
-    /****/
-    
-    /**disclaimer link**/
-    $("#disclaimer").click(function(){
-        $("#disclaimerMsg").show().click(function(){
-            $(this).hide();
-        });
     });
     /****/
     
