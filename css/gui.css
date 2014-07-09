@@ -4,14 +4,21 @@
 }
 
 #USAID-Logo{
-    /*width: 10%;*/
-    height: 100px;
+    height: 60px;
+    top:0px;
+}
+
+#banner{
+    height:10%;
+}
+#banner>table>tr>td{
+    text-align:center;
 }
 
 
 #GoN-Logo{
     /*width: 10%;*/
-    height: 100px;
+    height: 60px;
 }
 
 .mapBox{
@@ -144,6 +151,7 @@ div.control-styles, div.leaflet-control-layers-group span.leaflet-control-layers
     
     
 }
+
 form.leaflet-control-layers-list{
     margin:2px;
     margin-left:0px;
@@ -344,6 +352,17 @@ div.row{
 }
 
 /**disclaimer**/
+.leaflet-bottom.leaflet-right{
+    text-align: right;
+}
+
+#disclaimer{
+    display: inline-block;
+    font-size:16pt;
+    background-color:rgba(255,255,255,0.7);
+    pointer-events:auto;
+}
+
 #disclaimerMsg{
    position: absolute;
    z-index: 100000;
