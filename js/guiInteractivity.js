@@ -108,7 +108,7 @@ $(document).ready(function() {
     /****/
     
     /**disclaimer link**/
-    $("<div id='disclaimer' class='leaflet-control-attribution'><a href='#'>Disclaimer</a></div>").insertBefore("div.leaflet-control-attribution").click(function(){
+    $("<div id='disclaimer' class='leaflet-control-attribution'><img src='img/handcursor.png' style='height:16pt'/><a href='#'>Disclaimer</a></div>").insertBefore("div.leaflet-control-attribution").click(function(){
         $("#disclaimerMsg").show().click(function(){
             $(this).hide();
         });
@@ -139,8 +139,10 @@ $(document).ready(function() {
     
     /**disclaimer link**/
     $("#disclaimer").click(function(){
+        $("<div id='frost'></div>").appendTo("div.row");
         $("#disclaimerMsg").show().click(function(){
             $(this).hide();
+            $("#frost").remove();
         });
     });
     /****/
