@@ -361,13 +361,16 @@ div.row{
 
 #disclaimer{
     display: inline-block;
-    box-sizing: content-box;
-    font-size:16pt;
+    box-sizing: border-box;
+    font-size:14pt;
     background-color:rgba(255,255,255,0.7);
-    outline: #888888 solid thin;
+    border: #888888 solid 2px;
     pointer-events:auto;
-    margin-top: -36pt;
-    margin-right: -58pt;
+    margin-top: -30pt;
+    margin-right: -60pt;
+}
+#disclaimer>img{
+    height:12pt;
 }
 
 #disclaimerMsg{
