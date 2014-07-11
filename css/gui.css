@@ -362,7 +362,7 @@ div.row{
 #disclaimer{
     display: inline-block;
     box-sizing: border-box;
-    font-size:14pt;
+    font-size:12pt;
     background-color:rgba(255,255,255,0.7);
     border: #888888 solid 2px;
     pointer-events:auto;
@@ -370,7 +370,7 @@ div.row{
     margin-right: -60pt;
 }
 #disclaimer>img{
-    height:12pt;
+    height:14pt;
 }
 
 #disclaimerMsg{
