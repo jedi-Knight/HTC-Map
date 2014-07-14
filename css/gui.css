@@ -362,15 +362,17 @@ div.row{
 #disclaimer{
     display: inline-block;
     box-sizing: border-box;
-    font-size:12pt;
+   /* font-size:12pt;*/
+font-size:16pt;
     background-color:rgba(255,255,255,0.7);
     border: #888888 solid 2px;
     pointer-events:auto;
-    margin-top: -30pt;
-    margin-right: -60pt;
+   /* margin-top: -30pt;
+    margin-right: -60pt;*/
 }
 #disclaimer>img{
-    height:14pt;
+   /* height:14pt;*/
+height:16pt;
 }
 
 #disclaimerMsg{
