@@ -108,7 +108,7 @@ $(document).ready(function() {
     /****/
     
     /**disclaimer link**/
-    $("<div id='disclaimer' class='leaflet-control-attribution'><img src='img/handcursor.png'/><a href='#'>Disclaimer</a> This map was made possible with support from USAID.</div>").insertBefore("div.leaflet-control-attribution").click(function(){
+    $("<div id='disclaimer'><img src='img/handcursor.png'/><a href='#'>Disclaimer</a></div>").insertBefore("div.leaflet-control-scale").click(function(){
         $("#disclaimerMsg").show().click(function(){
             $(this).hide();
         });

@@ -358,19 +358,28 @@ div.row{
 .leaflet-bottom.leaflet-right{
     text-align: right;
 }
-
+#us-support-text{
+    bottom: 20px;
+left: 50%;
+margin-left: -170px;
+text-align: center;
+background-color: wheat;
+position: absolute;
+z-index: 1000;
+}
 #disclaimer{
-    display: inline-block;
-    box-sizing: border-box;
-    font-size:12pt;
-    background-color:rgba(255,255,255,0.7);
-    border: #888888 solid 2px;
-    pointer-events:auto;
-    margin-top: -30pt;
-    margin-right: -60pt;
+    display: inherit;
+font-size: 8pt;
+/* background-color: rgba(255,255,255,0.7); */
+ /*border: #888888 solid 2px; */
+pointer-events: auto;
+/* margin-top: -30pt; */
 }
 #disclaimer>img{
     height:14pt;
+}
+#disclaimer>a{
+    font-size:15pt;
 }
 
 #disclaimerMsg{
