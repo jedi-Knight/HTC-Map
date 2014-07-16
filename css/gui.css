@@ -379,7 +379,7 @@ div.row{
     left:35%;
     top:35%;
     width:30%;
-    height:30%;
+    /*height:30%;*/
     background-color:#000000;
     border: #ffffff solid thick;
     outline: #ffffff solid thin;
