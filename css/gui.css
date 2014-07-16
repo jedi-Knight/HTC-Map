@@ -393,8 +393,8 @@ div.row{
 #disclaimerMsg{
     position: absolute;
     z-index: 100001;
-    left:35%;
-    top:35%;
+    left:30%;
+    top:30%;
     width:40%;
     max-height:40%;
     overflow:auto;
